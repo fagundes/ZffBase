@@ -1,0 +1,35 @@
+<?php
+/**
+ * @param string $options (default = array()) - atributos para o paginatorLink
+ */
+?>
+<?php if ($this->pageCount): ?>
+    <div class="pagination pagination-centered">
+        <ul>
+            <!-- First page link -->
+            <li <?php echo!isset($this->previous) ? 'class="disabled"' : ''; ?>>
+                <?php echo $this->paginatorLink('&laquo;', $this->first, $options); ?>
+            </li>
+            <!-- Previous page link -->
+            <li <?php echo!isset($this->previous) ? 'class="disabled"' : ''; ?>>
+                <?php echo $this->paginatorLink('&lsaquo;', $this->previous, $options); ?>
+            </li>
+
+            <!-- Numbered page links -->
+            <?php foreach ($this->pagesInRange as $page): ?>
+                <li <?php echo $page == $this->current ? 'class="active"' : ''; ?>>
+                  <?php echo $this->paginatorLink($page, $page, $options); ?>
+                </li>
+            <?php endforeach; ?>
+
+            <!-- Next page link -->
+            <li <?php echo!isset($this->next) ? 'class="disabled"' : ''; ?>>
+                <?php echo $this->paginatorLink('&rsaquo;', $this->next, $options); ?>
+            </li>
+            <!-- Last page link -->
+            <li <?php echo!isset($this->next) ? 'class="disabled"' : ''; ?>>
+                <?php echo $this->paginatorLink('&raquo;', $this->last, $options); ?>
+            </li>
+        </ul>
+    </div>
+<?php endif; ?>

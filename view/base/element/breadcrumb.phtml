@@ -1,0 +1,34 @@
+<?php
+if (!empty($this->pages)){
+    $breadcrumbs = $this->navigation()->breadcrumbs();
+
+    $links = array();
+
+    //itera ate a penultima pagina.
+    $size = count($this->pages);
+    for ($i = 0; $i < $size - 1; $i++) {
+        $links[] = $breadcrumbs->htmlify($this->pages[$i]);
+    }
+
+    //obtem o lastLink da ultima pagina.
+    $lastPage = $this->pages[$size - 1];
+    if ($breadcrumbs->getLinkLast()) {
+        $lastLink = $breadcrumbs->htmlify($lastPage);
+    } else {
+        $lastLink = $this->escapeHtml($lastPage->getLabel());
+    }
+}
+?>
+<?php if (!empty($this->pages)): ?>
+    <ul class="breadcrumb">
+        <?php foreach ($links as $link): ?>
+            <li>
+                <?php echo $link ?>
+            </li>
+        <?php endforeach; ?>
+
+        <li class="active">
+          <?php echo $lastLink ?>
+        </li>
+    </ul>
+<?php endif; ?>
