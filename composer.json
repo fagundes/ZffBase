@@ -44,7 +44,7 @@
     },
      "extra": {
         "alias": {
-            "dev-master":"0.0.x-dev"
+            "dev-master":"0.1.x-dev"
         }
     }
 }
