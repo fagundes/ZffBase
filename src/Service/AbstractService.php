@@ -1,9 +1,9 @@
 <?php
 
-namespace ZffBase\Service;
+namespace Zff\Base\Service;
 
 use Doctrine\ORM\EntityManager;
-use ZffBase\Exception;
+use Zff\Base\Exception;
 
 /**
  * AbstractService
@@ -15,8 +15,8 @@ use ZffBase\Exception;
  *
  * TODO incluir get/set autocommit
  *
- * @package ZffBase
- * @subpackage ZffBase_Service
+ * @package Zff\Base
+ * @subpackage Zff\Base_Service
  */
 abstract class AbstractService {
 
@@ -102,7 +102,7 @@ abstract class AbstractService {
 
     /**
      * @param array|\Base\Entity\AbstractEntity $entity
-     * @return \ZffBase\Entity\AbstractEntity
+     * @return \Zff\Base\Entity\AbstractEntity
      */
     public function insert($entity) {
 

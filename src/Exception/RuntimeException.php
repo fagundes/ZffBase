@@ -1,11 +1,11 @@
 <?php
-namespace ZffBase\Exception;
+namespace Zff\Base\Exception;
 
 /**
  * RuntimeException
  *
- * @package ZffBase
- * @subpackage ZffBase_Exception
+ * @package Zff\Base
+ * @subpackage Zff\Base_Exception
  */
 class RuntimeException extends \RuntimeException implements
     ExceptionInterface

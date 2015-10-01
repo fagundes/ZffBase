@@ -1,6 +1,6 @@
 <?php
 
-namespace ZffBase\Form\View\Helper;
+namespace Zff\Base\Form\View\Helper;
 
 use Zend\Form\View\Helper\FormInput;
 use Zend\Form\ElementInterface;
@@ -15,8 +15,8 @@ use Zend\Form\Exception;
  * No momento de invocar você deve passar o $optionId daquele valueOption que
  * você deseja renderizar.
  *
- * @package ZffBase
- * @subpackage ZffBase_Form_Helper
+ * @package Zff\Base
+ * @subpackage Zff\Base_Form_Helper
  */
 class FormMultiCheckboxSplit extends FormInput {
 

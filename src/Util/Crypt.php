@@ -1,12 +1,12 @@
 <?php
-namespace ZffBase\Util;
+namespace Zff\Base\Util;
 
 /**
  * Crypt
  * Encripta e Decripta dados utilizando md5 e opcionalmente base64.
  *
- * @package ZffBase
- * @subpackage ZffBase_Util
+ * @package Zff\Base
+ * @subpackage Zff\Base_Util
  */
 class Crypt {
 

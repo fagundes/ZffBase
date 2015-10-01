@@ -1,6 +1,6 @@
 <?php
 
-namespace ZffBase;
+namespace Zff\Base;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
@@ -51,16 +51,16 @@ class Module implements AutoloaderProviderInterface,
     return array(
       'invokables' => array(
           //form helpers
-          'formactionbutton'       => 'ZffBase\Form\View\Helper\FormActionButton',
-          'formmulticheckboxsplit' => 'ZffBase\Form\View\Helper\FormMultiCheckboxSplit',
-          'formradiosplit'         => 'ZffBase\Form\View\Helper\FormRadioSplit',
+          'formactionbutton'       => 'Zff\Base\Form\View\Helper\FormActionButton',
+          'formmulticheckboxsplit' => 'Zff\Base\Form\View\Helper\FormMultiCheckboxSplit',
+          'formradiosplit'         => 'Zff\Base\Form\View\Helper\FormRadioSplit',
           //escaper helpers
-          'noscape'                => 'ZffBase\View\Helper\NoScape',
+          'noscape'                => 'Zff\Base\View\Helper\NoScape',
           //other helpers
-          'getroute'               => 'ZffBase\View\Helper\GetRoute',
-          'link'                   => 'ZffBase\View\Helper\Link',
-          'paginatorlink'          => 'ZffBase\View\Helper\PaginatorLink',
-          'postlink'               => 'ZffBase\View\Helper\PostLink',
+          'getroute'               => 'Zff\Base\View\Helper\GetRoute',
+          'link'                   => 'Zff\Base\View\Helper\Link',
+          'paginatorlink'          => 'Zff\Base\View\Helper\PaginatorLink',
+          'postlink'               => 'Zff\Base\View\Helper\PostLink',
       ),
       'factories' => array(
           'forminputclasses'       => function ($sm) {
@@ -79,9 +79,9 @@ class Module implements AutoloaderProviderInterface,
   public function getServiceConfig() {
       return array(
           'abstract_factories' => array(
-              'ZffBase\Form\FormAbstractFactory',
-              'ZffBase\Form\InputFilterAbstractFactory',
-              'ZffBase\Service\ServiceAbstractFactory'
+              'Zff\Base\Form\FormAbstractFactory',
+              'Zff\Base\Form\InputFilterAbstractFactory',
+              'Zff\Base\Service\ServiceAbstractFactory'
           ),
       );
   }

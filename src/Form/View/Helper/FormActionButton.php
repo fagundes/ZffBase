@@ -1,6 +1,6 @@
 <?php
 
-namespace ZffBase\Form\View\Helper;
+namespace Zff\Base\Form\View\Helper;
 
 use Zend\Form\ElementInterface;
 use Zend\Form\Exception;
@@ -13,8 +13,8 @@ use Zend\Form\View\Helper\FormButton;
  * inclui ainda "formaction" = 'será a url da rota passada pelo element'.
  *
  *
- * @package ZffBase
- * @subpackage ZffBase_Form_Helper
+ * @package Zff\Base
+ * @subpackage Zff\Base_Form_Helper
  */
 class FormActionButton extends FormButton {
 

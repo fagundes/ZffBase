@@ -1,11 +1,11 @@
 <?php
-namespace ZffBase\Exception;
+namespace Zff\Base\Exception;
 
 /**
  * DomainException
  *
- * @package ZffBase
- * @subpackage ZffBase_Exception
+ * @package Zff\Base
+ * @subpackage Zff\Base_Exception
  */
 class DomainException extends \DomainException implements
     ExceptionInterface

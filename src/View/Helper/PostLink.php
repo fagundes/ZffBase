@@ -1,12 +1,12 @@
 <?php
-namespace ZffBase\View\Helper;
+namespace Zff\Base\View\Helper;
 
 /**
  * PostLink
  * Similiar a helper Link, porém utiliza Javascript para postar na url passada.
  *
- * @package ZffBase
- * @subpackage ZffBase_Helper
+ * @package Zff\Base
+ * @subpackage Zff\Base_Helper
  */
 class PostLink extends Link {
 

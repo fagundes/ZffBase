@@ -1,13 +1,13 @@
 <?php
-namespace ZffBase\Form\View\Helper;
+namespace Zff\Base\Form\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 
 /**
  * FormInputClasses Helper
  *
- * @package ZffBase
- * @subpackage ZffBase_Form_Helper
+ * @package Zff\Base
+ * @subpackage Zff\Base_Form_Helper
  */
 class FormInputClasses extends AbstractHelper {
 

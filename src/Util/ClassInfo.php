@@ -1,11 +1,11 @@
 <?php
-namespace ZffBase\Util;
+namespace Zff\Base\Util;
 
 /**
  * ClassInfo
  *
- * @package ZffBase
- * @subpackage ZffBase_Util
+ * @package Zff\Base
+ * @subpackage Zff\Base_Util
  */
 class ClassInfo {
 

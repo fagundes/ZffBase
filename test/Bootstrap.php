@@ -1,5 +1,5 @@
 <?php
-namespace ZffBaseTest;
+namespace Zff\BaseTest;
 
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;

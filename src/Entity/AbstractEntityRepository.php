@@ -1,13 +1,13 @@
 <?php
-namespace ZffBase\Entity;
+namespace Zff\Base\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
 /**
  * Abstract Repository
  *
- * @package ZffBase
- * @subpackage ZffBase_Model
+ * @package Zff\Base
+ * @subpackage Zff\Base_Model
  */
 class AbstractRepository extends EntityRepository {
 

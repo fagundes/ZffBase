@@ -2,7 +2,7 @@
 
 return array(
     'router' => array(
-        'router_class' => 'ZffBase\Mvc\Router\ControllerRouteStack',
+        'router_class' => 'Zff\Base\Mvc\Router\ControllerRouteStack',
     ),
     'view_manager' => array(
         'template_path_stack' => array(

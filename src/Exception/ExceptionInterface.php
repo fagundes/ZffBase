@@ -1,4 +1,4 @@
 <?php
-namespace ZffBase\Exception;
+namespace Zff\Base\Exception;
 interface ExceptionInterface
 {}

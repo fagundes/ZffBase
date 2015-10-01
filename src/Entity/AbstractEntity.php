@@ -1,13 +1,13 @@
 <?php
-namespace ZffBase\Entity;
+namespace Zff\Base\Entity;
 
-use ZffBase\Util\Configurator;
+use Zff\Base\Util\Configurator;
 
 /**
  * Abstract Entity
  *
- * @package ZffBase
- * @subpackage ZffBase_Model
+ * @package Zff\Base
+ * @subpackage Zff\Base_Model
  */
 class AbstractEntity {
 

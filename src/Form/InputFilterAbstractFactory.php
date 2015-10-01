@@ -1,5 +1,5 @@
 <?php
-namespace ZffBase\Form;
+namespace Zff\Base\Form;
 
 use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -8,8 +8,8 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * InputFilterAbstractFactory
  * Depende do Modulo DoctrineModule
  *
- * @package ZffBase
- * @subpackage ZffBase_Form
+ * @package Zff\Base
+ * @subpackage Zff\Base_Form
  */
 class InputFilterAbstractFactory implements AbstractFactoryInterface {
 
@@ -17,7 +17,7 @@ class InputFilterAbstractFactory implements AbstractFactoryInterface {
 
         if (class_exists($requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
-            if ($reflect->isSubclassOf('ZffBase\Form\AbstractInputFilter')) {
+            if ($reflect->isSubclassOf('Zff\Base\Form\AbstractInputFilter')) {
                 return true;
             }
         }

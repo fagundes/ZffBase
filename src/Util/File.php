@@ -1,13 +1,13 @@
 <?php
-namespace ZffBase\Util;
+namespace Zff\Base\Util;
 
 /**
  * File
  *
  * TODO fazer alguns testes nos parametros antes de usa-lo
  *
- * @package ZffBase
- * @subpackage ZffBase_Util
+ * @package Zff\Base
+ * @subpackage Zff\Base_Util
  */
 class File {
 

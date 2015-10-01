@@ -1,6 +1,6 @@
 <?php
 
-namespace ZffBase\View\Helper;
+namespace Zff\Base\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 
@@ -9,8 +9,8 @@ use Zend\View\Helper\AbstractHelper;
  * Verfica se a rota atual é igual a rota passada.
  *
  *
- * @package ZffBase
- * @subpackage ZffBase_Helper
+ * @package Zff\Base
+ * @subpackage Zff\Base_Helper
  */
 class GetRoute extends AbstractHelper {
 

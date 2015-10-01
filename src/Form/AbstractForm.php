@@ -1,5 +1,5 @@
 <?php
-namespace ZffBase\Form;
+namespace Zff\Base\Form;
 
 use Zend\Form\Form;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
@@ -8,8 +8,8 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
  * Classe Form Abstrata
  * Depende do Modulo DoctrineModule
  *
- * @package ZffBase
- * @subpackage ZffBase_Form
+ * @package Zff\Base
+ * @subpackage Zff\Base_Form
  */
 abstract class AbstractForm extends Form {
 

@@ -1,5 +1,5 @@
 <?php
-namespace ZffBase\View\Helper;
+namespace Zff\Base\View\Helper;
 
 use Zend\View\Helper\AbstractHtmlElement;
 
@@ -7,8 +7,8 @@ use Zend\View\Helper\AbstractHtmlElement;
  * Link
  * Cria a tag de ancora 'A', de ocordo com os itens passados.
  *
- * @package ZffBase
- * @subpackage ZffBase_Helper
+ * @package Zff\Base
+ * @subpackage Zff\Base_Helper
  */
 class Link extends AbstractHtmlElement {
 

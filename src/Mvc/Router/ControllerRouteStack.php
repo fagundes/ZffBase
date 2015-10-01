@@ -1,6 +1,6 @@
 <?php
 
-namespace ZffBase\Mvc\Router;
+namespace Zff\Base\Mvc\Router;
 
 use Zend\Mvc\Router\Exception;
 use Zend\Mvc\Router\Http\TreeRouteStack;
@@ -19,8 +19,8 @@ use Zend\Mvc\Router\Http\RouteInterface;
  *   - 'controllers' array|Traversable : define uma lista de controllers
  *   - 'model_route' array|Traversable : define um rota modelo para as controllers listadas
  *
- * @package ZffBase
- * @subpackage ZffBase_Router
+ * @package Zff\Base
+ * @subpackage Zff\Base_Router
  */
 class ControllerRouteStack extends TreeRouteStack {
 

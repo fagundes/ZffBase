@@ -1,6 +1,6 @@
 <?php
 
-namespace ZffBase\Form;
+namespace Zff\Base\Form;
 
 use Zend\InputFilter\InputFilter;
 use Zend\Form\Form;
@@ -10,8 +10,8 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
  * Classe Form InputFilter Abstrata
  * Denpende do Modulo DoctrineModule
  *
- * @package ZffBase
- * @subpackage ZffBase_Form
+ * @package Zff\Base
+ * @subpackage Zff\Base_Form
  */
 abstract class AbstractInputFilter extends InputFilter {
 

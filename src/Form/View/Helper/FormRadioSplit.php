@@ -1,14 +1,14 @@
 <?php
 
-namespace ZffBase\Form\View\Helper;
+namespace Zff\Base\Form\View\Helper;
 
 /**
  * FormRadioSplit
  * Similitar ao FormMultiCheckboxSplit, mas redenriza radio ao invés de
  * checkboxes.
  *
- * @package ZffBase
- * @subpackage ZffBase_Form_Helper
+ * @package Zff\Base
+ * @subpackage Zff\Base_Form_Helper
  */
 class FormRadioSplit extends FormMultiCheckboxSplit {
 

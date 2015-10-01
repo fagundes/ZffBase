@@ -1,12 +1,12 @@
 <?php
-namespace ZffBase\Util;
+namespace Zff\Base\Util;
 
 /**
  * Time Class
  * Basic contants for timing functions.
  *
- * @package ZffBase
- * @subpackage ZffBase_Util
+ * @package Zff\Base
+ * @subpackage Zff\Base_Util
  */
 class Time {
   const SECOND = 1;

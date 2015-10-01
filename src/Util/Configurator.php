@@ -1,12 +1,12 @@
 <?php
-namespace ZffBase\Util;
+namespace Zff\Base\Util;
 
 /**
 * Configurator
 * Carrega dados de $options no objecto $target utilizando seus getters e setters.
 *
-* @package ZffBase
-* @subpackage ZffBase_Util
+* @package Zff\Base
+* @subpackage Zff\Base_Util
 */
 class Configurator {
 

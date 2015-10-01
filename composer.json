@@ -6,7 +6,7 @@
     "keywords": [
       "zf2", "bootstrap 3", "doctrine 2"
     ],
-    "homepage": "https://gitlab.com/zff/ZffBase",
+    "homepage": "https://github.com/fagundes/zff-base",
     "authors": [
       {
           "name": "Vinícius Fagundes",
@@ -36,7 +36,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ZffBase\\": "src/"
+            "Zff\\Base\\": "src/"
         },
         "classmap": [
             "./Module.php"

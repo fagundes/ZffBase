@@ -1,5 +1,5 @@
 <?php
-namespace ZffBase\Service;
+namespace Zff\Base\Service;
 
 use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -8,17 +8,17 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * ServiceAbstractFactory
  *
  * AbstractFactory para todas as Services que
- * herdam de ZffBase\Service\AbstractService.
+ * herdam de Zff\Base\Service\AbstractService.
  *
- * @package ZffBase
- * @subpackage ZffBase_Service
+ * @package Zff\Base
+ * @subpackage Zff\Base_Service
  */
 class ServiceAbstractFactory implements AbstractFactoryInterface {
 
     public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName) {
         if (class_exists($requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
-            if ($reflect->isSubclassOf('ZffBase\Service\AbstractService')) {
+            if ($reflect->isSubclassOf('Zff\Base\Service\AbstractService')) {
                 return true;
             }
         }
