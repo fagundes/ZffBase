@@ -24,7 +24,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
 
     public function getConfig($env = null)
     {
-        return include __DIR__ . '/config/module.config.php';
+        return include __DIR__ . '/../config/module.config.php';
     }
 
     public function onBootstrap($e)

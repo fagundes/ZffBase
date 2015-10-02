@@ -37,10 +37,7 @@
     "autoload": {
         "psr-4": {
             "Zff\\Base\\": "src/"
-        },
-        "classmap": [
-            "./Module.php"
-        ]
+        }
     },
      "extra": {
         "alias": {
