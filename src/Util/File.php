@@ -44,20 +44,34 @@ class File
         $callable(new \SplFileInfo($dir));
     }
 
-    public static function includeFile($path, $filename, $include = true, $disposition = 'inline')
+    public static function includeFile($path, $filename)
     {
         $path = $path . DIRECTORY_SEPARATOR . $filename;
         if (!file_exists($path)) {
             throw new Exception\RuntimeException(sprintf('Arquivo "%s" não encontrado', $path));
         }
-        if (!$include) {
-            $finfo = new \finfo();
-            $ctype = $finfo->file($path, FILEINFO_MIME);
+        ob_clean();
+        flush();
+        set_time_limit(0);
+        readfile($path);
+        exit(0);
+    }
 
-            header("Content-Type: $ctype");
-            header("Content-Length: " . \filesize($path));
-            header("Content-Disposition: $disposition; filename=\"$filename\"");
+    public static function openFile($path, $filename, $displayFilename = false, $disposition = 'inline')
+    {
+        $path            = $path . DIRECTORY_SEPARATOR . $filename;
+        $displayFilename = $displayFilename ? : $filename;
+        if (!file_exists($path)) {
+            throw new Exception\RuntimeException(sprintf('Arquivo "%s" não encontrado', $path));
         }
+
+        $finfo = new \finfo();
+        $ctype = $finfo->file($path, FILEINFO_MIME);
+
+        header("Content-Type: $ctype");
+        header("Content-Length: " . \filesize($path));
+        header("Content-Disposition: $disposition; filename=\"$displayFilename\"");
+
         ob_clean();
         flush();
         set_time_limit(0);
