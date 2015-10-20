@@ -11,8 +11,7 @@ construir um módulo que precisa dele.
 
 ## Requisitos
 
-* PHP 5.l3+
-* extensao FileInfo
+* php 5.3+ (com extensao fileinfo)
 * Zend Framework 2
 * DoctrineModule
 * DoctrineORMModule
