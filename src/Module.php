@@ -77,8 +77,21 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
                 'postlink'               => 'Zff\Base\View\Helper\PostLink',
             ),
             'factories'  => array(
-                'forminputclasses' => function ($sm) {
-                    return new Form\View\Helper\FormInputClasses('error', 'control-group clearfix');
+                'formGroupClasses' => function ($sm) {
+                    return new Form\View\Helper\FormInputClasses('error', 'form-group', array(
+                        'error'   => 'has-error',
+                        'warning' => 'has-warning',
+                        'info'    => 'has-info',
+                        'success' => 'has-success',
+                    ));
+                },
+                'formControlClasses' => function ($sm) {
+                    return new Form\View\Helper\FormInputClasses('error', 'form-control', array(
+                        'error'   => 'form-control-error',
+                        'warning' => 'form-control-warning',
+                        'info'    => 'form-control-info',
+                        'success' => 'form-control-success',
+                    ));
                 }
             ),
         );

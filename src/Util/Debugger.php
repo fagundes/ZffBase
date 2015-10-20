@@ -49,8 +49,8 @@ class Debugger {
 
         if ($showFrom) {
             $calledFrom = debug_backtrace();
-            echo '<strong>' . substr(r(ROOT, '', $calledFrom[0]['file']), 1) . '</strong>';
-            echo ' (line <strong>' . $calledFrom[0]['line'] . '</strong>)';
+            echo '<strong>' . substr(str_replace(ROOT, '', $calledFrom[1]['file']), 1) . '</strong>';
+            echo ' (line <strong>' . $calledFrom[1]['line'] . '</strong>)';
         }
 
         $var = print_r($var, true);

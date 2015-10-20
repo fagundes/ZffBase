@@ -11,13 +11,31 @@ construir um módulo que precisa dele.
 
 ## Requisitos
 
+* PHP 5.l3+
+* extensao FileInfo
 * Zend Framework 2
 * DoctrineModule
 * DoctrineORMModule
 
 ## Instalação
 
+### Instalação via composer
+
+`php composer.phar require fagundes/zff-base:dev-master`
+
+### Instalação manual
+
 Clone este projeto na pasta `./vendor/` e ative-o no arquivo `./config/application.config.php`.
+
+### Para usar o FileInfo
+
+No xamp descomentar linha abaixo no php.ini
+
+extension=php_fileinfo.dll
+
+No linux acredito que a solução seja
+
+sudo apt-get install php5-fileinfo
 
 Principais classes disponibilizadas
 -----------------------------------

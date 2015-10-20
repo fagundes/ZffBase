@@ -55,18 +55,20 @@ class ControllerRouteStack extends TreeRouteStack {
                 throw new Exception\InvalidArgumentException('Controller routes must be an array or Traversable object');
             }
 
-            if ($specs['controller_routes']['model_route'] instanceof Traversable) {
-                $specs['controller_routes']['model_route'] = ArrayUtils::iteratorToArray($specs['controller_routes']['model_route']);
-            } elseif (!is_array($specs['controller_routes']['model_route'])) {
+            if (!isset($specs['controller_routes']['model_route']) || (!is_array($specs['controller_routes']['model_route']) && !$specs['controller_routes']['model_route'] instanceof Traversable)) {
                 throw new Exception\InvalidArgumentException('Controller routes must have a \'model_route\' key as an array or Traversable object');
             }
-
-            if ($specs['controller_routes']['controllers'] instanceof Traversable) {
-                $specs['controller_routes']['controllers'] = ArrayUtils::iteratorToArray($specs['controller_routes']['controllers']);
-            } elseif (!is_array($specs['controller_routes']['controllers'])) {
-                throw new Exception\InvalidArgumentException('Controller routes must have a \'controllers\' key as an array or Traversable object');
+            else if ($specs['controller_routes']['model_route'] instanceof Traversable) {
+                $specs['controller_routes']['model_route'] = ArrayUtils::iteratorToArray($specs['controller_routes']['model_route']);
             }
 
+            if (!isset($specs['controller_routes']['controllers']) || (!is_array($specs['controller_routes']['controllers']) && !$specs['controller_routes']['controllers'] instanceof Traversable)) {
+                throw new Exception\InvalidArgumentException('Controller routes must have a \'controllers\' key as an array or Traversable object');
+            }
+            else if ($specs['controller_routes']['model_route'] instanceof Traversable) {
+                $specs['controller_routes']['controllers'] = ArrayUtils::iteratorToArray($specs['controller_routes']['controllers']);
+            }
+            
             $modelRoute  = $specs['controller_routes']['model_route'];
             $controllers = $specs['controller_routes']['controllers'];
 
