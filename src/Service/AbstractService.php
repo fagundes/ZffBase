@@ -1,9 +1,13 @@
 <?php
 
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\Service;
 
 use Doctrine\ORM\EntityManager;
-use Zff\Base\Exception;
 
 /**
  * AbstractService
@@ -13,12 +17,11 @@ use Zff\Base\Exception;
  *  - vinculo com uma ou mais Services, por meio do atributo $services
  * Inclui diversos metodos facilitadores.
  *
- * TODO incluir get/set autocommit
- *
- * @package Zff\Base
- * @subpackage Zff\Base_Service
+ * @package ZffBase
+ * @subpackage ZffBase_Service
  */
-abstract class AbstractService {
+abstract class AbstractService
+{
 
     /**
      * @var EntityManager
@@ -40,13 +43,15 @@ abstract class AbstractService {
      */
     protected $services;
 
-    public function __construct(EntityManager $entityManager = null) {
+    public function __construct(EntityManager $entityManager = null)
+    {
         if ($entityManager) {
             $this->setEntityManager($entityManager);
         }
     }
 
-    protected function checkIfClassExists($class) {
+    protected function checkIfClassExists($class)
+    {
         if (!class_exists($class)) {
             throw new \RuntimeException(sprintf('Class %s does not exist.', $class));
         }
@@ -55,22 +60,26 @@ abstract class AbstractService {
     /**
      * @return EntityManager
      */
-    public function getEntityManager() {
+    public function getEntityManager()
+    {
         return $this->entityManager;
     }
 
-    public function setEntityManager(EntityManager $entityManager) {
+    public function setEntityManager(EntityManager $entityManager)
+    {
         $this->entityManager = $entityManager;
     }
 
     /**
      * @return string
      */
-    public function getEntityManagerName() {
+    public function getEntityManagerName()
+    {
         return $this->entityManagerName? : 'doctrine.entitymanager.orm_default';
     }
 
-    public function setEntityManagerName($entityManagerName) {
+    public function setEntityManagerName($entityManagerName)
+    {
         $this->entityManagerName = $entityManagerName;
     }
 
@@ -78,7 +87,8 @@ abstract class AbstractService {
      * Metodo proxy EntityManager#getRepository.
      * @return \Doctrine\ORM\EntityRepository A classe de repositorio
      */
-    public function getRepository() {
+    public function getRepository()
+    {
         $this->checkIfClassExists($this->entityName);
         return $this->getEntityManager()->getRepository($this->entityName);
     }
@@ -86,7 +96,8 @@ abstract class AbstractService {
     /**
      * @return array Array de services utilizadas pelas classes concretas
      */
-    public function getServices() {
+    public function getServices()
+    {
         return $this->services;
     }
 
@@ -96,7 +107,8 @@ abstract class AbstractService {
      * @param mixed $id
      * @return \Base\Entity\AbstractEntity
      */
-    public function getReference($id) {
+    public function getReference($id)
+    {
         return $this->entityManager->getReference($this->entityName, $id);
     }
 
@@ -104,11 +116,12 @@ abstract class AbstractService {
      * @param array|\Base\Entity\AbstractEntity $entity
      * @return \Zff\Base\Entity\AbstractEntity
      */
-    public function insert($entity) {
+    public function insert($entity)
+    {
 
         $this->checkIfClassExists($this->entityName);
-        if(is_array($entity)) {
-          $entity = new $this->entityName($entity);
+        if (is_array($entity)) {
+            $entity = new $this->entityName($entity);
         }
 
         $this->entityManager->persist($entity);
@@ -120,12 +133,13 @@ abstract class AbstractService {
      * @param array|\Base\Entity\AbstractEntity $entity
      * @return \Gestor\Entity\AbstractEntity
      */
-    public function update($entity) {
+    public function update($entity)
+    {
 
         $this->checkIfClassExists($this->entityName);
-        if(is_array($entity)) {
-          $entity = $this->entityManager->getReference($this->entityName, $v['id']);
-          $entity->exchangeArray($entity);
+        if (is_array($entity)) {
+            $entity = $this->entityManager->getReference($this->entityName, $v['id']);
+            $entity->exchangeArray($entity);
         }
 
         $this->entityManager->persist($entity);
@@ -139,7 +153,8 @@ abstract class AbstractService {
      * @param array $entities
      * @return array Entities updated
      */
-    public function updateAll($entities) {
+    public function updateAll($entities)
+    {
         foreach ($entities as $entity) {
             $this->entityManager->persist($entity);
         }
@@ -150,7 +165,8 @@ abstract class AbstractService {
     /**
      *
      */
-    public function delete($id) {
+    public function delete($id)
+    {
         $this->checkIfClassExists($this->entityName);
         $entity = $this->entityManager->getReference($this->entityName, $id);
 
@@ -168,7 +184,8 @@ abstract class AbstractService {
      * @param array $orderBy
      * @return array
      */
-    public function findBy(array $criteria, array $orderBy = null) {
+    public function findBy(array $criteria, array $orderBy = null)
+    {
         return $this->getRepository()->findBy($criteria, (array) $orderBy);
     }
 
@@ -177,7 +194,8 @@ abstract class AbstractService {
      * @param int $id
      * @return \Gestor\Entity\AbstractEntity
      */
-    public function find($id) {
+    public function find($id)
+    {
         return $this->getRepository()->find($id);
     }
 
@@ -186,7 +204,8 @@ abstract class AbstractService {
      * @param array $orderBy
      * @return array
      */
-    public function findAll(array $orderBy = null) {
+    public function findAll(array $orderBy = null)
+    {
         return $this->getRepository()->findBy(array(), (array) $orderBy);
     }
 
@@ -199,17 +218,18 @@ abstract class AbstractService {
      * @param array $different Criterios diferentes.
      * @return int total
      */
-    public function count(array $equal = array(), array $different = array()) {
+    public function count(array $equal = array(), array $different = array())
+    {
 
         $this->checkIfClassExists($this->entityName);
 
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('count(e)')
-           ->from($this->entityName, 'e');
+                ->from($this->entityName, 'e');
 
-        $i=0;
+        $i = 0;
         foreach ($equal as $field => $value) {
-            $fieldParam  = $field.$i++;
+            $fieldParam  = $field . $i++;
             $whereClause = is_array($value) ? "e.$field in (:$fieldParam)" : "e.$field = :$fieldParam";
 
             $qb->andWhere($whereClause);
@@ -217,7 +237,7 @@ abstract class AbstractService {
         }
 
         foreach ($different as $field => $value) {
-            $fieldParam  = $field.$i++;
+            $fieldParam  = $field . $i++;
             $whereClause = is_array($value) ? "e.$field not in (:$fieldParam)" : "e.$field <> :$fieldParam";
 
             $qb->andWhere($whereClause);

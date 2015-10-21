@@ -1,13 +1,19 @@
 <?php
+
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\Exception;
 
 /**
  * DomainException
  *
- * @package Zff\Base
- * @subpackage Zff\Base_Exception
+ * @package ZffBase
+ * @subpackage ZffBase_Exception
  */
-class DomainException extends \DomainException implements
-    ExceptionInterface
+class DomainException extends \DomainException implements ExceptionInterface
 {
+    
 }

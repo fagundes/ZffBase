@@ -2,6 +2,11 @@
 
 namespace Zff\Base\View\Helper;
 
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 use Zend\View\Helper\AbstractHelper;
 
 /**
@@ -9,8 +14,8 @@ use Zend\View\Helper\AbstractHelper;
  * Verfica se a rota atual é igual a rota passada.
  *
  *
- * @package Zff\Base
- * @subpackage Zff\Base_Helper
+ * @package ZffBase
+ * @subpackage ZffBase_Helper
  */
 class GetRoute extends AbstractHelper {
 

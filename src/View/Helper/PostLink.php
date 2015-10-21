@@ -1,14 +1,21 @@
 <?php
+
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\View\Helper;
 
 /**
  * PostLink
  * Similiar a helper Link, porém utiliza Javascript para postar na url passada.
  *
- * @package Zff\Base
- * @subpackage Zff\Base_Helper
+ * @package ZffBase
+ * @subpackage ZffBase_Helper
  */
-class PostLink extends Link {
+class PostLink extends Link
+{
 
     /**
      * Cria um link similar o respectivo metodo em Link, porém utiliza Javascript
@@ -23,7 +30,8 @@ class PostLink extends Link {
      * @param string $url
      * @param array $options
      */
-    protected function link($title, $url, $options) {
+    protected function link($title, $url, $options)
+    {
 
         if (!isset($options['formname'])) {
             throw new \RuntimeException(sprintf('%s: $options precisa ter a chave "formname"', __METHOD__));
@@ -45,8 +53,9 @@ class PostLink extends Link {
         $onclick .= 'event.returnValue = false; return false;';
 
         $options['onclick'] = $onclick;
-        $options['href'] = '#';
+        $options['href']    = '#';
 
         return $this->linkHtml($title, $options);
     }
+
 }

@@ -1,21 +1,29 @@
 <?php
 
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\Entity;
 
 use Zff\Base\Util\Configurator;
-use \Zend\Filter\File\Rename;
+use Zend\Filter\File\Rename;
 
 /**
  * Abstract Entity
  *
- * @package Zff\Base
- * @subpackage Zff\Base_Model
+ * @package ZffBase
+ * @subpackage ZffBase_Model
  */
 class AbstractEntity
 {
 
     const UPLOAD_DIRECTORY = 'data/upload';
 
+    /**
+     * @var Rename
+     */
     private static $rename_filter;
 
     /**

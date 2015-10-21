@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\Util;
 
 use Doctrine\Common\Util\Debug as DocDebug;
@@ -14,10 +20,12 @@ if (!defined('ROOT')) {
 /**
  * Debug
  *
- * @package Zff\Base
- * @subpackage Zff\Base_Util
+ * @package ZffBase
+ * @subpackage ZffBase_Util
  */
-class Debugger {
+class Debugger
+{
+
     /**
      * Imprime informações de debug sobra uma variavel. Util para ser utilizada
      * em objetos do Doctrine.
@@ -25,10 +33,11 @@ class Debugger {
      * Um metodo proxy do \Doctrine\Common\Util\Debug::dump
      * @return void
      */
-    public static function entityDump($var, $maxDepth = 2, $stripTags = true) {
-      echo "\n<pre class=\"zff-base-debug\">\n";
-      DocDebug::dump($var, $maxDepth, $stripTags);
-      echo "\n</pre>\n";
+    public static function entityDump($var, $maxDepth = 2, $stripTags = true)
+    {
+        echo "\n<pre class=\"zff-base-debug\">\n";
+        DocDebug::dump($var, $maxDepth, $stripTags);
+        echo "\n</pre>\n";
     }
 
     /**
@@ -41,7 +50,8 @@ class Debugger {
      * @param boolean $showFrom Se verdadeiro, o metodo imprime de onde debug está sendo chamado.
      * @return void
      */
-    public static function cakeDump($var = false, $showHtml = false, $showFrom = true) {
+    public static function cakeDump($var = false, $showHtml = false, $showFrom = true)
+    {
 
         if (!defined('ROOT')) {
             define('ROOT', '');
@@ -59,4 +69,5 @@ class Debugger {
         }
         echo "\n<pre class=\"cake-debug\">\n" . $var . "\n</pre>\n";
     }
+
 }

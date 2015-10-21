@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\Form;
 
 use Zend\ServiceManager\AbstractFactoryInterface;
@@ -8,12 +14,14 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * InputFilterAbstractFactory
  * Depende do Modulo DoctrineModule
  *
- * @package Zff\Base
- * @subpackage Zff\Base_Form
+ * @package ZffBase
+ * @subpackage ZffBase_Form
  */
-class InputFilterAbstractFactory implements AbstractFactoryInterface {
+class InputFilterAbstractFactory implements AbstractFactoryInterface
+{
 
-    public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName) {
+    public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    {
 
         if (class_exists($requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
@@ -24,7 +32,8 @@ class InputFilterAbstractFactory implements AbstractFactoryInterface {
         return false;
     }
 
-    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName) {
+    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    {
         if ($this->canCreateServiceWithName($serviceLocator, $name, $requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
             $filter  = $reflect->newInstance();

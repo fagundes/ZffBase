@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\Form;
 
 use Zend\ServiceManager\AbstractFactoryInterface;
@@ -9,12 +15,14 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * Depende do Modulo DoctrineModule
  * Depende da classe InputFilterAbstractFactory
  *
- * @package Zff\Base
- * @subpackage Zff\Base_Form
+ * @package ZffBase
+ * @subpackage ZffBase_Form
  */
-class FormAbstractFactory implements AbstractFactoryInterface {
+class FormAbstractFactory implements AbstractFactoryInterface
+{
 
-    public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName) {
+    public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    {
 
         if (class_exists($requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
@@ -25,7 +33,8 @@ class FormAbstractFactory implements AbstractFactoryInterface {
         return false;
     }
 
-    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName) {
+    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    {
         if ($this->canCreateServiceWithName($serviceLocator, $name, $requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
             $form    = $reflect->newInstance();
@@ -47,7 +56,8 @@ class FormAbstractFactory implements AbstractFactoryInterface {
         return null;
     }
 
-    protected function getFormFilter(ServiceLocatorInterface $serviceLocator, $requestedName) {
+    protected function getFormFilter(ServiceLocatorInterface $serviceLocator, $requestedName)
+    {
         $filterName = $requestedName . 'Filter';
         if (class_exists($filterName)) {
             return $serviceLocator->get($filterName);

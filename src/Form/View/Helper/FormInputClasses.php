@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\Form\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
@@ -6,14 +12,15 @@ use Zend\View\Helper\AbstractHelper;
 /**
  * FormInputClasses Helper
  *
- * @package Zff\Base
- * @subpackage Zff\Base_Form_Helper
+ * @package ZffBase
+ * @subpackage ZffBase_Form_Helper
  */
-class FormInputClasses extends AbstractHelper {
+class FormInputClasses extends AbstractHelper
+{
 
     private $defaultKeyClasses = '';
-    private $permanentClasses = '';
-    private $classes = array(
+    private $permanentClasses  = '';
+    private $classes           = array(
         'error'   => 'error',
         'warning' => 'warning',
         'info'    => 'info',
@@ -25,16 +32,18 @@ class FormInputClasses extends AbstractHelper {
      * @param string $permanentClasses
      * @param array $classes
      */
-    public function __construct($defaultKeyClasses = 'error', $permanentClasses = '', array $classes = null ) {
-        if(!empty($classes)) {
+    public function __construct($defaultKeyClasses = 'error', $permanentClasses = '', array $classes = null)
+    {
+        if (!empty($classes)) {
             $this->classes = $classes;
         }
         $this->defaultKeyClasses = $defaultKeyClasses;
-        $this->permanentClasses = $permanentClasses;
+        $this->permanentClasses  = $permanentClasses;
     }
 
-    public function __invoke(\Zend\Form\Element $e, $keyClasses = null) {
-        $classes = $this->permanentClasses;
+    public function __invoke(\Zend\Form\Element $e, $keyClasses = null)
+    {
+        $classes  = $this->permanentClasses;
         $messages = $e->getMessages();
         if (!empty($messages)) {
             if (!$keyClasses) {
@@ -49,4 +58,5 @@ class FormInputClasses extends AbstractHelper {
         }
         return $classes;
     }
+
 }

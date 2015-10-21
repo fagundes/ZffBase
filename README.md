@@ -1,62 +1,64 @@
-# Zff\Base
+# Zff Base for Zend Framework 2
 
-Versão 0.0.1
-
-## Introdução
-
-Zff\Base fornece um conjunto de classes que podem ser utilizadas em diversos modulos do ZF2.
-
-Você precisará do Zff\Base quando utilizar algum módulo que dependa dele ou quando você for
-construir um módulo que precisa dele.
+`Zff\Base` module is a set of classes which are commonly used in several ZF2 projects. 
 
 ## Requisitos
 
-* php 5.3+ (com extensao fileinfo)
+* php 5.3+ (with fileinfo extension)
 * Zend Framework 2
-* DoctrineModule
-* DoctrineORMModule
+* DoctrineModule 
+* DoctrineORMModule (some classes depends of)
 
-## Instalação
+## Installation
 
-### Instalação via composer
+Installation of this module uses composer. For composer documentation, please refer to
+[getcomposer.org](http://getcomposer.org/).
 
-`php composer.phar require fagundes/zff-base:dev-master`
+```bash
+php composer.phar require fagundes/zff-base:0.*
+```
 
-### Instalação manual
+Then add `Zff\\Base` to your `config/application.config.php`.
 
-Clone este projeto na pasta `./vendor/` e ative-o no arquivo `./config/application.config.php`.
+Installation without composer is not officially supported and requires you to manually install all dependencies that are listed in composer.json
 
-### Para usar o FileInfo
+#### How to install FileInfo extension
 
-No xamp descomentar linha abaixo no php.ini
+Maybe you don't have fileinfo extension active on your web server. You can install php extension of several ways. Such as using pecl, apt-get (at gnu/linux). 
 
+To install the extension at xamp, you only need to uncomment the following line in the php.ini file. 
+
+```ini
 extension=php_fileinfo.dll
+```
 
-No linux acredito que a solução seja
+### TODO
 
-sudo apt-get install php5-fileinfo
+ - [ ] update to php 5.4+
+ - [ ] translate files to english
+ - [x] add license header on all files
+ - [ ] review Debugger static methods
+ - [ ] review crypt classes to be a proxy to zend classes 
+ - [ ] include tests cases
+ - [ ] create documentation with examples
+ - [ ] handle composite (multiple) identifiers in `Zff\Base\Entity\AbstractEntityRepository` 
+ - [ ] include get/set autocommit in `Zff\Base\Service\AbstractService`
 
-Principais classes disponibilizadas
------------------------------------
+## Main classes available
 
-* Fábricas Abstratas (*Abstract Factories*):
-  * `Zff\Base\Form\FormAbstractFactory`         - Fabrica todas as classes que herdam de `AbstractForm`
-  * `Zff\Base\Form\InputFilterAbstractFactory`  - Fabrica todas as classes que herdam de `AbstractInputFilter`
-  * `Zff\Base\Service\ServiceAbstractFactory`   - Fabrica todas as classes que herdam de `AbstractService`
-* Classes Utilitárias, dentro do *namespace* `Zff\Base\Util`:
-  * `Zff\Base\Util\Crypt`    - Funções basicas de criptografia.
-  * `Zff\Base\Util\Debugger` - Funções de debug.
-  * `Zff\Base\Util\File`     - Algumas funções extras para manipular arquivos.
-* Outras classes abstratas:
+* Abstract Factories:
+  * `Zff\Base\Form\FormAbstractFactory`         - creates all classes that inherits of `Zff\Base\Form\AbstractForm`
+  * `Zff\Base\Form\InputFilterAbstractFactory`  - creates all classes that inherits of `Zff\Base\Form\AbstractInputFilter`
+  * `Zff\Base\Service\ServiceAbstractFactory`   - creates all classes that inherits of `Zff\Base\Service\AbstractService`
+* Util classes at the namespace `Zff\Base\Util`:
+  * `Zff\Base\Util\Crypt`    - Basic crypt functions.
+  * `Zff\Base\Util\Debugger` - Debug fuctions.
+  * `Zff\Base\Util\File`     - Some functions to handle files.
+  * and more
+* Others abstract classes:
   * `Zff\Base\Entity\AbstractEntity`    - Entity
   * `Zff\Base\Service\AbstractService`  - Service
   * `Zff\Base\Form\AbstractForm`        - Form
   * `Zff\Base\Form\AbstractInputFilter` - InputFilter
-
-## TODO
-
-  * incluir casos de testes
-  * incluir documentacao com exemplos
-  * Zff\Base\Entity\AbstractEntityRepository - handle composite (multiple) identifiers
-  * Zff\Base\Service\AbstractService         - incluir get/set autocommit
-  * Zff\Base\Util\File                       - fazer alguns testes nos parametros antes de usa-lo
+* Helper classes
+* A New Router

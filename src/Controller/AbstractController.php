@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -22,7 +27,7 @@ class AbstractController extends AbstractActionController
     {
         if (is_null($this->postedData)) {
             $this->postedData = array_merge(
-                    (array) $this->getRequest()->getPost(), 
+                    (array) $this->getRequest()->getPost(),
                     (array) $this->getRequest()->getFiles()
             );
         }

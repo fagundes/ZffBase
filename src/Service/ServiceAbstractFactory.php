@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\Service;
 
 use Zend\ServiceManager\AbstractFactoryInterface;
@@ -10,12 +16,14 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * AbstractFactory para todas as Services que
  * herdam de Zff\Base\Service\AbstractService.
  *
- * @package Zff\Base
- * @subpackage Zff\Base_Service
+ * @package ZffBase
+ * @subpackage ZffBase_Service
  */
-class ServiceAbstractFactory implements AbstractFactoryInterface {
+class ServiceAbstractFactory implements AbstractFactoryInterface
+{
 
-    public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName) {
+    public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    {
         if (class_exists($requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
             if ($reflect->isSubclassOf('Zff\Base\Service\AbstractService')) {
@@ -25,7 +33,8 @@ class ServiceAbstractFactory implements AbstractFactoryInterface {
         return false;
     }
 
-    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName) {
+    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    {
         if ($this->canCreateServiceWithName($serviceLocator, $name, $requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
             $service = $reflect->newInstance();
@@ -43,7 +52,8 @@ class ServiceAbstractFactory implements AbstractFactoryInterface {
         return null;
     }
 
-    protected function loadService(ServiceLocatorInterface $serviceLocator, AbstractService $service, $serviceNeededName, $customServiceName) {
+    protected function loadService(ServiceLocatorInterface $serviceLocator, AbstractService $service, $serviceNeededName, $customServiceName)
+    {
         if (is_int($customServiceName)) {
             $simpleServiceName = preg_replace('/(.*)\\\/', '', $serviceNeededName);
         } else {

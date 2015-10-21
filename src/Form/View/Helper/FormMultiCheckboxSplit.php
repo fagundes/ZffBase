@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\Form\View\Helper;
 
 use Zend\Form\View\Helper\FormInput;
@@ -14,11 +19,14 @@ use Zend\Form\Exception;
  *
  * No momento de invocar você deve passar o $optionId daquele valueOption que
  * você deseja renderizar.
+ * 
+ * @todo replace to a better class name
  *
- * @package Zff\Base
- * @subpackage Zff\Base_Form_Helper
+ * @package ZffBase
+ * @subpackage ZffBase_Form_Helper
  */
-class FormMultiCheckboxSplit extends FormInput {
+class FormMultiCheckboxSplit extends FormInput
+{
 
     /**
      * @var array
@@ -39,16 +47,17 @@ class FormMultiCheckboxSplit extends FormInput {
      * @throws Exception\DomainException
      * @return string
      */
-    public function render(ElementInterface $element) {
+    public function render(ElementInterface $element)
+    {
         if (!$element instanceof MultiCheckboxElement) {
             throw new Exception\InvalidArgumentException(sprintf(
-                '%s requires that the element is of type Zend\Form\Element\MultiCheckbox', __METHOD__
+                    '%s requires that the element is of type Zend\Form\Element\MultiCheckbox', __METHOD__
             ));
         }
 
-        $name = static::getName($element);
+        $name     = static::getName($element);
         $optionId = $this->optionId;
-        $options = $element->getValueOptions();
+        $options  = $element->getValueOptions();
 
         if (!isset($options[$optionId])) {
             $options[$optionId] = $optionId;
@@ -57,14 +66,14 @@ class FormMultiCheckboxSplit extends FormInput {
 
         if (empty($options)) {
             throw new Exception\DomainException(sprintf(
-                '%s requires that the element has "value_options"; none found', __METHOD__
+                    '%s requires that the element has "value_options"; none found', __METHOD__
             ));
         }
 
-        $attributes = $element->getAttributes();
+        $attributes         = $element->getAttributes();
         $attributes['name'] = $name;
         $attributes['type'] = $this->getInputType();
-        $isSelected = in_array($optionId, (array) $element->getValue());
+        $isSelected         = in_array($optionId, (array) $element->getValue());
 
         $rendered = $this->renderOption($element, $option, $isSelected, $attributes);
 
@@ -80,19 +89,20 @@ class FormMultiCheckboxSplit extends FormInput {
      * @param array                $attributes
      * @return string
      */
-    protected function renderOption(MultiCheckboxElement $element, array $option, $selected, array $attributes) {
+    protected function renderOption(MultiCheckboxElement $element, array $option, $selected, array $attributes)
+    {
         $globalLabelAttributes = $element->getLabelAttributes();
-        $closingBracket = $this->getInlineClosingBracket();
+        $closingBracket        = $this->getInlineClosingBracket();
 
         if (empty($globalLabelAttributes)) {
             $globalLabelAttributes = $this->labelAttributes;
         }
 
-        $key = key($option);
+        $key        = key($option);
         $optionSpec = current($option);
 
-        $value = '';
-        $disabled = false;
+        $value           = '';
+        $disabled        = false;
         $inputAttributes = $attributes;
 
         if (is_scalar($optionSpec)) {
@@ -114,8 +124,8 @@ class FormMultiCheckboxSplit extends FormInput {
             $inputAttributes = array_merge($inputAttributes, $optionSpec['attributes']);
         }
 
-        $inputAttributes['value'] = $value;
-        $inputAttributes['checked'] = $selected;
+        $inputAttributes['value']    = $value;
+        $inputAttributes['checked']  = $selected;
         $inputAttributes['disabled'] = $disabled;
 
         $input = sprintf(
@@ -134,7 +144,8 @@ class FormMultiCheckboxSplit extends FormInput {
      * @param  null|string           $optionId
      * @return string|FormMultiCheckbox
      */
-    public function __invoke(ElementInterface $element = null, $optionId = null) {
+    public function __invoke(ElementInterface $element = null, $optionId = null)
+    {
         if (!$element) {
             return $this;
         }
@@ -148,7 +159,8 @@ class FormMultiCheckboxSplit extends FormInput {
      *
      * @return string
      */
-    protected function getInputType() {
+    protected function getInputType()
+    {
         return 'checkbox';
     }
 
@@ -159,16 +171,15 @@ class FormMultiCheckboxSplit extends FormInput {
      * @throws Exception\DomainException
      * @return string
      */
-    protected static function getName(ElementInterface $element) {
+    protected static function getName(ElementInterface $element)
+    {
         $name = $element->getName();
         if ($name === null || $name === '') {
             throw new Exception\DomainException(sprintf(
-              '%s requires that the element has an assigned name; none discovered', __METHOD__
+                    '%s requires that the element has an assigned name; none discovered', __METHOD__
             ));
         }
         return $name . '[]';
     }
 
 }
-
-?>

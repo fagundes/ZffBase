@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\View\Helper\Escaper;
 
 use Zend\View\Helper\Escaper;
@@ -8,11 +14,14 @@ use Zend\View\Helper\Escaper;
  * quer realmente escapar/mudar os dados que aquela classe manipula.
  *
  * @package    Zff\Base
- * @subpackage Zff\Base_Helper
+ * @subpackage ZffBase_Helper
  */
-class NoScape extends Escaper\AbstractHelper {
+class NoScape extends Escaper\AbstractHelper
+{
 
-    protected function escape($value) {
+    protected function escape($value)
+    {
         return $value;
     }
+
 }

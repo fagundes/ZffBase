@@ -1,19 +1,23 @@
 <?php
 
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\Form;
 
 use Zend\InputFilter\InputFilter;
-use Zend\Form\Form;
-use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 /**
  * Classe Form InputFilter Abstrata
  * Denpende do Modulo DoctrineModule
  *
- * @package Zff\Base
- * @subpackage Zff\Base_Form
+ * @package ZffBase
+ * @subpackage ZffBase_Form
  */
-abstract class AbstractInputFilter extends InputFilter {
+abstract class AbstractInputFilter extends InputFilter
+{
 
     /**
      * @var string
@@ -25,11 +29,13 @@ abstract class AbstractInputFilter extends InputFilter {
      */
     protected $entityManagerName = 'doctrine.entitymanager.orm_default';
 
-    public function getEntityManagerName() {
+    public function getEntityManagerName()
+    {
         return $this->entityManagerName? : 'doctrine.entitymanager.orm_default';
     }
 
-    public function setEntityManagerName($entityManagerName) {
+    public function setEntityManagerName($entityManagerName)
+    {
         $this->entityManagerName = $entityManagerName;
     }
 

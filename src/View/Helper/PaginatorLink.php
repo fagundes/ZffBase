@@ -1,19 +1,27 @@
 <?php
+
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base\View\Helper;
 
 /**
  * PostLink
  * Similiar a helper Link, porém utiliza Javascript para postar na url passada.
  *
- * @package Zff\Base
- * @subpackage Zff\Base_Helper
+ * @package ZffBase
+ * @subpackage ZffBase_Helper
  */
-class PaginatorLink extends PostLink {
+class PaginatorLink extends PostLink
+{
 
     /**
      * Cria a tag 'A', com os dados do link atual, e troca o numero da pagina ($page).
      */
-    public function __invoke($title, $page, $options = array()) {
+    public function __invoke($title, $page, $options = array())
+    {
         return $this->link($title, $page, $options);
     }
 
@@ -24,14 +32,17 @@ class PaginatorLink extends PostLink {
      * @param string $page
      * @param array $options
      */
-    protected function link($title, $page, $options) {
+    protected function link($title, $page, $options)
+    {
         $url = $this->_url($page);
 
         return parent::link($title, $url, $options);
     }
 
-    protected function _url($page) {
+    protected function _url($page)
+    {
         $urlHelper = $this->view->plugin('Url');
         return $urlHelper(null, array('page' => $page), true);
     }
+
 }

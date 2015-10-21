@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @license http://opensource.org/licenses/MIT MIT  
+ * @copyright Copyright (c) 2015 Vinicius Fagundes
+ */
+
 namespace Zff\Base;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
@@ -63,7 +68,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
     public function getViewHelperConfig()
     {
         return array(
-            'invokables' => array(
+            'invokables'         => array(
                 //form helpers
                 'formactionbutton'       => 'Zff\Base\Form\View\Helper\FormActionButton',
                 'formmulticheckboxsplit' => 'Zff\Base\Form\View\Helper\FormMultiCheckboxSplit',
@@ -76,7 +81,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
                 'paginatorlink'          => 'Zff\Base\View\Helper\PaginatorLink',
                 'postlink'               => 'Zff\Base\View\Helper\PostLink',
             ),
-            'factories'  => array(
+            'factories'          => array(
                 'formGroupClasses' => function ($sm) {
                     return new Form\View\Helper\FormInputClasses('error', 'form-group', array(
                         'error'   => 'has-error',
@@ -115,3 +120,4 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
     }
 
 }
+        
