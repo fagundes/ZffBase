@@ -11,8 +11,8 @@ use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * InputFilterAbstractFactory
- * Depende do Modulo DoctrineModule
+ * InputFilter Abstract Factory
+ * Depends of DoctrineModule
  *
  * @package ZffBase
  * @subpackage ZffBase_Form

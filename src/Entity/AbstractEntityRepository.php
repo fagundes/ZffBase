@@ -39,7 +39,7 @@ class AbstractRepository extends EntityRepository
             $metadata   = $this->_em->getClassMetadata($this->_entityName);
             $identifier = $metadata->getIdentifierFieldNames();
 
-            // TODO: handle composite (multiple) identifiers
+            // @todo handle composite (multiple) identifiers
             if (count($identifier) > 1) {
                 //$value = $key;
             } else {

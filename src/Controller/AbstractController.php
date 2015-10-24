@@ -10,7 +10,7 @@ namespace Zff\Base\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 
 /**
- * Abstract Entity
+ * Abstract Controller
  *
  * @package ZffBase
  * @subpackage ZffBase_Controller

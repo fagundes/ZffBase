@@ -26,6 +26,16 @@ class AbstractEntity
      */
     private static $rename_filter;
 
+    public function __construct($data = array())
+    {
+        Configurator::configure($this, $data);
+    }
+
+    public function exchangeArray($data)
+    {
+        Configurator::configure($this, $data);
+    }
+
     /**
      * @return Rename
      */
@@ -35,16 +45,6 @@ class AbstractEntity
             self::$rename_filter = new Rename(array());
         }
         return self::$rename_filter;
-    }
-
-    public function exchangeArray($data)
-    {
-        Configurator::configure($this, $data);
-    }
-
-    public function __construct($data = array())
-    {
-        Configurator::configure($this, $data);
     }
 
     protected function moveFile(&$oldFilePath, $newFileSourceInfo, $newFileDestPath = self::UPLOAD_DIRECTORY)

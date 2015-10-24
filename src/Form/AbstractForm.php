@@ -11,8 +11,8 @@ use Zend\Form\Form;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 /**
- * Classe Form Abstrata
- * Depende do Modulo DoctrineModule
+ * Abstract Form
+ * Depends of DoctrineModule
  *
  * @package ZffBase
  * @subpackage ZffBase_Form

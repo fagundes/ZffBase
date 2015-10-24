@@ -35,6 +35,7 @@ extension=php_fileinfo.dll
 ### TODO
 
  - [ ] update to php 5.4+
+ - [ ] include get/set autocommit in `Zff\Base\Service\AbstractService`
  - [ ] translate files to english
  - [x] add license header on all files
  - [ ] review Debugger static methods
@@ -42,7 +43,6 @@ extension=php_fileinfo.dll
  - [ ] include tests cases
  - [ ] create documentation with examples
  - [ ] handle composite (multiple) identifiers in `Zff\Base\Entity\AbstractEntityRepository` 
- - [ ] include get/set autocommit in `Zff\Base\Service\AbstractService`
 
 ## Main classes available
 

@@ -10,8 +10,8 @@ namespace Zff\Base\Form;
 use Zend\InputFilter\InputFilter;
 
 /**
- * Classe Form InputFilter Abstrata
- * Denpende do Modulo DoctrineModule
+ * Abstract InputFilter
+ * Denpends of DoctrineModule
  *
  * @package ZffBase
  * @subpackage ZffBase_Form

@@ -15,13 +15,13 @@
     ],
     "require": {
       "php": ">=5.4",
-      "zendframework/zend-form": "~2.3",
-      "zendframework/zend-inputfilter": "~2.3",
-      "zendframework/zend-mvc": "~2.3",
-      "zendframework/zend-servicemanager": "~2.3",
-      "zendframework/zend-stdlib": "~2.3",
-      "zendframework/zend-validator": "~2.3",
-      "zendframework/zend-view": "~2.3",
+      "zendframework/zend-form": "2.5.x",
+      "zendframework/zend-inputfilter": "2.5.x",
+      "zendframework/zend-mvc": "2.5.x",
+      "zendframework/zend-servicemanager": "2.5.x",
+      "zendframework/zend-stdlib": "2.5.x",
+      "zendframework/zend-validator": "2.5.x",
+      "zendframework/zend-view": "2.5.x",
       "doctrine/doctrine-orm-module": "0.*"
     },
     "require-dev" : {
