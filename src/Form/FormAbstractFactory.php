@@ -11,9 +11,9 @@ use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * FormAbstractFactory
- * Depende do Modulo DoctrineModule
- * Depende da classe InputFilterAbstractFactory
+ * Form Abstract Factory
+ * Depends of DoctrineModule
+ * Depends InputFilterAbstractFactory class
  *
  * @package ZffBase
  * @subpackage ZffBase_Form
@@ -51,6 +51,9 @@ class FormAbstractFactory implements AbstractFactoryInterface
                 $form->setObjectManager($entityManager);
             }
 
+            //make sure FormElementManager will create form elements
+            $form->setFormFactory(new \Zend\Form\Factory($serviceLocator->get('FormElementManager')));
+            
             return $form;
         }
         return null;
