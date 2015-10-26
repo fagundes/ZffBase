@@ -27,11 +27,28 @@ class AbstractController extends AbstractActionController
     {
         if (is_null($this->postedData)) {
             $this->postedData = array_merge(
-                    (array) $this->getRequest()->getPost(),
+                    (array) $this->getRequest()->getPost(), 
                     (array) $this->getRequest()->getFiles()
             );
         }
         return $this->postedData;
+    }
+
+    protected function htmlResponse($html)
+    {
+        $response = $this->getResponse();
+        $response->setStatusCode(200);
+        $response->setContent($html);
+        return $response;
+    }
+
+    protected function jsonResponse($html)
+    {
+        $response = $this->getResponse();
+        $response->getHeaders()->addHeaderLine('Content-Type', 'text/json');
+        $response->setStatusCode(200);
+        $response->setContent($html);
+        return $response;
     }
 
 }

@@ -41,6 +41,9 @@ class ServiceAbstractFactory implements AbstractFactoryInterface
 
             $entityManager = $serviceLocator->get($service->getEntityManagerName());
             $service->setEntityManager($entityManager);
+            
+            $dbAdapter = $serviceLocator->get($service->getDbAdapterName());
+            $service->setDbAdapter($dbAdapter);
 
             $services = (array) $service->getServices();
             foreach ($services as $customServiceName => $serviceName) {
