@@ -4,7 +4,7 @@ namespace Zff\Base;
 
 return [
     'router'          => [
-        'router_class' => 'Zff\Base\Mvc\Router\ControllerRouteStack',
+        'router_class' => Mvc\Router\ControllerRouteStack::class,
     ],
     'view_manager'    => [
         'template_path_stack' => [
@@ -42,15 +42,10 @@ return [
         ],
     ],
     'service_manager' => [
-        'abstract_factories' => array(
+        'abstract_factories' => [
             Form\FormAbstractFactory::class,
             Form\InputFilterAbstractFactory::class,
             Service\ServiceAbstractFactory::class
-        ),
+        ],
     ],
-//    'zftable_decorators' => [
-//        'invokables' => [
-//            'link' => Zff\Base\Table\Decorator\Link::class
-//        ],
-//    ],
 ];

@@ -128,19 +128,20 @@ abstract class AbstractService
     {
         $this->dbAdapterName = $dbAdapterName;
     }
-
-    public function getTableName()
+    
+    public function getTableClassName()
     {
-        if (!$this->tableName) {
+        if (!$this->tableClassName) {
             $reflectionFinalClass = new \ReflectionClass($this);
-            $this->tableName      = $reflectionFinalClass->getNamespaceName() . '/Table/' . $reflectionFinalClass->getShortName();
+            $this->tableClassName      = $reflectionFinalClass->getNamespaceName() . '\\Table\\' . $reflectionFinalClass->getShortName();
         }
-        return $this->tableName;
+        return $this->tableClassName;
     }
 
-    public function setTableName($tableName)
+    public function setTableClassName($tableClassName)
     {
-        $this->tableName = $tableName;
+        $this->tableClassName = $tableClassName;
+        return $this;
     }
 
     public function getTableHandler()
@@ -337,7 +338,7 @@ abstract class AbstractService
     {
         $tableHandler = $this->getTableHandler();
 
-        $table = $tableHandler->createTable($this->getTableName());
+        $table = $tableHandler->createTable($this->getTableClassName());
         $form  = $table->getForm();
 
         $form->setData($data);
