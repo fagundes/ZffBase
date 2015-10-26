@@ -33,9 +33,9 @@ class Debugger
      * Um metodo proxy do \Doctrine\Common\Util\Debug::dump
      * @return void
      */
-    public static function entityDump($var, $maxDepth = 2, $stripTags = true)
+    public static function doctrineDump($var, $maxDepth = 2, $stripTags = true)
     {
-        echo "\n<pre class=\"zff-base-debug\">\n";
+        echo "\n<pre class=\"doctrine-debug\">\n";
         DocDebug::dump($var, $maxDepth, $stripTags);
         echo "\n</pre>\n";
     }
@@ -50,7 +50,7 @@ class Debugger
      * @param boolean $showFrom Se verdadeiro, o metodo imprime de onde debug está sendo chamado.
      * @return void
      */
-    public static function cakeDump($var = false, $showHtml = false, $showFrom = true)
+    public static function cakeDump($var = false, $showHtml = false, $showFrom = true, $stackIndex = 0)
     {
 
         if (!defined('ROOT')) {
@@ -58,9 +58,9 @@ class Debugger
         }
 
         if ($showFrom) {
-            $calledFrom = debug_backtrace();
-            echo '<strong>' . substr(str_replace(ROOT, '', $calledFrom[1]['file']), 1) . '</strong>';
-            echo ' (line <strong>' . $calledFrom[1]['line'] . '</strong>)';
+            $stack = debug_backtrace();
+            echo '<strong>' . substr(str_replace(ROOT, '', $stack[$stackIndex]['file']), 1) . '</strong>';
+            echo ' (line <strong>' . $stack[$stackIndex]['line'] . '</strong>)';
         }
 
         $var = print_r($var, true);
@@ -70,4 +70,16 @@ class Debugger
         echo "\n<pre class=\"cake-debug\">\n" . $var . "\n</pre>\n";
     }
 
+}
+
+//defines Zff\Base\Util\cakeDump as function
+function cakeDump($var = false, $showHtml = false, $showFrom = true)
+{
+    return Debugger::cakeDump($var, $showHtml, $showFrom, 1);
+}
+
+//defines Zff\Base\Util\entityDump as function
+function doctrineDump($var, $maxDepth = 2, $stripTags = true)
+{
+    return Debugger::doctrineDump($var, $maxDepth, $stripTags);
 }

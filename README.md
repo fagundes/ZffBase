@@ -39,7 +39,7 @@ extension=php_fileinfo.dll
  - [ ] include bs form classes
  - [ ] include get/set autocommit in `Zff\Base\Service\AbstractService`
  - [ ] translate files to english (Partial)
- - [ ] review Debugger static methods
+ - [x] review Debugger static methods
  - [ ] review crypt classes to be a proxy to zend classes 
  - [ ] include tests cases
  - [ ] review some classes name 

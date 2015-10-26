@@ -9,10 +9,9 @@ namespace Zff\Base;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 
-class Module implements AutoloaderProviderInterface, ConfigProviderInterface, ViewHelperProviderInterface, ServiceProviderInterface
+class Module implements AutoloaderProviderInterface, ConfigProviderInterface, ViewHelperProviderInterface
 {
 
     public function getAutoloaderConfig()
@@ -43,25 +42,6 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
          * 
          * define('ROOT', dirname(__DIR__));
          */
-
-        /**
-         * @todo fazer um alias direto para a funcao \cakeDump
-         */
-        //define a funcao Zff\Base\cakeDump
-        function cakeDump($var = false, $showHtml = false, $showFrom = true)
-        {
-            return Util\Debugger::cakeDump($var, $showHtml, $showFrom);
-        }
-
-        /**
-         * @todo fazer um alias direto para a funcao \entityDump
-         */
-        //define a funcao Zff\Base\entityDump
-        function entityDump($var, $maxDepth = 2, $stripTags = true)
-        {
-            return Util\Debugger::entityDump($var, $maxDepth, $stripTags);
-        }
-
     }
 
     public function getViewHelperConfig()
