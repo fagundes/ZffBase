@@ -16,7 +16,7 @@ use Zend\View\Helper\Escaper;
  * @package    Zff\Base
  * @subpackage ZffBase_Helper
  */
-class NoScape extends Escaper\AbstractHelper
+class NoEscape extends Escaper\AbstractHelper
 {
 
     protected function escape($value)

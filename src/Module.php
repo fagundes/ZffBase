@@ -9,11 +9,10 @@ namespace Zff\Base;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\FilterProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 
-class Module implements AutoloaderProviderInterface, ConfigProviderInterface, ViewHelperProviderInterface, FilterProviderInterface, ServiceProviderInterface
+class Module implements AutoloaderProviderInterface, ConfigProviderInterface, ViewHelperProviderInterface, ServiceProviderInterface
 {
 
     public function getAutoloaderConfig()
@@ -68,19 +67,6 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
     public function getViewHelperConfig()
     {
         return array(
-            'invokables'         => array(
-                //form helpers
-                'formactionbutton'       => 'Zff\Base\Form\View\Helper\FormActionButton',
-                'formmulticheckboxsplit' => 'Zff\Base\Form\View\Helper\FormMultiCheckboxSplit',
-                'formradiosplit'         => 'Zff\Base\Form\View\Helper\FormRadioSplit',
-                //escaper helpers
-                'noscape'                => 'Zff\Base\View\Helper\NoScape',
-                //other helpers
-                'getroute'               => 'Zff\Base\View\Helper\GetRoute',
-                'link'                   => 'Zff\Base\View\Helper\Link',
-                'paginatorlink'          => 'Zff\Base\View\Helper\PaginatorLink',
-                'postlink'               => 'Zff\Base\View\Helper\PostLink',
-            ),
             'factories'          => array(
                 'formGroupClasses' => function ($sm) {
                     return new Form\View\Helper\FormInputClasses('error', 'form-group', array(
@@ -101,23 +87,4 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
             ),
         );
     }
-
-    public function getFilterConfig()
-    {
-        return array(
-        );
-    }
-
-    public function getServiceConfig()
-    {
-        return array(
-            'abstract_factories' => array(
-                'Zff\Base\Form\FormAbstractFactory',
-                'Zff\Base\Form\InputFilterAbstractFactory',
-                'Zff\Base\Service\ServiceAbstractFactory'
-            ),
-        );
-    }
-
 }
-        

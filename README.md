@@ -2,12 +2,12 @@
 
 `Zff\Base` module is a set of classes which are commonly used in several ZF2 projects. 
 
-## Requisitos
+## Requirements
 
-* php 5.3+ (with fileinfo extension)
+* php 5.5+ (with fileinfo extension)
 * Zend Framework 2
-* DoctrineModule 
-* DoctrineORMModule (some classes depends of)
+* DoctrineModule & DoctrineORMModule
+* ZFTable
 
 ## Installation
 
@@ -34,13 +34,16 @@ extension=php_fileinfo.dll
 
 ### TODO
 
- - [ ] update to php 5.4+
- - [ ] include get/set autocommit in `Zff\Base\Service\AbstractService`
- - [ ] translate files to english
+ - [x] update to php 5.5+
  - [x] add license header on all files
+ - [ ] include get/set autocommit in `Zff\Base\Service\AbstractService`
+ - [ ] translate files to english (Partial)
  - [ ] review Debugger static methods
  - [ ] review crypt classes to be a proxy to zend classes 
  - [ ] include tests cases
+ - [ ] review some classes name 
+ - [ ] review abstract factories 
+ - [ ] change ZFTable and DoctrineORMModule to optional dependency. 
  - [ ] create documentation with examples
  - [ ] handle composite (multiple) identifiers in `Zff\Base\Entity\AbstractEntityRepository` 
 
@@ -61,4 +64,17 @@ extension=php_fileinfo.dll
   * `Zff\Base\Form\AbstractForm`        - Form
   * `Zff\Base\Form\AbstractInputFilter` - InputFilter
 * Helper classes
-* A New Router
+  * `Zff\Base\View\Helper\Link`             - creates a tag Anchor using Url Helper params
+  * `Zff\Base\View\Helper\PostLink`         - as Link but uses js to POST 
+  * `Zff\Base\View\Helper\PaginatorLink`    - as PostLink receives a $page to create a tag Anchor
+  * `Zff\Base\View\Helper\GetRoute`         - checks if a passed route is the current one
+  * `Zff\Base\View\Helper\Escaper\NoRscape` - creates a fake Escape, usefull with some helpers that must have a escape but you dont really want to change anything
+* Form Elements
+  * `Zff\Base\Form\Element\Bs*`             - Includes Bootstrap 4 classes
+* Form Helper classes
+  * `Zff\Base\Form\View\Helper\FormActionButton`             - 
+  * `Zff\Base\Form\View\Helper\FormInputClasses`             -    
+  * `Zff\Base\Form\View\Helper\FormMultiCheckboxSplit`       -    
+  * `Zff\Base\Form\View\Helper\FormRadioSplit`               -    
+* Router
+  * `Zff\Base\Mvc\Router\ControllerRouteStack` - Copy a model route to several  children controllers  
