@@ -36,6 +36,7 @@ extension=php_fileinfo.dll
 
  - [x] update to php 5.5+
  - [x] add license header on all files
+ - [ ] include bs form classes
  - [ ] include get/set autocommit in `Zff\Base\Service\AbstractService`
  - [ ] translate files to english (Partial)
  - [ ] review Debugger static methods
