@@ -7,7 +7,7 @@
 
 namespace Zff\Base\Form\Element;
 
-use Zend\Form\Element\Checkbox;
+use Zend\Form\Element\Radio;
 
 /**
  * Bs Radio Element
@@ -15,7 +15,7 @@ use Zend\Form\Element\Checkbox;
  * @package ZffBase
  * @subpackage ZffBase_Form
  */
-class BsRadio extends Checkbox
+class BsRadio extends Radio implements BsElementInterface
 {
 
     /**
@@ -24,7 +24,12 @@ class BsRadio extends Checkbox
      * @var array
      */
     protected $labelAttributes = [
-        'class' => 'radio'
+        'class' => 'c-input c-radio',
     ];
+
+    public function __construct($name = null, $options = array())
+    {
+        parent::__construct($name, $options);
+    }
 
 }

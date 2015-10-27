@@ -2,6 +2,9 @@
 
 namespace Zff\Base;
 
+define('CSS_DIR', __DIR__ . '/../view/public/css');
+define('JS_DIR', __DIR__ . '/../view/public/js');
+
 return [
     'router'          => [
         'router_class' => Mvc\Router\ControllerRouteStack::class,
@@ -17,18 +20,35 @@ return [
             'element/paginator'  => __DIR__ . '/../view/base/element/paginator.phtml',
         ],
     ],
+    'asset_manager'   => [
+        'resolver_configs' => [
+            'map' => [
+                //css
+                'css/zff-base/twbs.css'  => CSS_DIR . '/twbs-extension.css',
+                'css/zff-base/debug.css' => CSS_DIR . '/debug.css',
+                //js
+                'js/zff-base/twbs.js'    => JS_DIR . '/twbs-extension.js',
+            ],
+        ],
+    ],
     'form_elements'   => [
         'invokables' => [
-            'bstext'     => Form\Element\BsText::class,
-            'bstextarea' => Form\Element\BsTextarea::class,
-            'bsfile'     => Form\Element\BsFile::class,
-            'bscheckbox' => Form\Element\BsCheckbox::class,
-            'bsradio'    => Form\Element\BsRadio::class,
+            'bstext'          => Form\Element\BsText::class,
+            'bstextarea'      => Form\Element\BsTextarea::class,
+            'bsfile'          => Form\Element\BsFile::class,
+            'bscheckbox'      => Form\Element\BsCheckbox::class,
+            'bsradio'         => Form\Element\BsRadio::class,
+            'bsmulticheckbox' => Form\Element\BsMultiCheckbox::class,
+            'bsselect'        => Form\Element\BsSelect::class,
         ],
     ],
     'view_helpers'    => [
         'invokables' => [
-            //form helpers
+            //bs form helpers
+            'bsform'                 => Form\View\Helper\BsForm::class,
+            'bsformrow'              => Form\View\Helper\BsFormRow::class,
+            'bsformcollection'       => Form\View\Helper\BsFormCollection::class,
+            //other form helpers
             'formactionbutton'       => Form\View\Helper\FormActionButton::class,
             'formmulticheckboxsplit' => Form\View\Helper\FormMultiCheckboxSplit::class,
             'formradiosplit'         => Form\View\Helper\FormRadioSplit::class,

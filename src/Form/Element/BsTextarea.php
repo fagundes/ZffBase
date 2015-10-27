@@ -15,26 +15,22 @@ use Zend\Form\Element\Textarea;
  * @package ZffBase
  * @subpackage ZffBase_Form
  */
-class BsTextarea extends Textarea
+class BsTextarea extends Textarea implements BsElementInterface
 {
-
-    /**
-     * Seed label attributes
-     *
-     * @var array
-     */
-//    protected $labelAttributes = [
-//        'class' => 'form-control-label'
-//    ];
-
     /**
      * Seed attributes
      *
      * @var array
      */
-    protected $attributes = [
+    protected $attributes   = [
         'type'  => 'textarea',
         'class' => 'form-control'
     ];
+
+    public function __construct($name = null, $options = array())
+    {
+        $this->attributes['id'] = uniqid();
+        parent::__construct($name, $options);
+    }
 
 }

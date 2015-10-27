@@ -15,7 +15,7 @@ use Zend\Form\Element\Checkbox;
  * @package ZffBase
  * @subpackage ZffBase_Form
  */
-class BsCheckbox extends Checkbox
+class BsCheckbox extends Checkbox implements BsElementInterface
 {
 
     /**
@@ -24,7 +24,17 @@ class BsCheckbox extends Checkbox
      * @var array
      */
     protected $labelAttributes = [
-        'class' => 'checkbox'
+        'class' => 'c-input c-checkbox',
     ];
+    protected $labelOptions    = [
+        'always_wrap'         => true,
+        'label_position'      => 'append',
+    ];
+
+    public function __construct($name = null, $options = array())
+    {
+        $this->attributes['id'] = uniqid();
+        parent::__construct($name, $options);
+    }
 
 }

@@ -15,26 +15,22 @@ use Zend\Form\Element\File;
  * @package ZffBase
  * @subpackage ZffBase_Form
  */
-class BsFile extends File
+class BsFile extends File implements BsElementInterface
 {
-
-    /**
-     * Seed label attributes
-     *
-     * @var array
-     */
-//    protected $labelAttributes = [
-//        'class' => 'form-control-label'
-//    ];
-
     /**
      * Seed attributes
      *
      * @var array
      */
-    protected $attributes = [
+    protected $attributes   = [
         'type'  => 'file',
         'class' => 'form-control-file'
     ];
+
+    public function __construct($name = null, $options = array())
+    {
+        $this->attributes['id'] = uniqid();
+        parent::__construct($name, $options);
+    }
 
 }

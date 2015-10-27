@@ -15,17 +15,8 @@ use Zend\Form\Element\Text;
  * @package ZffBase
  * @subpackage ZffBase_Form
  */
-class BsText extends Text
+class BsText extends Text implements BsElementInterface
 {
-
-    /**
-     * Seed label attributes
-     *
-     * @var array
-     */
-//    protected $labelAttributes = [
-//        'class' => 'form-control-label'
-//    ];
 
     /**
      * Seed attributes
@@ -36,5 +27,11 @@ class BsText extends Text
         'type'  => 'text',
         'class' => 'form-control'
     ];
+
+    public function __construct($name = null, $options = array())
+    {
+        $this->attributes['id'] = uniqid();
+        parent::__construct($name, $options);
+    }
 
 }

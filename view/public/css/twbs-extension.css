@@ -1,0 +1,10 @@
+ul.form-message {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul.form-message > li {
+    color: #d9534f;
+    font-size: 80%;
+    margin: 3px 0;
+}
