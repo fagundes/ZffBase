@@ -44,6 +44,13 @@ class ServiceAbstractFactory implements AbstractFactoryInterface
             
             $dbAdapter = $serviceLocator->get($service->getDbAdapterName());
             $service->setDbAdapter($dbAdapter);
+            /**
+             * @todo lazy load here, table handler recebe o nome default mais nao instancia os servicos o mesmo com service
+             */
+            $tableHandler = $serviceLocator->get(Table\TableHandler::class);
+            $tableHandler->setEntityManager($entityManager);
+            $tableHandler->setDbAdapter($dbAdapter);
+            $service->setTableHandler($tableHandler);
 
             $services = (array) $service->getServices();
             foreach ($services as $customServiceName => $serviceName) {

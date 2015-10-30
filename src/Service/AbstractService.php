@@ -146,11 +146,6 @@ abstract class AbstractService
 
     public function getTableHandler()
     {
-        if (!$this->tableHandler) {
-            $this->tableHandler = new Table\TableHandler();
-            $this->tableHandler->setEntityManager($this->getEntityManager());
-            $this->tableHandler->setDbAdapter($this->getDbAdapter());
-        }
         return $this->tableHandler;
     }
 
