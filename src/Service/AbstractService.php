@@ -346,7 +346,7 @@ abstract class AbstractService
      * @param \Doctrine\ORM\QueryBuilder $queryBuilder
      * @return string the html resulting
      */
-    public function renderTable(Table\AbstractTable $table, \Doctrine\ORM\QueryBuilder $queryBuilder)
+    public function renderTable(\ZfTable\AbstractTable $table, \Doctrine\ORM\QueryBuilder $queryBuilder)
     {
         $tableHandler = $this->getTableHandler();
 
