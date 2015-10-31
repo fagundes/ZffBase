@@ -73,7 +73,8 @@ return [
     ],
     'zftable_decorators' => [
         'factories' => [
-            'celllink' => Service\Table\Decorator\LinkFactory::class,
+            'celllink'    => Service\Table\Decorator\LinkFactory::class,
+            'cellpartial' => Service\Table\Decorator\PartialFactory::class,
         ],
     ],
 ];
