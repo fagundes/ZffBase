@@ -22,7 +22,7 @@
         "zendframework/zend-validator": "2.5.x",
         "zendframework/zend-view": "2.5.x",
         "doctrine/doctrine-orm-module": "0.*",
-        "dudapiotr/zftable": "dev-develop",
+        "fagundes/zff-table": "3.2",
         "rwoverdijk/assetmanager": "1.4.x"
     },
     "require-dev": {
@@ -34,12 +34,6 @@
             "Zff\\Base\\": "src/"
         }
     },
-    "repositories": [
-    {
-        "type": "vcs",
-        "url": "https://github.com/fagundes/zftable"
-    }
-    ],
     "extra": {
         "alias": {
             "dev-master": "0.1.x-dev"
