@@ -69,10 +69,12 @@ extension=php_fileinfo.dll
   * `Zff\Base\View\Helper\PostLink`         - as Link but uses js to POST 
   * `Zff\Base\View\Helper\PaginatorLink`    - as PostLink receives a $page to create a tag Anchor
   * `Zff\Base\View\Helper\GetRoute`         - checks if a passed route is the current one
-  * `Zff\Base\View\Helper\Escaper\NoRscape` - creates a fake Escape, usefull with some helpers that must have a escape but you dont really want to change anything
+  * `Zff\Base\View\Helper\Escaper\NoEscape` - creates a fake Escape, usefull with some helpers that must have a escape but you dont really want to change anything
 * Form Elements
   * `Zff\Base\Form\Element\Bs*`             - Includes Bootstrap 4 classes
 * Form Helper classes
+  * `Zff\Base\Form\View\Helper\BsFormRow`                    - Creates a single element (as FormRow Helper) but using Bootstrap struture and css classes
+  * `Zff\Base\Form\View\Helper\BsForm`                       - Creates the entire form (as Form Helper) but using Bootstrap struture and css classes
   * `Zff\Base\Form\View\Helper\FormActionButton`             - 
   * `Zff\Base\Form\View\Helper\FormInputClasses`             -    
   * `Zff\Base\Form\View\Helper\FormMultiCheckboxSplit`       -    

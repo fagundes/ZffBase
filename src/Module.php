@@ -46,8 +46,8 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
 
     public function getViewHelperConfig()
     {
-        return array(
-            'factories'          => array(
+        return [
+            'factories'          => [
                 'formGroupClasses' => function ($sm) {
                     return new Form\View\Helper\FormInputClasses('error', 'form-group', array(
                         'error'   => 'has-error',
@@ -64,7 +64,8 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
                         'success' => 'form-control-success',
                     ));
                 }
-            ),
-        );
+            ],
+        ];
     }
 }
+        

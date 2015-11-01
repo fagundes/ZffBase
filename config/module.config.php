@@ -6,10 +6,10 @@ define('CSS_DIR', __DIR__ . '/../view/public/css');
 define('JS_DIR', __DIR__ . '/../view/public/js');
 
 return [
-    'router'          => [
+    'router'             => [
         'router_class' => Mvc\Router\ControllerRouteStack::class,
     ],
-    'view_manager'    => [
+    'view_manager'       => [
         'template_path_stack' => [
             'zff-base' => __DIR__ . '/../view',
         ],
@@ -20,7 +20,7 @@ return [
             'element/paginator'  => __DIR__ . '/../view/base/element/paginator.phtml',
         ],
     ],
-    'asset_manager'   => [
+    'asset_manager'      => [
         'resolver_configs' => [
             'map' => [
                 //css
@@ -31,7 +31,7 @@ return [
             ],
         ],
     ],
-    'form_elements'   => [
+    'form_elements'      => [
         'invokables' => [
             'bstext'          => Form\Element\BsText::class,
             'bstextarea'      => Form\Element\BsTextarea::class,
@@ -42,7 +42,7 @@ return [
             'bsselect'        => Form\Element\BsSelect::class,
         ],
     ],
-    'view_helpers'    => [
+    'view_helpers'       => [
         'invokables' => [
             //bs form helpers
             'bsform'                 => Form\View\Helper\BsForm::class,
@@ -61,11 +61,20 @@ return [
             'postlink'               => View\Helper\PostLink::class,
         ],
     ],
-    'service_manager' => [
+    'service_manager'    => [
+        'invokables'         => [
+            Service\Table\TableHandler::class => Service\Table\TableHandler::class,
+        ],
         'abstract_factories' => [
             Form\FormAbstractFactory::class,
             Form\InputFilterAbstractFactory::class,
             Service\ServiceAbstractFactory::class
+        ],
+    ],
+    'zftable_decorators' => [
+        'factories' => [
+            'celllink'    => Service\Table\Decorator\LinkFactory::class,
+            'cellpartial' => Service\Table\Decorator\PartialFactory::class,
         ],
     ],
 ];

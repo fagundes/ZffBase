@@ -146,11 +146,6 @@ abstract class AbstractService
 
     public function getTableHandler()
     {
-        if (!$this->tableHandler) {
-            $this->tableHandler = new Table\TableHandler();
-            $this->tableHandler->setEntityManager($this->getEntityManager());
-            $this->tableHandler->setDbAdapter($this->getDbAdapter());
-        }
         return $this->tableHandler;
     }
 
@@ -351,7 +346,7 @@ abstract class AbstractService
      * @param \Doctrine\ORM\QueryBuilder $queryBuilder
      * @return string the html resulting
      */
-    public function renderTable(Table\AbstractTable $table, \Doctrine\ORM\QueryBuilder $queryBuilder)
+    public function renderTable(\ZfTable\AbstractTable $table, \Doctrine\ORM\QueryBuilder $queryBuilder)
     {
         $tableHandler = $this->getTableHandler();
 

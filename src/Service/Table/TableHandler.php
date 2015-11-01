@@ -7,7 +7,10 @@
 
 namespace Zff\Base\Service\Table;
 
-class TableHandler
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
+
+class TableHandler implements ServiceLocatorAwareInterface
 {
 
     /**
@@ -21,10 +24,28 @@ class TableHandler
     protected $dbAdapter;
 
     /**
+     * @var ServiceLocatorInterface
+     */
+    protected $serviceLocator;
+
+    public function getServiceLocator()
+    {
+        return $this->serviceLocator;
+    }
+
+    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
+    {
+        $this->serviceLocator = $serviceLocator;
+    }
+
+    /**
      * @return \Zend\Db\Adapter\Adapter
      */
     public function getDbAdapter()
     {
+        if (!$this->dbAdapter) {
+            $this->dbAdapter = $this->getServiceLocator()->get('zfdb_adapter');
+        }
         return $this->dbAdapter;
     }
 
@@ -39,6 +60,9 @@ class TableHandler
      */
     public function getEntityManager()
     {
+        if (!$this->em) {
+            $this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+        }
         return $this->em;
     }
 
@@ -55,7 +79,13 @@ class TableHandler
      */
     public function createTable($tableName)
     {
-        $table  = new $tableName;
+        if($this->getServiceLocator() && $this->getServiceLocator()->has($tableName)) {
+            $table = $this->getServiceLocator()->get($tableName);
+        }
+        else {
+            $table  = new $tableName;
+        }
+        
         $form   = $table->getForm();
         $filter = $table->getFilter();
         $form->setInputFilter($filter);
@@ -69,5 +99,5 @@ class TableHandler
                 ->setSource($queryBuilder)
                 ->setParamAdapter(new \Zend\Stdlib\Parameters($table->getForm()->getData()));
     }
-
+    
 }
