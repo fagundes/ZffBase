@@ -67,5 +67,5 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
             ],
         ];
     }
+
 }
-        
