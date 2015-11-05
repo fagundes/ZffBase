@@ -37,14 +37,15 @@ extension=php_fileinfo.dll
  - [x] update to php 5.5+
  - [x] add license header on all files
  - [x] include bs form classes
- - [ ] include get/set autocommit in `Zff\Base\Service\AbstractService`
- - [ ] translate files to english (Partial)
  - [x] review Debugger static methods
- - [ ] review crypt classes to be a proxy to zend classes 
+ - [x] removed crypt classes (use zend-crypt instead) 
+ - [x] review classes name (Partial)
+ - [ ] translate files to english (Partial+)
+ - [ ] include get/set autocommit in `Zff\Base\Service\AbstractService`
  - [ ] include tests cases
- - [ ] review classes name 
  - [ ] review abstract factories 
  - [ ] change ZFTable and DoctrineORMModule to optional dependency. 
+ - [ ] add Bootstrap 3/4 as optional dependency.
  - [ ] create documentation with examples
  - [ ] handle composite (multiple) identifiers in `Zff\Base\Entity\AbstractEntityRepository` 
 

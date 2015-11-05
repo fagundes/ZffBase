@@ -4,7 +4,7 @@
     "type": "library",
     "license": "MIT",
     "keywords": [
-        "zf2", "bootstrap 4", "doctrine 2"
+        "zf2", "twbs", "bootstrap 3/4", "doctrine 2"
     ],
     "homepage": "https://github.com/fagundes/zff-base",
     "authors": [

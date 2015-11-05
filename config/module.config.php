@@ -57,6 +57,7 @@ return [
             'noescape'               => View\Helper\Escaper\NoEscape::class,
             //other helpers
             'getroute'               => View\Helper\GetRoute::class,
+            'isroute'                => View\Helper\IsRoute::class,
             'link'                   => View\Helper\Link::class,
             'paginatorlink'          => View\Helper\PaginatorLink::class,
             'postlink'               => View\Helper\PostLink::class,

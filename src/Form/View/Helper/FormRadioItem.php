@@ -8,16 +8,13 @@
 namespace Zff\Base\Form\View\Helper;
 
 /**
- * FormRadioSplit
- * Similitar ao FormMultiCheckboxSplit, mas redenriza radio ao invés de
- * checkboxes.
+ * FormRadioItem
+ * Similar to FormMultiCheckboxItem, more renders radio instead of checkboxes.
  * 
- * @todo replace to a better class name
- *
  * @package ZffBase
  * @subpackage ZffBase_Form_Helper
  */
-class FormRadioSplit extends FormMultiCheckboxSplit
+class FormRadioItem extends FormMultiCheckboxItem
 {
 
     /**

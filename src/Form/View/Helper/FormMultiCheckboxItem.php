@@ -13,19 +13,19 @@ use Zend\Form\Element\MultiCheckbox as MultiCheckboxElement;
 use Zend\Form\Exception;
 
 /**
- * FormMultiCheckboxSplit
- * Use o FormActionCheckbox se você precisar usar o FormMultiCheckbox, mas ao
- * invés de gerar todos os checkboxes de uma só vez você pode dividí-lo um a um.
- *
- * No momento de invocar você deve passar o $optionId daquele valueOption que
- * você deseja renderizar.
+ * FormMultiCheckboxItem
  * 
- * @todo replace to a better class name
- *
+ * Use the FormMultiCheckboxItem if you need to use the FormMultiCheckbox, but 
+ * instead of generating all checkboxes at once, you can divide it one by one, 
+ * invoking this helper several times.
+ * 
+ * At the time of invoking you must pass the 'optionId' from the 'valueOption' that
+ * you want to render.
+ * 
  * @package ZffBase
  * @subpackage ZffBase_Form_Helper
  */
-class FormMultiCheckboxSplit extends FormInput
+class FormMultiCheckboxItem extends FormInput
 {
 
     /**
