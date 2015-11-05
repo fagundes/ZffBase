@@ -7,8 +7,11 @@
 
 namespace Zff\Base\Service;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManager,
+    Doctrine\ORM\Query,
+    Doctrine\ORM\Tools\Pagination\Paginator;
 use Zend\Db\Adapter\Adapter;
+use Zff\Base\Exception;
 
 /**
  * AbstractService
@@ -68,17 +71,28 @@ abstract class AbstractService
      */
     protected $tableClassName;
 
+    /**
+     * @var boolean
+     */
+    protected $autocommit;
+
+    /**
+     * @var integer 
+     */
+    protected $maxResults = 20;
+
+    /**
+     * @var integer 
+     */
+    protected $firstResult = 1;
+
+    /**
+     * @param EntityManager $entityManager
+     */
     public function __construct(EntityManager $entityManager = null)
     {
         if ($entityManager) {
             $this->setEntityManager($entityManager);
-        }
-    }
-
-    protected function checkIfClassExists($class)
-    {
-        if (!class_exists($class)) {
-            throw new \RuntimeException(sprintf('Class %s does not exist.', $class));
         }
     }
 
@@ -128,21 +142,6 @@ abstract class AbstractService
     {
         $this->dbAdapterName = $dbAdapterName;
     }
-    
-    public function getTableClassName()
-    {
-        if (!$this->tableClassName) {
-            $reflectionFinalClass = new \ReflectionClass($this);
-            $this->tableClassName      = $reflectionFinalClass->getNamespaceName() . '\\Table\\' . $reflectionFinalClass->getShortName();
-        }
-        return $this->tableClassName;
-    }
-
-    public function setTableClassName($tableClassName)
-    {
-        $this->tableClassName = $tableClassName;
-        return $this;
-    }
 
     public function getTableHandler()
     {
@@ -154,14 +153,29 @@ abstract class AbstractService
         $this->tableHandler = $tableHandler;
     }
 
-    /**
-     * Metodo proxy EntityManager#getRepository.
-     * @return \Doctrine\ORM\EntityRepository A classe de repositorio
-     */
-    public function getRepository()
+    public function getTableClassName()
     {
-        $this->checkIfClassExists($this->entityName);
-        return $this->getEntityManager()->getRepository($this->entityName);
+        if (!$this->tableClassName) {
+            $reflectionFinalClass = new \ReflectionClass($this);
+            $this->tableClassName = $reflectionFinalClass->getNamespaceName() . '\\Table\\' . $reflectionFinalClass->getShortName();
+        }
+        return $this->tableClassName;
+    }
+
+    public function setTableClassName($tableClassName)
+    {
+        $this->tableClassName = $tableClassName;
+        return $this;
+    }
+
+    public function getAutocommit()
+    {
+        return $this->autocommit;
+    }
+
+    public function setAutocommit($autocommit)
+    {
+        $this->autocommit = $autocommit;
     }
 
     /**
@@ -173,10 +187,20 @@ abstract class AbstractService
     }
 
     /**
-     * Metodo proxy.
+     * Proxy Method.
+     * @return \Doctrine\ORM\EntityRepository A classe de repositorio
+     */
+    public function getRepository()
+    {
+        $this->checkIfClassExists($this->entityName);
+        return $this->getEntityManager()->getRepository($this->entityName);
+    }
+
+    /**
+     * Proxy Method.
      *
      * @param mixed $id
-     * @return \Base\Entity\AbstractEntity
+     * @return \Zff\Base\Entity\AbstractEntity
      */
     public function getReference($id)
     {
@@ -184,37 +208,40 @@ abstract class AbstractService
     }
 
     /**
-     * @param array|\Base\Entity\AbstractEntity $entity
+     * @param array|\Zff\Base\Entity\AbstractEntity $entity
      * @return \Zff\Base\Entity\AbstractEntity
      */
     public function insert($entity)
     {
-
-        $this->checkIfClassExists($this->entityName);
         if (is_array($entity)) {
+            $this->checkIfClassExists($this->entityName);
             $entity = new $this->entityName($entity);
         }
 
         $this->entityManager->persist($entity);
-        $this->entityManager->flush();
+        if ($this->getAutocommit()) {
+            $this->entityManager->flush();
+        }
         return $entity;
     }
 
     /**
-     * @param array|\Base\Entity\AbstractEntity $entity
-     * @return \Gestor\Entity\AbstractEntity
+     * @param array|\Zff\Base\Entity\AbstractEntity $entity
+     * @return \Zff\Base\Entity\AbstractEntity
      */
     public function update($entity)
     {
 
-        $this->checkIfClassExists($this->entityName);
         if (is_array($entity)) {
-            $entity = $this->entityManager->getReference($this->entityName, $entity['id']);
+            $this->checkIfClassExists($this->entityName);
+            $entity = $this->getReference($this->entityName, $entity['id']);
             $entity->exchangeArray($entity);
         }
 
         $this->entityManager->persist($entity);
-        $this->entityManager->flush();
+        if ($this->getAutocommit()) {
+            $this->entityManager->flush();
+        };
         return $entity;
     }
 
@@ -229,7 +256,9 @@ abstract class AbstractService
         foreach ($entities as $entity) {
             $this->entityManager->persist($entity);
         }
-        $this->entityManager->flush();
+        if ($this->getAutocommit()) {
+            $this->entityManager->flush();
+        }
         return $entities;
     }
 
@@ -238,15 +267,32 @@ abstract class AbstractService
      */
     public function delete($id)
     {
-        $this->checkIfClassExists($this->entityName);
-        $entity = $this->entityManager->getReference($this->entityName, $id);
+        $this->checkClassExists($this->entityName);
+        $entity = $this->getReference($this->entityName, $id);
 
         if ($entity) {
             $this->entityManager->remove($entity);
-            $this->entityManager->flush();
+            if ($this->getAutocommit()) {
+                $this->entityManager->flush();
+            }
             return true;
         }
         return false;
+    }
+
+    /**
+     * @return boolean|array
+     */
+    public function deleteAll()
+    {
+        $dql    = "DELETE from " . $this->entityName;
+        $qb     = $this->entityManager->createQuery($dql);
+        $result = $qb->getResult();
+        if ($result) {
+            return $result;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -263,7 +309,7 @@ abstract class AbstractService
     /**
      * Metodo proxy EntityRepository#find
      * @param int $id
-     * @return \Gestor\Entity\AbstractEntity
+     * @return \Zff\Base\Entity\AbstractEntity
      */
     public function find($id)
     {
@@ -318,6 +364,34 @@ abstract class AbstractService
         return $qb->getQuery()->getSingleScalarResult();
     }
 
+    /**
+     * @param int $currentPageNumberthe doctrine object query
+     * @param int $itemCountPerPage items per page
+     * @return \Zff\Base\Service\AbstractService
+     */
+    public function setPagination($currentPageNumber = null, $itemCountPerPage = null)
+    {
+        $this->maxResults  = $itemCountPerPage !== null ? $itemCountPerPage : $this->maxResults;
+        $this->firstResult = $currentPageNumber !== null ? ($this->maxResults - 1) * $this->maxResults : $this->firstResult;
+        return $this;
+    }
+
+    /**
+     * Create and returns a doctrine pagination.
+     * 
+     * @param Query $query the doctrine object query
+     * @param int $currentPageNumber current page
+     * @param int $itemCountPerPage items per page
+     * @return Paginator
+     */
+    public function getPaginator(Query $query, $currentPageNumber = null, $itemCountPerPage = null)
+    {
+        $this->setPagination($currentPageNumber, $itemCountPerPage);
+        $query->setFirstResult($this->firstResult)
+                ->setMaxResults($this->maxResults);
+        return new Paginator($query);
+    }
+
     public function getFindAllQueryBuilder()
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
@@ -359,12 +433,19 @@ abstract class AbstractService
     {
 
         $table = $this->createTable($data);
-        $form = $table->getForm();
+        $form  = $table->getForm();
 
         if ($form->isValid()) {
             return $this->renderTable($table, $queryBuilder);
         }
         return false;
+    }
+
+    protected function checkIfClassExists($class)
+    {
+        if (!class_exists($class)) {
+            throw new Exception\RuntimeException(sprintf('Class %s does not exist.', $class));
+        }
     }
 
 }

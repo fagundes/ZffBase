@@ -40,8 +40,8 @@ extension=php_fileinfo.dll
  - [x] review Debugger static methods
  - [x] removed crypt classes (use zend-crypt instead) 
  - [x] review classes name (Partial)
+ - [x] include get/set autocommit in `Zff\Base\Service\AbstractService`
  - [ ] translate files to english (Partial+)
- - [ ] include get/set autocommit in `Zff\Base\Service\AbstractService`
  - [ ] include tests cases
  - [ ] review abstract factories 
  - [ ] change ZFTable and DoctrineORMModule to optional dependency. 
