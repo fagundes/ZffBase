@@ -32,9 +32,7 @@ class IsRoute extends AbstractHelper
      */
     public function __invoke($routeName=null, $returnTrue = true, $returnFalse = false)
     {
-        /* @var Zff\Base\View\Helper\GetRoute */
-        $getRoute         = $this->getView()->getRoute();
-        $matchedRouteName = $getRoute();
+        $matchedRouteName = $this->getView()->getRoute();
 
         if ($routeName) {
             return $matchedRouteName == $routeName ? $returnTrue : $returnFalse;
