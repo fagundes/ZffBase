@@ -79,18 +79,21 @@ abstract class AbstractService
     /**
      * @var integer 
      */
-    protected $maxResults = 20;
+    protected $maxResults;
 
     /**
      * @var integer 
      */
-    protected $firstResult = 1;
+    protected $firstResult;
 
     /**
      * @param EntityManager $entityManager
      */
     public function __construct(EntityManager $entityManager = null)
     {
+        $this->autocommit  = true;
+        $this->maxResults  = 20;
+        $this->firstResult = 1;
         if ($entityManager) {
             $this->setEntityManager($entityManager);
         }
