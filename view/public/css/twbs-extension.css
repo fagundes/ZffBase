@@ -1,9 +1,9 @@
-ul.form-message {
+ul.form-message, .form-message > ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-ul.form-message > li {
+ul.form-message > li, .form-message > ul > li {
     color: #d9534f;
     font-size: 80%;
     margin: 3px 0;
