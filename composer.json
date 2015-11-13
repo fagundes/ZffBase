@@ -22,7 +22,7 @@
         "zendframework/zend-validator": "2.5.x",
         "zendframework/zend-view": "2.5.x",
         "doctrine/doctrine-orm-module": "0.*",
-        "fagundes/zff-table": "3.2",
+        "fagundes/zff-table": "3.2.x",
         "rwoverdijk/assetmanager": "1.4.x"
     },
     "require-dev": {
