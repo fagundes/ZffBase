@@ -25,10 +25,6 @@ class BsFormRow extends FormRow
 
     public function render(ElementInterface $element, $labelPosition = null)
     {
-        if (!$element instanceof BsElementInterface) {
-            return parent::render($element, $labelPosition);
-        }
-
         $markup  = $this->renderBsElement($element, $labelPosition);
         $wrapper = $this->renderWrapper($element);
 
@@ -50,7 +46,7 @@ class BsFormRow extends FormRow
         );
     }
 
-    public function renderBsElement(BsElementInterface $element, $labelPosition = null)
+    public function renderBsElement(ElementInterface $element, $labelPosition = null)
     {
 
         $escapeHtmlHelper    = $this->getEscapeHtmlHelper();

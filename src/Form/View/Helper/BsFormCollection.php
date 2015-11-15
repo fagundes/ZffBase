@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @license http://opensource.org/licenses/MIT MIT  
  * @copyright Copyright (c) 2015 Vinicius Fagundes
@@ -19,5 +18,11 @@ use Zend\Form\View\Helper\FormCollection;
  */
 class BsFormCollection extends FormCollection
 {
-    
+    /**
+     * The name of the default view helper that is used to render sub elements.
+     *
+     * @var string
+     */
+    protected $defaultElementHelper = 'bsformrow';
+
 }
