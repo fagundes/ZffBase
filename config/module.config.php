@@ -41,6 +41,7 @@ return [
             'bsmulticheckbox' => Form\Element\BsMultiCheckbox::class,
             'bsselect'        => Form\Element\BsSelect::class,
             'bsobjectselect'  => Form\Element\BsObjectSelect::class,
+            'bsobjectradio'   => Form\Element\BsObjectRadio::class,
         ],
     ],
     'view_helpers'       => [
