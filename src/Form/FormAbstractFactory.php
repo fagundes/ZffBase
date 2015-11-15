@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -26,7 +26,7 @@ class FormAbstractFactory implements AbstractFactoryInterface
 
         if (class_exists($requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
-            if ($reflect->isSubclassOf('Zff\Base\Form\AbstractForm')) {
+            if ($reflect->isSubclassOf('Zff\Base\Form\AbstractForm') || $reflect->isSubclassOf('Zff\Base\Form\AbstractFieldset') ) {
                 return true;
             }
         }
@@ -53,7 +53,7 @@ class FormAbstractFactory implements AbstractFactoryInterface
 
             //make sure FormElementManager will create form elements
             $form->setFormFactory(new \Zend\Form\Factory($serviceLocator->get('FormElementManager')));
-            
+
             return $form;
         }
         return null;
@@ -62,7 +62,7 @@ class FormAbstractFactory implements AbstractFactoryInterface
     protected function getFormFilter(ServiceLocatorInterface $serviceLocator, $requestedName)
     {
         $filterName = $requestedName . 'Filter';
-        if (class_exists($filterName)) {
+        if (class_exists($filterName) && $serviceLocator->has($filterName)) {
             return $serviceLocator->get($filterName);
         }
         return null;

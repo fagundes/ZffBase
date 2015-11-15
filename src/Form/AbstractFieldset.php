@@ -6,17 +6,17 @@
 
 namespace Zff\Base\Form;
 
-use Zend\Form\Form;
+use Zend\Form\Fieldset;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 /**
- * Abstract Form
+ * Abstract Fieldset
  * Depends of DoctrineModule
  *
  * @package ZffBase
- * @subpackage ZffBase_Form
+ * @subpackage ZffBase_Fieldset
  */
-abstract class AbstractForm extends Form
+abstract class AbstractFieldset extends Fieldset
 {
     /**
      * @var string
@@ -28,12 +28,14 @@ abstract class AbstractForm extends Form
      */
     protected $entityManagerName;
 
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    protected $entityManager;
+
     public function __construct($name = null, $options = array())
     {
         parent::__construct($name, $options);
-
-        $this->setUseInputFilterDefaults(true);
-        $this->setPreferFormInputFilter(true);
         $this->setAttribute('method', 'post');
     }
 
@@ -49,7 +51,7 @@ abstract class AbstractForm extends Form
 
     public function loadHydrator($entityManager)
     {
-
+        $this->entityManager = $entityManager;
         if (!$this->entityName && $this->entityName !== false) {
             throw new \RuntimeException('$entityName property must be defined!');
         }

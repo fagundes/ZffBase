@@ -270,8 +270,8 @@ abstract class AbstractService
      */
     public function delete($id)
     {
-        $this->checkClassExists($this->entityName);
-        $entity = $this->getReference($this->entityName, $id);
+        $this->checkIfClassExists($this->entityName);
+        $entity = $this->getReference($id);
 
         if ($entity) {
             $this->entityManager->remove($entity);
