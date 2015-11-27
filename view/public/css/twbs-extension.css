@@ -8,3 +8,17 @@ ul.form-message > li, .form-message > ul > li {
     font-size: 80%;
     margin: 3px 0;
 }
+
+.alert-default {
+    color: #666;
+    background-color: #efefef;
+    border-color: #bbb;
+}
+
+.alert-default hr {
+    border-top-color: #aeaeae;
+}
+
+.alert-default .alert-link {
+    color: #4d4d4d;
+}
