@@ -1,4 +1,7 @@
-# Zff Base for Zend Framework 2
+[![Latest Stable Version](https://poser.pugx.org/fagundes/zff-base/v/stable)](https://packagist.org/packages/fagundes/zff-base) [![Total Downloads](https://poser.pugx.org/fagundes/zff-base/downloads)](https://packagist.org/packages/fagundes/zff-base) [![Latest Unstable Version](https://poser.pugx.org/fagundes/zff-base/v/unstable)](https://packagist.org/packages/fagundes/zff-base) [![License](https://poser.pugx.org/fagundes/zff-base/license)](https://packagist.org/packages/fagundes/zff-base)
+
+Zff Base for Zend Framework 2
+=============================
 
 `Zff\Base` module is a set of classes which are commonly used in several ZF2 projects. 
 
