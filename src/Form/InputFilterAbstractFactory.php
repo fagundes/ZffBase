@@ -43,6 +43,9 @@ class InputFilterAbstractFactory implements AbstractFactoryInterface
                 $filter->setObjectManager($entityManager);
             }
 
+            //make sure FilterManager will create new registered InputFilters, Filters and validators
+            $filter->setFactory(new \Zend\InputFilter\Factory($serviceLocator->get('InputFilterManager')));
+
             $filter->initialize();
             return $filter;
         }

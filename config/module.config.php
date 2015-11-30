@@ -44,6 +44,12 @@ return [
             'bsobjectradio'   => Form\Element\BsObjectRadio::class,
         ],
     ],
+   'validators' => [
+        'invokables' => [
+            'cpf' => Validator\Cpf::class,
+            'cnpj' => Validator\Cnpj::class,
+        ],
+    ],
     'view_helpers'       => [
         'invokables' => [
             //bs form helpers

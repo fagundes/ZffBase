@@ -51,7 +51,7 @@ class FormAbstractFactory implements AbstractFactoryInterface
                 $form->setObjectManager($entityManager);
             }
 
-            //make sure FormElementManager will create form elements
+            //make sure FormElementManager will create  new registered form elements
             $form->setFormFactory(new \Zend\Form\Factory($serviceLocator->get('FormElementManager')));
 
             return $form;
