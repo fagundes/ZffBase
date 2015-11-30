@@ -16,29 +16,22 @@ use Zend\Validator\AbstractValidator;
 abstract class AbstractCgc extends AbstractValidator {
 
     /**
-     * Tamanho Inválido
+     * invalid due to the wrong size
      * @var string
      */
     const SIZE = 'size';
 
     /**
-     * Números Expandidos
+     * invalid due to the expanded digits
      * @var string
      */
     const EXPANDED = 'expanded';
 
     /**
-     * Dígito Verificador
+     * invalid due to the wrong verifier digit
      * @var string
      */
     const DIGIT = 'digit';
-
-    /**
-     * Tamanho do Campo
-     * @var int
-     */
-    protected $size = 0;
-
 
     /**
      * Modelos de Mensagens
@@ -51,33 +44,45 @@ abstract class AbstractCgc extends AbstractValidator {
     ];
 
     /**
-     * Modificadores de Dígitos
+     * Document size
+     * @var int
+     */
+    protected $size = 0;
+    
+    /**
+     * Digit modifiers
      * @var array
      */
     protected $modifiers = array();
+
+    /**
+     * By default it is valid if empty
+     * @var boolean
+     */
     protected $validIfEmpty = true;
 
     public function __construct($options = null) {
         parent::__construct($options);
-        if (array_key_exists('valid_if_empty', $options))
+        if (is_array($options) && array_key_exists('valid_if_empty', $options)) {
             $this->validIfEmpty = $options['valid_if_empty'];
+        }
     }
 
     /**
-     * Validação Interna do Documento
-     * @param string $value Dados para Validação
-     * @return boolean Confirmação de Documento Válido
+     * check the digits
+     * @param string $value digits for validation
+     * @return boolean return if document is valid or not
      */
     protected function check($value) {
         // Captura dos Modificadores
         foreach ($this->modifiers as $modifier) {
-            $result = 0; // Resultado Inicial
-            $size = count($modifier); // Tamanho dos Modificadores
+            $result = 0;
+            $size = count($modifier);
             for ($i = 0; $i < $size; $i++) {
-                $result += $value[$i] * $modifier[$i]; // Somatório
+                $result += $value[$i] * $modifier[$i];
             }
             $result = $result % 11;
-            $digit = ($result < 2 ? 0 : 11 - $result); // Dígito
+            $digit = ($result < 2 ? 0 : 11 - $result);
             // Verificação
             if ($value[$size] != $digit) {
                 return false;
@@ -90,25 +95,28 @@ abstract class AbstractCgc extends AbstractValidator {
         if (!$this->validIfEmpty && empty($value)) {
             return true;
         }
-        // Filtro de Dados
+
+        // filter to get only numbers
         $data = preg_replace('/[^0-9]/', '', $value);
-        // Verificação de Tamanho
+
+        // check size
         if (strlen($data) != $this->size) {
             $this->error(self::SIZE, $value);
             return false;
         }
-        // Verificação de Dígitos Expandidos
-        if (str_repeat($data[0], $this->size) == $data) {
+
+        // check for expanded digits
+        if (str_repeqat($data[0], $this->size) == $data) {
             $this->error(self::EXPANDED, $value);
             return false;
         }
-        // Verificação de Dígitos
+
+        // check the digits
         if (!$this->check($data)) {
             $this->error(self::DIGIT, $value);
             return false;
         }
-        // Comparações Concluídas
-        return true; // Todas Verificações Executadas
+        return true;
     }
 
 }
