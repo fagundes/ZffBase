@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -19,7 +19,7 @@ class AbstractController extends AbstractActionController
 {
 
     /**
-     * @var array 
+     * @var array
      */
     private $postedData;
 
@@ -27,8 +27,8 @@ class AbstractController extends AbstractActionController
     {
         if (is_null($this->postedData)) {
             $this->postedData = array_merge(
-                    (array) $this->getRequest()->getPost(), 
-                    (array) $this->getRequest()->getFiles()
+                (array) $this->getRequest()->getPost(),
+                (array) $this->getRequest()->getFiles()
             );
         }
         return $this->postedData;
@@ -50,5 +50,4 @@ class AbstractController extends AbstractActionController
         $response->setContent($html);
         return $response;
     }
-
 }

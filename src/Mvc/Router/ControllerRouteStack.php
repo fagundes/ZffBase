@@ -1,7 +1,6 @@
 <?php
-
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -27,7 +26,8 @@ use Zend\Mvc\Router\Http\RouteInterface;
  * @package ZffBase
  * @subpackage ZffBase_Router
  */
-class ControllerRouteStack extends TreeRouteStack {
+class ControllerRouteStack extends TreeRouteStack
+{
 
     /**
      * routeFromArray(): defined by SimpleRouteStack.
@@ -39,7 +39,8 @@ class ControllerRouteStack extends TreeRouteStack {
      * @throws Exception\InvalidArgumentException When chain routes are not an array nor traversable
      * @throws Exception\RuntimeException         When a generated routes does not implement the HTTP route interface
      */
-    protected function routeFromArray($specs) {
+    protected function routeFromArray($specs)
+    {
         if (is_string($specs)) {
             if (null === ($route = $this->getPrototype($specs))) {
                 throw new Exception\RuntimeException(sprintf('Could not find prototype with name %s', $specs));
@@ -54,33 +55,43 @@ class ControllerRouteStack extends TreeRouteStack {
 
         if (isset($specs['controller_routes'])) {
 
-            if ($specs['controller_routes'] instanceof Traversable) {
-                $specs['controller_routes'] = ArrayUtils::iteratorToArray($specs['controller_routes']);
-            } elseif (!is_array($specs['controller_routes'])) {
-                throw new Exception\InvalidArgumentException('Controller routes must be an array or Traversable object');
+            $ctrlRoutes = $specs['controller_routes'];
+
+            if ($ctrlRoutes instanceof Traversable) {
+                $ctrlRoutes = ArrayUtils::iteratorToArray($ctrlRoutes);
+            } elseif (!is_array($ctrlRoutes)) {
+                throw new Exception\InvalidArgumentException(
+                    'Controller routes must be an array or Traversable object'
+                );
             }
 
-            if (!isset($specs['controller_routes']['model_route']) || (!is_array($specs['controller_routes']['model_route']) && !$specs['controller_routes']['model_route'] instanceof Traversable)) {
-                throw new Exception\InvalidArgumentException('Controller routes must have a \'model_route\' key as an array or Traversable object');
-            }
-            else if ($specs['controller_routes']['model_route'] instanceof Traversable) {
-                $specs['controller_routes']['model_route'] = ArrayUtils::iteratorToArray($specs['controller_routes']['model_route']);
+            if (!isset($ctrlRoutes['model_route']) || (!is_array($ctrlRoutes['model_route'])
+                && !$ctrlRoutes['model_route'] instanceof Traversable)
+            ) {
+                throw new Exception\InvalidArgumentException(
+                    'Controller routes must have a \'model_route\' key as an array or Traversable object'
+                );
+            } elseif ($ctrlRoutes['model_route'] instanceof Traversable) {
+                $ctrlRoutes['model_route'] = ArrayUtils::iteratorToArray($ctrlRoutes['model_route']);
             }
 
-            if (!isset($specs['controller_routes']['controllers']) || (!is_array($specs['controller_routes']['controllers']) && !$specs['controller_routes']['controllers'] instanceof Traversable)) {
-                throw new Exception\InvalidArgumentException('Controller routes must have a \'controllers\' key as an array or Traversable object');
+            if (!isset($ctrlRoutes['controllers']) || (!is_array($ctrlRoutes['controllers'])
+                && !$ctrlRoutes['controllers'] instanceof Traversable)
+            ) {
+                throw new Exception\InvalidArgumentException(
+                    'Controller routes must have a \'controllers\' key as an array or Traversable object'
+                );
+            } elseif ($ctrlRoutes['model_route'] instanceof Traversable) {
+                $ctrlRoutes['controllers'] = ArrayUtils::iteratorToArray($ctrlRoutes['controllers']);
             }
-            else if ($specs['controller_routes']['model_route'] instanceof Traversable) {
-                $specs['controller_routes']['controllers'] = ArrayUtils::iteratorToArray($specs['controller_routes']['controllers']);
-            }
-            
-            $modelRoute  = $specs['controller_routes']['model_route'];
-            $controllers = $specs['controller_routes']['controllers'];
+
+            $modelRoute  = $ctrlRoutes['model_route'];
+            $controllers = $ctrlRoutes['controllers'];
 
             foreach ($controllers as $ctrlName) {
-                $route                                      = $modelRoute;
+                $route = $modelRoute;
                 $route['options']['defaults']['controller'] = $ctrlName;
-                $route['options']['route']                  = str_replace(':controller', $ctrlName, $route['options']['route']);
+                $route['options']['route'] = str_replace(':controller', $ctrlName, $route['options']['route']);
 
                 $specs['child_routes'][$ctrlName] = $route;
             }
@@ -100,9 +111,9 @@ class ControllerRouteStack extends TreeRouteStack {
             }
 
             $options = array(
-                'routes'        => $chainRoutes,
+                'routes' => $chainRoutes,
                 'route_plugins' => $this->routePluginManager,
-                'prototypes'    => $this->prototypes,
+                'prototypes' => $this->prototypes,
             );
 
             $route = $this->routePluginManager->get('chain', $options);
@@ -116,11 +127,11 @@ class ControllerRouteStack extends TreeRouteStack {
 
         if (isset($specs['child_routes'])) {
             $options = array(
-                'route'         => $route,
+                'route' => $route,
                 'may_terminate' => (isset($specs['may_terminate']) && $specs['may_terminate']),
-                'child_routes'  => $specs['child_routes'],
+                'child_routes' => $specs['child_routes'],
                 'route_plugins' => $this->routePluginManager,
-                'prototypes'    => $this->prototypes,
+                'prototypes' => $this->prototypes,
             );
 
             $priority = (isset($route->priority) ? $route->priority : null);
@@ -131,5 +142,4 @@ class ControllerRouteStack extends TreeRouteStack {
 
         return $route;
     }
-
 }

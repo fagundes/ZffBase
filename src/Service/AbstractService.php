@@ -1,15 +1,14 @@
 <?php
-
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
 namespace Zff\Base\Service;
 
-use Doctrine\ORM\EntityManager,
-    Doctrine\ORM\Query,
-    Doctrine\ORM\Tools\Pagination\Paginator;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Zend\Db\Adapter\Adapter;
 use Zff\Base\Exception;
 
@@ -21,7 +20,7 @@ use Zff\Base\Exception;
  *  - vinculo com uma ou mais Services, por meio do atributo $services
  *  - vinculo com a TableHandler que cria Tables com o mesmo nome da Service
  * Inclui diversos metodos facilitadores.
- * 
+ *
  * @todo create services with __get magic method, so we can creating lazy using $serviceLocator
  * @todo do the same above to entityManager and tableHandler
  *
@@ -30,14 +29,13 @@ use Zff\Base\Exception;
  */
 abstract class AbstractService
 {
-
     /**
      * @var EntityManager
      */
     protected $entityManager;
 
     /**
-     * @var Adapter 
+     * @var Adapter
      */
     protected $dbAdapter;
 
@@ -52,7 +50,7 @@ abstract class AbstractService
     protected $entityManagerName;
 
     /**
-     * @var string 
+     * @var string
      */
     protected $dbAdapterName;
 
@@ -62,12 +60,12 @@ abstract class AbstractService
     protected $services;
 
     /**
-     * @var Table\TableHandler 
+     * @var Table\TableHandler
      */
     protected $tableHandler;
 
     /**
-     * @var string 
+     * @var string
      */
     protected $tableClassName;
 
@@ -77,12 +75,12 @@ abstract class AbstractService
     protected $autocommit;
 
     /**
-     * @var integer 
+     * @var integer
      */
     protected $maxResults;
 
     /**
-     * @var integer 
+     * @var integer
      */
     protected $firstResult;
 
@@ -160,7 +158,9 @@ abstract class AbstractService
     {
         if (!$this->tableClassName) {
             $reflectionFinalClass = new \ReflectionClass($this);
-            $this->tableClassName = $reflectionFinalClass->getNamespaceName() . '\\Table\\' . $reflectionFinalClass->getShortName();
+            $this->tableClassName = $reflectionFinalClass->getNamespaceName()
+                .'\\Table\\'
+                .$reflectionFinalClass->getShortName();
         }
         return $this->tableClassName;
     }
@@ -288,7 +288,7 @@ abstract class AbstractService
      */
     public function deleteAll()
     {
-        $dql    = "DELETE from " . $this->entityName;
+        $dql    = "DELETE from ".$this->entityName;
         $qb     = $this->entityManager->createQuery($dql);
         $result = $qb->getResult();
         if ($result) {
@@ -345,11 +345,11 @@ abstract class AbstractService
 
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('count(e)')
-                ->from($this->entityName, 'e');
+            ->from($this->entityName, 'e');
 
         $i = 0;
         foreach ($equal as $field => $value) {
-            $fieldParam  = $field . $i++;
+            $fieldParam  = $field.$i++;
             $whereClause = is_array($value) ? "e.$field in (:$fieldParam)" : "e.$field = :$fieldParam";
 
             $qb->andWhere($whereClause);
@@ -357,7 +357,7 @@ abstract class AbstractService
         }
 
         foreach ($different as $field => $value) {
-            $fieldParam  = $field . $i++;
+            $fieldParam  = $field.$i++;
             $whereClause = is_array($value) ? "e.$field not in (:$fieldParam)" : "e.$field <> :$fieldParam";
 
             $qb->andWhere($whereClause);
@@ -375,23 +375,29 @@ abstract class AbstractService
     public function setPagination($currentPageNumber = null, $itemCountPerPage = null)
     {
         $this->maxResults  = $itemCountPerPage !== null ? $itemCountPerPage : $this->maxResults;
-        $this->firstResult = $currentPageNumber !== null ? ($this->maxResults - 1) * $this->maxResults : $this->firstResult;
+        $this->firstResult = $currentPageNumber !== null ? ($this->maxResults - 1)
+            * $this->maxResults : $this->firstResult;
         return $this;
     }
 
     /**
      * Create and returns a doctrine pagination.
-     * 
+     *
      * @param Query $query the doctrine object query
      * @param int $currentPageNumber current page
      * @param int $itemCountPerPage items per page
      * @return Paginator
      */
-    public function getPaginator(Query $query, $currentPageNumber = null, $itemCountPerPage = null)
-    {
+    public function getPaginator(
+        Query $query,
+        $currentPageNumber = null,
+        $itemCountPerPage
+        = null
+    ) {
+    
         $this->setPagination($currentPageNumber, $itemCountPerPage);
         $query->setFirstResult($this->firstResult)
-                ->setMaxResults($this->maxResults);
+            ->setMaxResults($this->maxResults);
         return new Paginator($query);
     }
 
@@ -450,5 +456,4 @@ abstract class AbstractService
             throw new Exception\RuntimeException(sprintf('Class %s does not exist.', $class));
         }
     }
-
 }

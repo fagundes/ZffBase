@@ -8,7 +8,7 @@ namespace Zff\Base\Validator;
 
 /**
  * @reference http://www.schoolofnet.com/2015/04/como-validar-cpf-e-cnpj-usando-zend-framework-2/
- * 
+ *
  * Validates the Brazilian Number of Corporate Registration (CNPJ).
  */
 class Cnpj extends AbstractCgc
@@ -27,5 +27,4 @@ class Cnpj extends AbstractCgc
         [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2],
         [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
     ];
-
 }

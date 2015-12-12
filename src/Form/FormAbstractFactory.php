@@ -26,7 +26,9 @@ class FormAbstractFactory implements AbstractFactoryInterface
 
         if (class_exists($requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
-            if ($reflect->isSubclassOf('Zff\Base\Form\AbstractForm') || $reflect->isSubclassOf('Zff\Base\Form\AbstractFieldset') ) {
+            if ($reflect->isSubclassOf('Zff\Base\Form\AbstractForm')
+                || $reflect->isSubclassOf('Zff\Base\Form\AbstractFieldset')
+            ) {
                 return true;
             }
         }
@@ -67,5 +69,4 @@ class FormAbstractFactory implements AbstractFactoryInterface
         }
         return null;
     }
-
 }

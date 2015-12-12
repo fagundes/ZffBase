@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -14,14 +14,14 @@ use Zend\Form\Exception;
 
 /**
  * FormMultiCheckboxItem
- * 
- * Use the FormMultiCheckboxItem if you need to use the FormMultiCheckbox, but 
- * instead of generating all checkboxes at once, you can divide it one by one, 
+ *
+ * Use the FormMultiCheckboxItem if you need to use the FormMultiCheckbox, but
+ * instead of generating all checkboxes at once, you can divide it one by one,
  * invoking this helper several times.
- * 
+ *
  * At the time of invoking you must pass the 'optionId' from the 'valueOption' that
  * you want to render.
- * 
+ *
  * @package ZffBase
  * @subpackage ZffBase_Form_Helper
  */
@@ -51,7 +51,8 @@ class FormMultiCheckboxItem extends FormInput
     {
         if (!$element instanceof MultiCheckboxElement) {
             throw new Exception\InvalidArgumentException(sprintf(
-                    '%s requires that the element is of type Zend\Form\Element\MultiCheckbox', __METHOD__
+                '%s requires that the element is of type Zend\Form\Element\MultiCheckbox',
+                __METHOD__
             ));
         }
 
@@ -66,7 +67,8 @@ class FormMultiCheckboxItem extends FormInput
 
         if (empty($options)) {
             throw new Exception\DomainException(sprintf(
-                    '%s requires that the element has "value_options"; none found', __METHOD__
+                '%s requires that the element has "value_options"; none found',
+                __METHOD__
             ));
         }
 
@@ -129,7 +131,9 @@ class FormMultiCheckboxItem extends FormInput
         $inputAttributes['disabled'] = $disabled;
 
         $input = sprintf(
-                '<input %s%s', $this->createAttributesString($inputAttributes), $closingBracket
+            '<input %s%s',
+            $this->createAttributesString($inputAttributes),
+            $closingBracket
         );
 
         return $input;
@@ -176,10 +180,10 @@ class FormMultiCheckboxItem extends FormInput
         $name = $element->getName();
         if ($name === null || $name === '') {
             throw new Exception\DomainException(sprintf(
-                    '%s requires that the element has an assigned name; none discovered', __METHOD__
+                '%s requires that the element has an assigned name; none discovered',
+                __METHOD__
             ));
         }
         return $name . '[]';
     }
-
 }

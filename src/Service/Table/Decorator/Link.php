@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -10,7 +10,7 @@ namespace Zff\Base\Service\Table\Decorator;
 class Link extends \ZfTable\Decorator\Cell\Link
 {
     /**
-     * @var \Zend\View\Helper\BasePath 
+     * @var \Zend\View\Helper\BasePath
      */
     protected $basePathHelper;
 
@@ -44,7 +44,7 @@ class Link extends \ZfTable\Decorator\Cell\Link
         
         $basePath = '';
         $basePathHelper = $this->getBasePathHelper();
-        if($basePathHelper) {
+        if ($basePathHelper) {
             $basePath = $basePathHelper();
         }
         

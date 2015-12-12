@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -69,7 +69,6 @@ class Debugger
         }
         echo "\n<pre class=\"cake-debug\">\n" . $var . "\n</pre>\n";
     }
-
 }
 
 //defines Zff\Base\Util\cakeDump as function

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -39,5 +39,5 @@ abstract class AbstractInputFilter extends InputFilter
         $this->entityManagerName = $entityManagerName;
     }
 
-    public abstract function initialize();
+    abstract public function initialize();
 }

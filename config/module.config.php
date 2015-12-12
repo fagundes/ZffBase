@@ -44,7 +44,7 @@ return [
             'bsobjectradio'   => Form\Element\BsObjectRadio::class,
         ],
     ],
-   'validators' => [
+    'validators' => [
         'invokables' => [
             'cpf' => Validator\Cpf::class,
             'cnpj' => Validator\Cnpj::class,

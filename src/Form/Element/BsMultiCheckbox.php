@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -35,5 +35,4 @@ class BsMultiCheckbox extends MultiCheckbox implements BsElementInterface
     {
         parent::__construct($name, $options);
     }
-
 }

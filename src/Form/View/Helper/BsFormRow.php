@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -42,7 +42,9 @@ class BsFormRow extends FormRow
 //        }
 
         return sprintf(
-                '<div class="%s">%s</div>', $this->getView()->formGroupClasses($element), '%s'
+            '<div class="%s">%s</div>',
+            $this->getView()->formGroupClasses($element),
+            '%s'
         );
     }
 
@@ -118,34 +120,33 @@ class BsFormRow extends FormRow
 
             // Multicheckbox elements have to be handled differently as the HTML standard does not allow nested
             // labels.
-             if (
-                    $element instanceof MonthSelect || $element instanceof Captcha
+            if ($element instanceof MonthSelect || $element instanceof Captcha
             ) {
                 $markup = sprintf(
-                        '<fieldset><legend>%s</legend>%s</fieldset>', 
-                        $label, 
-                        $elementString
+                    '<fieldset><legend>%s</legend>%s</fieldset>',
+                    $label,
+                    $elementString
                 );
-            } 
-            else if ($type === 'multi_checkbox' || $type === 'radio') {
+            } elseif ($type === 'multi_checkbox' || $type === 'radio') {
                 
                 $elementsSplitted = preg_split('#</label>#', $elementString, -1, PREG_SPLIT_NO_EMPTY);
                 $elementClass = $type === 'multi_checkbox' ? 'checkbox' : 'radio';
                 
                 $elementString = '';
-                foreach($elementsSplitted as $elementItem) {
-                    $elementString .= sprintf('<div class="%s">%s</label></div>',$elementClass, $elementItem);
-                }  
+                foreach ($elementsSplitted as $elementItem) {
+                    $elementString .= sprintf('<div class="%s">%s</label></div>', $elementClass, $elementItem);
+                }
                 
                 $markup = sprintf(
-                        '<span>%s</span>%s', 
-                        $label, $elementString
+                    '<span>%s</span>%s',
+                    $label,
+                    $elementString
                 );
             } else {
                 // Ensure element and label will be separated if element has an `id`-attribute.
                 // If element has label option `always_wrap` it will be nested in any case.
-                if ($element->hasAttribute('id') 
-                        && ($element instanceof LabelAwareInterface 
+                if ($element->hasAttribute('id')
+                        && ($element instanceof LabelAwareInterface
                         && !$element->getLabelOption('always_wrap'))
                 ) {
                     $labelOpen  = '';
@@ -227,5 +228,4 @@ class BsFormRow extends FormRow
         $element->setLabelOption('disable_html_escape', true);
         $element->setValueOptions($valuesOptions);
     }
-
 }

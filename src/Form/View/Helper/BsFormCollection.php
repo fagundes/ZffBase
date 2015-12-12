@@ -1,6 +1,6 @@
 <?php
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -10,7 +10,7 @@ use Zend\Form\View\Helper\FormCollection;
 
 /**
  * BsFormCollection
- * 
+ *
  * @todo implement logic
  *
  * @package ZffBase
@@ -24,5 +24,4 @@ class BsFormCollection extends FormCollection
      * @var string
      */
     protected $defaultElementHelper = 'bsformrow';
-
 }

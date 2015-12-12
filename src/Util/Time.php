@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -24,5 +24,4 @@ class Time
     const WEEK   = 604800;
     const MONTH  = 2592000;
     const YEAR   = 31536000;
-
 }

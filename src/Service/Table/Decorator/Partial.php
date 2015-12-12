@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -13,18 +13,18 @@ class Partial extends \ZfTable\Decorator\Cell\AbstractCellDecorator
 {
 
     /**
-     * @var string 
+     * @var string
      */
     protected $partialName;
 
     /**
-     * @var \Zend\View\Helper\Partial 
+     * @var \Zend\View\Helper\Partial
      */
     protected $partialHelper;
 
     /**
      * Changes the record var on the alias to this attribute
-     * @var string 
+     * @var string
      */
     protected $aliasRecord;
 
@@ -67,5 +67,4 @@ class Partial extends \ZfTable\Decorator\Cell\AbstractCellDecorator
             'context'          => $context
         ]);
     }
-
 }

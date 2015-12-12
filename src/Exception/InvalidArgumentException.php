@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -14,7 +14,7 @@ namespace Zff\Base\Exception;
  * @subpackage ZffBase_Exception
  */
 class InvalidArgumentException extends \InvalidArgumentException implements
-ExceptionInterface
+    ExceptionInterface
 {
     
 }

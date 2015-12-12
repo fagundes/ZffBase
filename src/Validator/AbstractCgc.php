@@ -13,7 +13,8 @@ use Zend\Validator\AbstractValidator;
  *
  * Abstract class which validates Brazilian Taxpayers Number (Individual or Corporate)
  */
-abstract class AbstractCgc extends AbstractValidator {
+abstract class AbstractCgc extends AbstractValidator
+{
 
     /**
      * invalid due to the wrong size
@@ -61,7 +62,8 @@ abstract class AbstractCgc extends AbstractValidator {
      */
     protected $validIfEmpty = true;
 
-    public function __construct($options = null) {
+    public function __construct($options = null)
+    {
         parent::__construct($options);
         if (is_array($options) && array_key_exists('valid_if_empty', $options)) {
             $this->validIfEmpty = $options['valid_if_empty'];
@@ -73,7 +75,8 @@ abstract class AbstractCgc extends AbstractValidator {
      * @param string $value digits for validation
      * @return boolean return if document is valid or not
      */
-    protected function check($value) {
+    protected function check($value)
+    {
         // Captura dos Modificadores
         foreach ($this->modifiers as $modifier) {
             $result = 0;
@@ -91,7 +94,8 @@ abstract class AbstractCgc extends AbstractValidator {
         return true;
     }
 
-    public function isValid($value) {
+    public function isValid($value)
+    {
         if (!$this->validIfEmpty && empty($value)) {
             return true;
         }
@@ -118,5 +122,4 @@ abstract class AbstractCgc extends AbstractValidator {
         }
         return true;
     }
-
 }
