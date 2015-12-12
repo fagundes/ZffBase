@@ -25,15 +25,9 @@ Then add `Zff\\Base` to your `config/application.config.php`.
 
 Installation without composer is not officially supported and requires you to manually install all dependencies that are listed in composer.json
 
-#### How to install FileInfo extension
+## Contribuing
 
-Maybe you don't have fileinfo extension active on your web server. You can install php extension of several ways. Such as using pecl, apt-get (at gnu/linux). 
-
-To install the extension at xamp, you only need to uncomment the following line in the php.ini file. 
-
-```ini
-extension=php_fileinfo.dll
-```
+If you want to help check the contribuing instructions [here](CONTRIBUTING.md).
 
 ### TODO
 
