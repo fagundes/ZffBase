@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -32,5 +32,4 @@ class BsFile extends File implements BsElementInterface
         $this->attributes['id'] = uniqid();
         parent::__construct($name, $options);
     }
-
 }

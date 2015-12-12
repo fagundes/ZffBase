@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -33,13 +33,13 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
     public function onBootstrap($e)
     {
         /**
-         * Nao precisamos da constant ROOT para os includes PHP. 
-         * 
+         * Nao precisamos da constant ROOT para os includes PHP.
+         *
          * @reference http://samminds.com/2012/08/why-root_path-is-not-needed/
          * @reference http://stackoverflow.com/questions/11969925/how-to-get-applications-root-directory
-         * 
-         * Mas caso seja necessario para outra coisa, cole a linha abaixo em /public/index.php. 
-         * 
+         *
+         * Mas caso seja necessario para outra coisa, cole a linha abaixo em /public/index.php.
+         *
          * define('ROOT', dirname(__DIR__));
          */
     }
@@ -67,5 +67,4 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
             ],
         ];
     }
-
 }

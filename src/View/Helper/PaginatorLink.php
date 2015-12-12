@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -44,5 +44,4 @@ class PaginatorLink extends PostLink
         $urlHelper = $this->view->plugin('Url');
         return $urlHelper(null, array('page' => $page), true);
     }
-
 }

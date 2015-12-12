@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -33,8 +33,11 @@ class ServiceAbstractFactory implements AbstractFactoryInterface
         return false;
     }
 
-    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
-    {
+    public function createServiceWithName(
+        ServiceLocatorInterface $serviceLocator,
+        $name,
+        $requestedName
+    ) {
         if ($this->canCreateServiceWithName($serviceLocator, $name, $requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
             $service = $reflect->newInstance();
@@ -45,7 +48,8 @@ class ServiceAbstractFactory implements AbstractFactoryInterface
             $dbAdapter = $serviceLocator->get($service->getDbAdapterName());
             $service->setDbAdapter($dbAdapter);
             /**
-             * @todo lazy load here, table handler recebe o nome default mais nao instancia os servicos o mesmo com service
+             * @todo lazy load here, table handler recebe o nome default mais
+             * nao instancia os servicos o mesmo com service
              */
             $tableHandler = $serviceLocator->get(Table\TableHandler::class);
             $tableHandler->setEntityManager($entityManager);
@@ -62,8 +66,13 @@ class ServiceAbstractFactory implements AbstractFactoryInterface
         return null;
     }
 
-    protected function loadService(ServiceLocatorInterface $serviceLocator, AbstractService $service, $serviceNeededName, $customServiceName)
-    {
+    protected function loadService(
+        ServiceLocatorInterface $serviceLocator,
+        AbstractService $service,
+        $serviceNeededName,
+        $customServiceName
+    ) {
+    
         if (is_int($customServiceName)) {
             $simpleServiceName = preg_replace('/(.*)\\\/', '', $serviceNeededName);
         } else {
@@ -73,11 +82,17 @@ class ServiceAbstractFactory implements AbstractFactoryInterface
         $methodSet = 'set' . $simpleServiceName . 'Service';
 
         if (!method_exists($service, $methodSet)) {
-            throw new \InvalidArgumentException(sprintf('Espera-se o metodo %s::%s, para carregar o serviço %s.', get_class($service), $methodSet, $serviceNeededName));
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'Espera-se o metodo %s::%s, para carregar o serviço %s.',
+                    get_class($service),
+                    $methodSet,
+                    $serviceNeededName
+                )
+            );
         }
 
         $serviceNeeded = $serviceLocator->get($serviceNeededName);
         call_user_method($methodSet, $service, $serviceNeeded);
     }
-
 }

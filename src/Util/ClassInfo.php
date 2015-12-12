@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -26,5 +26,4 @@ class ClassInfo
         $className = self::getClassName($object);
         return preg_replace('/(.*\\\)*/', '', $className);
     }
-
 }

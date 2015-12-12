@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -30,7 +30,7 @@ class IsRoute extends AbstractHelper
      * @param mixed $returnFalse the return value if the chedk is false
      * @return mixed|IsRoute $returnTrue, $returnFalse or IsRoute
      */
-    public function __invoke($routeName=null, $returnTrue = true, $returnFalse = false)
+    public function __invoke($routeName = null, $returnTrue = true, $returnFalse = false)
     {
         $matchedRouteName = $this->getView()->getRoute();
 
@@ -39,5 +39,4 @@ class IsRoute extends AbstractHelper
         }
         return $this;
     }
-
 }

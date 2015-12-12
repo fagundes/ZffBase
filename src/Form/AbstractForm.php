@@ -1,6 +1,6 @@
 <?php
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -55,11 +55,13 @@ abstract class AbstractForm extends Form
         }
 
         if ($this->entityName !== false) {
-            $this->setHydrator(new DoctrineHydrator($entityManager,
-                $this->entityName));
+            $this->setHydrator(new DoctrineHydrator(
+                $entityManager,
+                $this->entityName
+            ));
             $this->setObject(new $this->entityName());
         }
     }
 
-    public abstract function initialize();
+    abstract public function initialize();
 }

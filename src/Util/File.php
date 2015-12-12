@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -28,7 +28,7 @@ class File
 
     public static function rmdirRecursive($dir)
     {
-        static::walkDirRecursive($dir, function($file) {
+        static::walkDirRecursive($dir, function ($file) {
             if ('.' === $file->getBasename() || '..' === $file->getBasename()) {
                 return true;
             }
@@ -83,5 +83,4 @@ class File
         readfile($path);
         exit(0);
     }
-
 }

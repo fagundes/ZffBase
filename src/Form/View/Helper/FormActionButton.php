@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -57,7 +57,9 @@ class FormActionButton extends FormButton
 
         if (!$attributesOrElement instanceof ElementInterface) {
             throw new \Exception\InvalidArgumentException(sprintf(
-                    '%s expects an array or Zend\Form\ElementInterface instance; received "%s"', __METHOD__, (is_object($attributesOrElement) ? get_class($attributesOrElement) : gettype($attributesOrElement))
+                '%s expects an array or Zend\Form\ElementInterface instance; received "%s"',
+                __METHOD__,
+                (is_object($attributesOrElement) ? get_class($attributesOrElement) : gettype($attributesOrElement))
             ));
         }
 
@@ -65,7 +67,8 @@ class FormActionButton extends FormButton
         $name    = $this->getName();
         if (empty($name) && $name !== 0) {
             throw new Exception\DomainException(sprintf(
-                    '%s requires that the element has an assigned name; none discovered', __METHOD__
+                '%s requires that the element has an assigned name; none discovered',
+                __METHOD__
             ));
         }
 
@@ -74,7 +77,8 @@ class FormActionButton extends FormButton
 
         if (!$route) {
             throw new Exception\DomainException(sprintf(
-                    '%s requires that the element has an assigned the options "route"; none discovered', __METHOD__
+                '%s requires that the element has an assigned the options "route"; none discovered',
+                __METHOD__
             ));
         }
         $urlHelper = $this->getView()->plugin('url');
@@ -93,5 +97,4 @@ class FormActionButton extends FormButton
     {
         $this->escapeHtmlHelper = $escapeHtmlHelper;
     }
-
 }

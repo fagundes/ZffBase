@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -14,7 +14,7 @@ class TableHandler implements ServiceLocatorAwareInterface
 {
 
     /**
-     * @var \Doctrine\ORM\EntityManager 
+     * @var \Doctrine\ORM\EntityManager
      */
     protected $entityManager;
 
@@ -73,16 +73,15 @@ class TableHandler implements ServiceLocatorAwareInterface
     }
 
     /**
-     * 
+     *
      * @param string $tableName
      * @return \ZfTable\AbstractTable
      */
     public function createTable($tableName)
     {
-        if($this->getServiceLocator() && $this->getServiceLocator()->has($tableName)) {
+        if ($this->getServiceLocator() && $this->getServiceLocator()->has($tableName)) {
             $table = $this->getServiceLocator()->get($tableName);
-        }
-        else {
+        } else {
             $table  = new $tableName;
         }
         
@@ -99,5 +98,4 @@ class TableHandler implements ServiceLocatorAwareInterface
                 ->setSource($queryBuilder)
                 ->setParamAdapter(new \Zend\Stdlib\Parameters($table->getForm()->getData()));
     }
-    
 }

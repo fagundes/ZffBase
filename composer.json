@@ -6,7 +6,7 @@
     "keywords": [
         "zf2", "twbs", "bootstrap 3", "bootstrap 4", "doctrine 2"
     ],
-    "homepage": "https://github.com/fagundes/zff-base",
+    "homepage": "https://github.com/fagundes/ZffBase",
     "authors": [
         {
             "name": "Vinícius Fagundes",
@@ -27,7 +27,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": ">=3.7",
-        "phpmd/phpmd": "1.4.x"
+        "phpmd/phpmd": "1.4.x",
+        "squizlabs/php_codesniffer": "~2"
     },
     "autoload": {
         "psr-4": {

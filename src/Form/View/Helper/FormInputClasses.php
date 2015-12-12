@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license http://opensource.org/licenses/MIT MIT  
+ * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
  */
 
@@ -51,12 +51,15 @@ class FormInputClasses extends AbstractHelper
             }
 
             if (!isset($this->classes[$keyClasses])) {
-                throw new \RuntimeException(sprintf('A chave \'%s\' não existe no atributo $classes da Helper %s', $keyClasses, __CLASS__));
+                throw new \RuntimeException(sprintf(
+                    'A chave \'%s\' não existe no atributo $classes da Helper %s',
+                    $keyClasses,
+                    __CLASS__
+                ));
             }
 
             $classes .= ' ' . $this->classes[$keyClasses];
         }
         return $classes;
     }
-
 }
