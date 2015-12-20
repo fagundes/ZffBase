@@ -7,7 +7,7 @@
 namespace Zff\Base\Form;
 
 use Zend\Form\Form;
-use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Zff\Base\Hydrator\DoctrineObject as DoctrineHydrator;
 
 /**
  * Abstract Form
@@ -55,10 +55,11 @@ abstract class AbstractForm extends Form
         }
 
         if ($this->entityName !== false) {
-            $this->setHydrator(new DoctrineHydrator(
+            $hydrator = new DoctrineHydrator(
                 $entityManager,
                 $this->entityName
-            ));
+            );
+            $this->setHydrator($hydrator);
             $this->setObject(new $this->entityName());
         }
     }
