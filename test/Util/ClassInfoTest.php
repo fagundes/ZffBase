@@ -1,5 +1,5 @@
 <?php
-namespace Zff\BaseTest\Util;
+namespace ZffTest\Base\Util;
 
 use PHPUnit_Framework_TestCase;
 use Zff\Base\Util\ClassInfo;
@@ -12,12 +12,12 @@ class ClassInfoTest extends PHPUnit_Framework_TestCase {
     public function testGetClassNameWorks() {
         $className = ClassInfo::getClassName( $this->anObject );
 
-        $this->assertSame($className, 'Zff\BaseTest\Util\ClassInfoTest');
+        $this->assertSame(ClassInfoTest::class, $className);
     }
 
     public function testGetSimpleClassNameWorks() {
         $className = ClassInfo::getSimpleClassName( $this->anObject );
 
-        $this->assertSame($className, 'ClassInfoTest');
+        $this->assertSame('ClassInfoTest', $className);
     }
 }

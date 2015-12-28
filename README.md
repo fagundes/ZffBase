@@ -1,4 +1,12 @@
-[![Latest Stable Version](https://poser.pugx.org/fagundes/zff-base/v/stable)](https://packagist.org/packages/fagundes/zff-base) [![Total Downloads](https://poser.pugx.org/fagundes/zff-base/downloads)](https://packagist.org/packages/fagundes/zff-base) [![Latest Unstable Version](https://poser.pugx.org/fagundes/zff-base/v/unstable)](https://packagist.org/packages/fagundes/zff-base) [![License](https://poser.pugx.org/fagundes/zff-base/license)](https://packagist.org/packages/fagundes/zff-base)
+[![Latest Unstable Version](https://img.shields.io/packagist/vpre/fagundes/zff-base.svg)](https://packagist.org/packages/fagundes/zff-base)
+[![Build Status](https://travis-ci.org/fagundes/ZffBase.svg?branch=develop)](https://travis-ci.org/fagundes/ZffBase)
+[![Coverage Status](https://coveralls.io/repos/fagundes/ZffBase/badge.svg?branch=develop&service=github)](https://coveralls.io/github/fagundes/ZffBase?branch=develop)
+
+[![Latest Stable Version](https://img.shields.io/packagist/v/fagundes/zff-base.svg)](https://packagist.org/packages/fagundes/zff-base)
+[![Build Status](https://travis-ci.org/fagundes/ZffBase.svg?branch=0.1.0)](https://travis-ci.org/fagundes/ZffBase)
+[![Coverage Status](https://coveralls.io/repos/fagundes/ZffBase/badge.svg?branch=0.1.0&service=github)](https://coveralls.io/github/fagundes/ZffBase?branch=0.1.0)
+
+[![Total Downloads](https://poser.pugx.org/fagundes/zff-base/downloads)](https://packagist.org/packages/fagundes/zff-base) [![License](https://poser.pugx.org/fagundes/zff-base/license)](https://packagist.org/packages/fagundes/zff-base)
 
 Zff Base for Zend Framework 2
 =============================
