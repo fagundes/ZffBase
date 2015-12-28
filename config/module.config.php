@@ -2,8 +2,13 @@
 
 namespace Zff\Base;
 
-define('CSS_DIR', __DIR__ . '/../view/public/css');
-define('JS_DIR', __DIR__ . '/../view/public/js');
+if(!defined('CSS_DIR')) {
+    define('CSS_DIR', __DIR__ . '/../view/public/css');
+}
+
+if(!defined('JS_DIR')) {
+    define('JS_DIR', __DIR__ . '/../view/public/js');
+}
 
 return [
     'router'             => [
