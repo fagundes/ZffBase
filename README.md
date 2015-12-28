@@ -42,10 +42,11 @@ If you want to help check the contribuing instructions [here](CONTRIBUTING.md).
  - [ ] translate files to english (Partial++)
  - [ ] include tests cases (Partial)
  - [ ] review abstract factories 
- - [ ] change ZFTable and DoctrineORMModule to optional dependency. 
- - [ ] add Bootstrap 3/4 as optional dependency.
+ - [x] change ZFTable and DoctrineORMModule to optional dependency. 
+ - [x] add Bootstrap 3/4 as optional dependency.
  - [ ] create documentation with examples
  - [ ] handle composite (multiple) identifiers in `Zff\Base\Entity\AbstractEntityRepository` 
+ - [ ] move out rename files from AbstractEntity to a Util trait
 
 ## Main classes available
 

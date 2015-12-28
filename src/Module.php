@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @license http://opensource.org/licenses/MIT MIT
  * @copyright Copyright (c) 2015 Vinicius Fagundes
@@ -27,22 +26,19 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
 
     public function getConfig($env = null)
     {
-        return include __DIR__ . '/../config/module.config.php';
+        return include __DIR__.'/../config/module.config.php';
     }
 
-    public function onBootstrap($e)
-    {
-        /**
-         * We dont need constant ROOT to PHP includes.
-         *
-         * @reference http://samminds.com/2012/08/why-root_path-is-not-needed/
-         * @reference http://stackoverflow.com/questions/11969925/how-to-get-applications-root-directory
-         *
-         * But if we need it for something else, just put line below in /public/index.php.
-         *
-         * define('ROOT', dirname(__DIR__));
-         */
-    }
+    /**
+     * We dont need constant ROOT to PHP includes.
+     *
+     * @reference http://samminds.com/2012/08/why-root_path-is-not-needed/
+     * @reference http://stackoverflow.com/questions/11969925/how-to-get-applications-root-directory
+     *
+     * But if we need it for something else, just put line below in /public/index.php.
+     *
+     * define('ROOT', dirname(__DIR__));
+     */
 
     public function getViewHelperConfig()
     {
@@ -56,7 +52,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
                         'success' => 'has-success',
                     ]);
                 },
-                'formControlClasses' => function ($sm) {
+                    'formControlClasses' => function ($sm) {
                     return new Form\View\Helper\FormInputClasses('error', 'form-control', [
                         'error'   => 'form-control-error',
                         'warning' => 'form-control-warning',
@@ -64,7 +60,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
                         'success' => 'form-control-success',
                     ]);
                 }
-            ],
-        ];
+                ],
+            ];
+        }
     }
-}
