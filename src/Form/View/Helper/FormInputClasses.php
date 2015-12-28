@@ -20,12 +20,12 @@ class FormInputClasses extends AbstractHelper
 
     private $defaultKeyClasses = '';
     private $permanentClasses  = '';
-    private $classes           = array(
+    private $classes           = [
         'error'   => 'error',
         'warning' => 'warning',
         'info'    => 'info',
         'success' => 'success',
-    );
+    ];
 
     /**
      * @param string $defaultKeyClasses

@@ -54,7 +54,7 @@ abstract class AbstractCgc extends AbstractValidator
      * Digit modifiers
      * @var array
      */
-    protected $modifiers = array();
+    protected $modifiers = [];
 
     /**
      * By default it is valid if empty

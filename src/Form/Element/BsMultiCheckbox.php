@@ -31,7 +31,7 @@ class BsMultiCheckbox extends MultiCheckbox implements BsElementInterface
         'label_position' => 'append',
     ];
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
     }

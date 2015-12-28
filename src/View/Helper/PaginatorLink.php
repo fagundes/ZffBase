@@ -20,7 +20,7 @@ class PaginatorLink extends PostLink
     /**
      * Cria a tag 'A', com os dados do link atual, e troca o numero da pagina ($page).
      */
-    public function __invoke($title, $page, $options = array())
+    public function __invoke($title, $page, $options = [])
     {
         return $this->link($title, $page, $options);
     }
@@ -42,6 +42,6 @@ class PaginatorLink extends PostLink
     protected function _url($page)
     {
         $urlHelper = $this->view->plugin('Url');
-        return $urlHelper(null, array('page' => $page), true);
+        return $urlHelper(null, ['page' => $page], true);
     }
 }

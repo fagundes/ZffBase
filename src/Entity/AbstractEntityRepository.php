@@ -29,10 +29,10 @@ class AbstractRepository extends EntityRepository
      *
      * @return array the list in pairs
      */
-    public function getList(array $criteria = array(), $orderBy = null, $limit = null, $offset = null)
+    public function getList(array $criteria = [], $orderBy = null, $limit = null, $offset = null)
     {
         $entities = $this->findBy($criteria, $orderBy, $limit, $offset);
-        $pairs    = array();
+        $pairs    = [];
 
         foreach ($entities as $e) {
 

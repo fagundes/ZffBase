@@ -108,9 +108,9 @@ class FormMultiCheckboxItem extends FormInput
         $inputAttributes = $attributes;
 
         if (is_scalar($optionSpec)) {
-            $optionSpec = array(
+            $optionSpec = [
                 'value' => $key
-            );
+            ];
         }
 
         if (isset($optionSpec['value'])) {

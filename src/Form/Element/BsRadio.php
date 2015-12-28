@@ -27,7 +27,7 @@ class BsRadio extends Radio implements BsElementInterface
         'class' => 'c-input c-radio',
     ];
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
     }

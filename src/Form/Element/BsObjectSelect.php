@@ -28,7 +28,7 @@ class BsObjectSelect extends ObjectSelect implements BsElementInterface
         'class' => 'form-control'
     ];
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         $this->attributes['id'] = uniqid();
         parent::__construct($name, $options);

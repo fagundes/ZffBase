@@ -26,7 +26,7 @@ class AbstractEntity
      */
     private static $rename_filter;
 
-    public function __construct($data = array())
+    public function __construct($data = [])
     {
         Configurator::configure($this, $data);
     }
@@ -42,7 +42,7 @@ class AbstractEntity
     protected function getFileRenameFilter()
     {
         if (!self::$rename_filter) {
-            self::$rename_filter = new Rename(array());
+            self::$rename_filter = new Rename([]);
         }
         return self::$rename_filter;
     }

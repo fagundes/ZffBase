@@ -33,7 +33,7 @@ abstract class AbstractFieldset extends Fieldset
      */
     protected $entityManager;
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
         $this->setAttribute('method', 'post');

@@ -28,7 +28,7 @@ abstract class AbstractForm extends Form
      */
     protected $entityManagerName;
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
 

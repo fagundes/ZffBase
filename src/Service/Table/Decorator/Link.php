@@ -29,7 +29,7 @@ class Link extends \ZfTable\Decorator\Cell\Link
 
     public function render($context)
     {
-        $values = array();
+        $values = [];
         if (count($this->vars)) {
             $actualRow = $this->getCell()->getActualRow();
             foreach ($this->vars as $var) {

@@ -21,7 +21,7 @@ class Link extends AbstractHtmlElement
 
     protected $escapeHtmlHelper;
 
-    public function __invoke($title, $url, $options = array())
+    public function __invoke($title, $url, $options = [])
     {
         return $this->link($title, $url, $options);
     }
@@ -37,7 +37,7 @@ class Link extends AbstractHtmlElement
         $urlHelper = $this->view->plugin('Url');
 
         if (!isset($url['params'])) {
-            $url['params'] = array();
+            $url['params'] = [];
         }
 
         return $urlHelper($url['route'], $url['params']);

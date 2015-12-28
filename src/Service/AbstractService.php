@@ -326,7 +326,7 @@ abstract class AbstractService
      */
     public function findAll(array $orderBy = null)
     {
-        return $this->getRepository()->findBy(array(), (array) $orderBy);
+        return $this->getRepository()->findBy([], (array) $orderBy);
     }
 
     /**
@@ -338,7 +338,7 @@ abstract class AbstractService
      * @param array $different Criterios diferentes.
      * @return int total
      */
-    public function count(array $equal = array(), array $different = array())
+    public function count(array $equal = [], array $different = [])
     {
 
         $this->checkIfClassExists($this->entityName);

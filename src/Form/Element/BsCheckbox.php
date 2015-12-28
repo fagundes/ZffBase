@@ -31,7 +31,7 @@ class BsCheckbox extends Checkbox implements BsElementInterface
         'label_position'      => 'append',
     ];
 
-    public function __construct($name = null, $options = array())
+    public function __construct($name = null, $options = [])
     {
         $this->attributes['id'] = uniqid();
         parent::__construct($name, $options);

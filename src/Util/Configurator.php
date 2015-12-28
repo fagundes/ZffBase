@@ -31,7 +31,7 @@ class Configurator
             $setter = 'set' . str_replace(' ', '', ucwords(str_replace('_', ' ', $name)));
 
             if ($tryCall || method_exists($target, $setter)) {
-                call_user_func(array($target, $setter), $value);
+                call_user_func([$target, $setter], $value);
             }
         }
         return $target;

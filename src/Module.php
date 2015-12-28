@@ -16,13 +16,13 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
 
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
+        return [
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
                     __NAMESPACE__ => __DIR__,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
     public function getConfig($env = null)
@@ -49,20 +49,20 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
         return [
             'factories'          => [
                 'formGroupClasses' => function ($sm) {
-                    return new Form\View\Helper\FormInputClasses('error', 'form-group', array(
+                    return new Form\View\Helper\FormInputClasses('error', 'form-group', [
                         'error'   => 'has-error',
                         'warning' => 'has-warning',
                         'info'    => 'has-info',
                         'success' => 'has-success',
-                    ));
+                    ]);
                 },
                 'formControlClasses' => function ($sm) {
-                    return new Form\View\Helper\FormInputClasses('error', 'form-control', array(
+                    return new Form\View\Helper\FormInputClasses('error', 'form-control', [
                         'error'   => 'form-control-error',
                         'warning' => 'form-control-warning',
                         'info'    => 'form-control-info',
                         'success' => 'form-control-success',
-                    ));
+                    ]);
                 }
             ],
         ];

@@ -17,7 +17,6 @@
         "php": ">=5.5",
         "zendframework/zend-form": "2.5.x",
         "zendframework/zend-mvc": "2.5.x",
-        "zendframework/zend-servicemanager": "2.5.x",
         "zendframework/zend-modulemanager": "2.5.x",
         "zendframework/zend-validator": "2.5.x",
         "zendframework/zend-view": "2.5.x",
@@ -29,10 +28,8 @@
         "zendframework/zend-serializer": "~2.5",
         "zendframework/zend-log": "~2.5",
         "zendframework/zend-i18n": "~2.5",
-        "zendframework/zend-console": "~2.5",
         "phpunit/phpunit": "~4",
-        "squizlabs/php_codesniffer": "~2",
-        "thomasbachem/php-short-array-syntax-converter": "dev-master"
+        "squizlabs/php_codesniffer": "~2"
     },
     "autoload": {
         "psr-4": {

@@ -103,18 +103,18 @@ class ControllerRouteStack extends TreeRouteStack
                 throw new Exception\InvalidArgumentException('Chain routes must be an array or Traversable object');
             }
 
-            $chainRoutes = array_merge(array($specs), $specs['chain_routes']);
+            $chainRoutes = array_merge([$specs], $specs['chain_routes']);
             unset($chainRoutes[0]['chain_routes']);
 
             if (isset($specs['child_routes'])) {
                 unset($chainRoutes[0]['child_routes']);
             }
 
-            $options = array(
+            $options = [
                 'routes' => $chainRoutes,
                 'route_plugins' => $this->routePluginManager,
                 'prototypes' => $this->prototypes,
-            );
+            ];
 
             $route = $this->routePluginManager->get('chain', $options);
         } else {
@@ -126,13 +126,13 @@ class ControllerRouteStack extends TreeRouteStack
         }
 
         if (isset($specs['child_routes'])) {
-            $options = array(
+            $options = [
                 'route' => $route,
                 'may_terminate' => (isset($specs['may_terminate']) && $specs['may_terminate']),
                 'child_routes' => $specs['child_routes'],
                 'route_plugins' => $this->routePluginManager,
                 'prototypes' => $this->prototypes,
-            );
+            ];
 
             $priority = (isset($route->priority) ? $route->priority : null);
 

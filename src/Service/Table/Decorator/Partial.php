@@ -34,7 +34,7 @@ class Partial extends \ZfTable\Decorator\Cell\AbstractCellDecorator
      * @param array $options
      * @throws Exception\InvalidArgumentException
      */
-    public function __construct(array $options = array())
+    public function __construct(array $options = [])
     {
         if (!isset($options['partial'])) {
             throw new Exception\InvalidArgumentException('Partial key in options argument required');
