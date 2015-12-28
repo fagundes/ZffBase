@@ -39,15 +39,8 @@ If you want to help check the contribuing instructions [here](CONTRIBUTING.md).
 
 ### TODO
 
- - [x] update to php 5.5+
- - [x] add license header on all files
- - [x] include bs form classes
- - [x] review Debugger static methods
- - [x] removed crypt classes (use zend-crypt instead) 
- - [x] review classes name (Partial)
- - [x] include get/set autocommit in `Zff\Base\Service\AbstractService`
- - [ ] translate files to english (Partial+)
- - [ ] include tests cases
+ - [ ] translate files to english (Partial++)
+ - [ ] include tests cases (Partial)
  - [ ] review abstract factories 
  - [ ] change ZFTable and DoctrineORMModule to optional dependency. 
  - [ ] add Bootstrap 3/4 as optional dependency.

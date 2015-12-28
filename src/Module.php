@@ -33,12 +33,12 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
     public function onBootstrap($e)
     {
         /**
-         * Nao precisamos da constant ROOT para os includes PHP.
+         * We dont need constant ROOT to PHP includes.
          *
          * @reference http://samminds.com/2012/08/why-root_path-is-not-needed/
          * @reference http://stackoverflow.com/questions/11969925/how-to-get-applications-root-directory
          *
-         * Mas caso seja necessario para outra coisa, cole a linha abaixo em /public/index.php.
+         * But if we need it for something else, just put line below in /public/index.php.
          *
          * define('ROOT', dirname(__DIR__));
          */
