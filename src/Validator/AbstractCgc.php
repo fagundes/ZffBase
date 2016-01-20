@@ -110,7 +110,7 @@ abstract class AbstractCgc extends AbstractValidator
         }
 
         // check for expanded digits
-        if (str_repeqat($data[0], $this->size) == $data) {
+        if (str_repeat($data[0], $this->size) == $data) {
             $this->error(self::EXPANDED, $value);
             return false;
         }
