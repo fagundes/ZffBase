@@ -72,15 +72,17 @@ class File
 
         $finfo = new \finfo();
         $ctype = $finfo->file($path, FILEINFO_MIME);
+        $filesize = filesize($path);
 
+        header('Accept-Ranges: bytes');
         header("Content-Type: $ctype");
-        header("Content-Length: " . \filesize($path));
+        header("Content-Length: $filesize");
         header("Content-Disposition: $disposition; filename=\"$displayFilename\"");
 
         ob_clean();
         flush();
         set_time_limit(0);
         readfile($path);
-        exit(0);
+        exit;
     }
 }
