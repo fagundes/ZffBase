@@ -3,8 +3,8 @@
 [![Coverage Status](https://coveralls.io/repos/fagundes/ZffBase/badge.svg?branch=develop&service=github)](https://coveralls.io/github/fagundes/ZffBase?branch=develop)
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/fagundes/zff-base.svg)](https://packagist.org/packages/fagundes/zff-base)
-[![Build Status](https://travis-ci.org/fagundes/ZffBase.svg?branch=0.1.0)](https://travis-ci.org/fagundes/ZffBase)
-[![Coverage Status](https://coveralls.io/repos/fagundes/ZffBase/badge.svg?branch=0.1.0&service=github)](https://coveralls.io/github/fagundes/ZffBase?branch=0.1.0)
+[![Build Status](https://travis-ci.org/fagundes/ZffBase.svg?branch=0.1.4)](https://travis-ci.org/fagundes/ZffBase)
+[![Coverage Status](https://coveralls.io/repos/fagundes/ZffBase/badge.svg?branch=0.1.4&service=github)](https://coveralls.io/github/fagundes/ZffBase?branch=0.1.4)
 
 [![Total Downloads](https://poser.pugx.org/fagundes/zff-base/downloads)](https://packagist.org/packages/fagundes/zff-base) [![License](https://poser.pugx.org/fagundes/zff-base/license)](https://packagist.org/packages/fagundes/zff-base)
 
@@ -37,7 +37,7 @@ Installation without composer is not officially supported and requires you to ma
 
 If you want to help check the contribuing instructions [here](CONTRIBUTING.md).
 
-### TODO
+## TODO
 
  - [ ] translate files to english (Partial++)
  - [ ] include tests cases (Partial)
@@ -51,11 +51,10 @@ If you want to help check the contribuing instructions [here](CONTRIBUTING.md).
 ## Main classes available
 
 * Abstract Factories:
-  * `Zff\Base\Form\FormAbstractFactory`         - creates all classes that inherits of `Zff\Base\Form\AbstractForm`
+  * `Zff\Base\Form\FormAbstractFactory`         - creates all classes that inherits of `Zff\Base\Form\AbstractForm` or `Zff\Base\Form\AbstractFieldset`
   * `Zff\Base\Form\InputFilterAbstractFactory`  - creates all classes that inherits of `Zff\Base\Form\AbstractInputFilter`
   * `Zff\Base\Service\ServiceAbstractFactory`   - creates all classes that inherits of `Zff\Base\Service\AbstractService`
 * Util classes at the namespace `Zff\Base\Util`:
-  * `Zff\Base\Util\Crypt`    - Basic crypt functions.
   * `Zff\Base\Util\Debugger` - Debug fuctions.
   * `Zff\Base\Util\File`     - Some functions to handle files.
   * and more
@@ -80,4 +79,4 @@ If you want to help check the contribuing instructions [here](CONTRIBUTING.md).
   * `Zff\Base\Form\View\Helper\FormMultiCheckboxSplit`       -    
   * `Zff\Base\Form\View\Helper\FormRadioSplit`               -    
 * Router
-  * `Zff\Base\Mvc\Router\ControllerRouteStack` - Copy a model route to several  children controllers  
+  * `Zff\Base\Mvc\Router\ControllerRouteStack` - Copy a model route to several children controllers
