@@ -28,6 +28,11 @@ abstract class AbstractForm extends Form
      */
     protected $entityManagerName;
 
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    protected $entityManager;
+
     public function __construct($name = null, $options = [])
     {
         parent::__construct($name, $options);
@@ -49,19 +54,21 @@ abstract class AbstractForm extends Form
 
     public function loadHydrator($entityManager)
     {
-
+        $this->entityManager = $entityManager;
         if (!$this->entityName && $this->entityName !== false) {
             throw new \RuntimeException('$entityName property must be defined!');
         }
 
         if ($this->entityName !== false) {
-            $hydrator = new DoctrineHydrator(
-                $entityManager,
-                $this->entityName
-            );
-            $this->setHydrator($hydrator);
+            $this->setHydrator(new DoctrineHydrator($entityManager));
             $this->setObject(new $this->entityName());
         }
+    }
+
+    public function __clone()
+    {
+        $this->loadHydrator($this->entityManager);
+        parent::__clone();
     }
 
     abstract public function initialize();

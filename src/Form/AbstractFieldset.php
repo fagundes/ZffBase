@@ -57,12 +57,15 @@ abstract class AbstractFieldset extends Fieldset
         }
 
         if ($this->entityName !== false) {
-            $this->setHydrator(new DoctrineHydrator(
-                $entityManager,
-                $this->entityName
-            ));
+            $this->setHydrator(new DoctrineHydrator($entityManager));
             $this->setObject(new $this->entityName());
         }
+    }
+
+    public function __clone()
+    {
+        $this->loadHydrator($this->entityManager);
+        parent::__clone();
     }
 
     abstract public function initialize();
