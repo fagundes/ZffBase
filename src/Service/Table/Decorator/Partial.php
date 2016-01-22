@@ -7,9 +7,14 @@
 
 namespace Zff\Base\Service\Table\Decorator;
 
+use ZfTable\Decorator\Cell\AbstractCellDecorator;
 use ZfTable\Decorator\Exception;
 
-class Partial extends \ZfTable\Decorator\Cell\AbstractCellDecorator
+/**
+ * Class Partial
+ * @todo move decorator to ZffTable
+ */
+class Partial extends AbstractCellDecorator
 {
 
     /**

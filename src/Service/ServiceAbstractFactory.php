@@ -26,7 +26,7 @@ class ServiceAbstractFactory implements AbstractFactoryInterface
     {
         if (class_exists($requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
-            if ($reflect->isSubclassOf('Zff\Base\Service\AbstractService')) {
+            if ($reflect->isSubclassOf(AbstractService::class)) {
                 return true;
             }
         }
@@ -93,6 +93,6 @@ class ServiceAbstractFactory implements AbstractFactoryInterface
         }
 
         $serviceNeeded = $serviceLocator->get($serviceNeededName);
-        call_user_method($methodSet, $service, $serviceNeeded);
+        call_user_func([$service,$methodSet], $serviceNeeded);
     }
 }

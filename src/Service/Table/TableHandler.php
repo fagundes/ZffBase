@@ -9,6 +9,8 @@ namespace Zff\Base\Service\Table;
 
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\Stdlib\Parameters;
+use ZfTable\AbstractTable;
 
 class TableHandler implements ServiceLocatorAwareInterface
 {
@@ -75,7 +77,7 @@ class TableHandler implements ServiceLocatorAwareInterface
     /**
      *
      * @param string $tableName
-     * @return \ZfTable\AbstractTable
+     * @return AbstractTable
      */
     public function createTable($tableName)
     {
@@ -92,10 +94,14 @@ class TableHandler implements ServiceLocatorAwareInterface
         return $table;
     }
 
-    public function prepareTable(\ZfTable\AbstractTable $table, $queryBuilder)
+    /**
+     * @param AbstractTable $table
+     * @param $queryBuilder
+     */
+    public function prepareTable(AbstractTable $table, $queryBuilder)
     {
         $table->setAdapter($this->getDbAdapter())
                 ->setSource($queryBuilder)
-                ->setParamAdapter(new \Zend\Stdlib\Parameters($table->getForm()->getData()));
+                ->setParamAdapter(new Parameters($table->getForm()->getData()));
     }
 }

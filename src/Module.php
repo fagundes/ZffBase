@@ -26,7 +26,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
 
     public function getConfig($env = null)
     {
-        return include __DIR__.'/../config/module.config.php';
+        return include __DIR__ . '/../config/module.config.php';
     }
 
     /**
@@ -43,24 +43,24 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Vi
     public function getViewHelperConfig()
     {
         return [
-            'factories'          => [
+            'factories' => [
                 'formGroupClasses' => function ($sm) {
                     return new Form\View\Helper\FormInputClasses('error', 'form-group', [
-                        'error'   => 'has-error',
+                        'error' => 'has-error',
                         'warning' => 'has-warning',
-                        'info'    => 'has-info',
+                        'info' => 'has-info',
                         'success' => 'has-success',
                     ]);
                 },
-                    'formControlClasses' => function ($sm) {
+                'formControlClasses' => function ($sm) {
                     return new Form\View\Helper\FormInputClasses('error', 'form-control', [
-                        'error'   => 'form-control-error',
+                        'error' => 'form-control-error',
                         'warning' => 'form-control-warning',
-                        'info'    => 'form-control-info',
+                        'info' => 'form-control-info',
                         'success' => 'form-control-success',
                     ]);
                 }
-                ],
-            ];
-        }
+            ],
+        ];
     }
+}

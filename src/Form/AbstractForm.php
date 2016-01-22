@@ -19,9 +19,9 @@ use Zff\Base\Hydrator\DoctrineObject as DoctrineHydrator;
 abstract class AbstractForm extends Form
 {
     /**
-     * @var string
+     * @var string|bool
      */
-    protected $entityName;
+    protected $entityName = false;
 
     /**
      * @var string

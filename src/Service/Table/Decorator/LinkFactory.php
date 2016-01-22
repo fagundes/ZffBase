@@ -9,10 +9,21 @@ namespace Zff\Base\Service\Table\Decorator;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
+/**
+ * Class LinkFactory
+ * @todo move decorator to ZffTable
+ */
 class LinkFactory implements FactoryInterface
 {
+    /**
+     * @var array
+     */
     protected $options;
 
+    /**
+     * LinkFactory constructor.
+     * @param array|null $options
+     */
     public function __construct($options = null)
     {
         $this->options = $options ? : [];

@@ -34,20 +34,28 @@ class AbstractController extends AbstractActionController
         return $this->postedData;
     }
 
-    protected function htmlResponse($html)
+    /**
+     * @param $htmlString
+     * @return \Zend\Stdlib\ResponseInterface
+     */
+    protected function htmlResponse($htmlString)
     {
         $response = $this->getResponse();
         $response->setStatusCode(200);
-        $response->setContent($html);
+        $response->setContent($htmlString);
         return $response;
     }
 
-    protected function jsonResponse($html)
+    /**
+     * @param $jsonString
+     * @return \Zend\Stdlib\ResponseInterface
+     */
+    protected function jsonResponse($jsonString)
     {
         $response = $this->getResponse();
         $response->getHeaders()->addHeaderLine('Content-Type', 'text/json');
         $response->setStatusCode(200);
-        $response->setContent($html);
+        $response->setContent($jsonString);
         return $response;
     }
 }

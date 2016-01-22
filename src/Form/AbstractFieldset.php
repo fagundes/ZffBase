@@ -7,7 +7,7 @@
 namespace Zff\Base\Form;
 
 use Zend\Form\Fieldset;
-use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Zff\Base\Hydrator\DoctrineObject as DoctrineHydrator;
 
 /**
  * Abstract Fieldset
@@ -19,9 +19,9 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 abstract class AbstractFieldset extends Fieldset
 {
     /**
-     * @var string
+     * @var string|bool
      */
-    protected $entityName;
+    protected $entityName = false;
 
     /**
      * @var string

@@ -19,7 +19,7 @@ return [
             'zff-base' => __DIR__ . '/../view',
         ],
         'template_map'        => [
-            //configura alguns partials/elements muito usados
+            //some commonly used partials/elements
             'element/message'    => __DIR__ . '/../view/base/element/message.phtml',
             'element/breadcrumb' => __DIR__ . '/../view/base/element/breadcrumb.phtml',
             'element/paginator'  => __DIR__ . '/../view/base/element/paginator.phtml',

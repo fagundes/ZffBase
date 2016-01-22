@@ -18,7 +18,7 @@ Zff Base for Zend Framework 2
 * php 5.5+ (with fileinfo extension)
 * Zend Framework 2
 * DoctrineModule & DoctrineORMModule
-* ZFTable
+* ZFTable (optional)
 
 ## Installation
 
@@ -39,44 +39,45 @@ If you want to help check the contribuing instructions [here](CONTRIBUTING.md).
 
 ## TODO
 
- - [ ] translate files to english (Partial++)
- - [ ] include tests cases (Partial)
- - [ ] review abstract factories 
- - [x] change ZFTable and DoctrineORMModule to optional dependency. 
- - [x] add Bootstrap 3/4 as optional dependency.
+ - [ ] translate files to english (Partial+++)
+ - [ ] setup and include tests cases (Partial)
+ - [ ] review abstract factories (Partial)
  - [ ] create documentation with examples
- - [ ] handle composite (multiple) identifiers in `Zff\Base\Entity\AbstractEntityRepository` 
  - [ ] move out rename files from AbstractEntity to a Util trait
+ - [ ] move out Table Decorator to ZffTable
+ - [x] change ZFTable and DoctrineORMModule to optional dependency.
+ - [x] add Bootstrap 3/4 as optional dependency.
+ - [x] drop `Entity\AbstractEntityRepository`.
 
 ## Main classes available
 
 * Abstract Factories:
-  * `Zff\Base\Form\FormAbstractFactory`         - creates all classes that inherits of `Zff\Base\Form\AbstractForm` or `Zff\Base\Form\AbstractFieldset`
-  * `Zff\Base\Form\InputFilterAbstractFactory`  - creates all classes that inherits of `Zff\Base\Form\AbstractInputFilter`
-  * `Zff\Base\Service\ServiceAbstractFactory`   - creates all classes that inherits of `Zff\Base\Service\AbstractService`
-* Util classes at the namespace `Zff\Base\Util`:
-  * `Zff\Base\Util\Debugger` - Debug fuctions.
-  * `Zff\Base\Util\File`     - Some functions to handle files.
+  * `Form\FormAbstractFactory`         - creates all classes that inherits of `Form\AbstractForm` or `Form\AbstractFieldset`
+  * `Form\InputFilterAbstractFactory`  - creates all classes that inherits of `Form\AbstractInputFilter`
+  * `Service\ServiceAbstractFactory`   - creates all classes that inherits of `Service\AbstractService`
+* Util classes at the namespace `Util`:
+  * `Util\Debugger` - Debug fuctions.
+  * `Util\File`     - Some functions to handle files.
   * and more
 * Others abstract classes:
-  * `Zff\Base\Entity\AbstractEntity`    - Entity
-  * `Zff\Base\Service\AbstractService`  - Service
-  * `Zff\Base\Form\AbstractForm`        - Form
-  * `Zff\Base\Form\AbstractInputFilter` - InputFilter
+  * `Entity\AbstractEntity`    - Entity
+  * `Service\AbstractService`  - Service
+  * `Form\AbstractForm`        - Form
+  * `Form\AbstractInputFilter` - InputFilter
 * Helper classes
-  * `Zff\Base\View\Helper\Link`             - creates a tag Anchor using Url Helper params
-  * `Zff\Base\View\Helper\PostLink`         - as Link but uses js to POST 
-  * `Zff\Base\View\Helper\PaginatorLink`    - as PostLink receives a $page to create a tag Anchor
-  * `Zff\Base\View\Helper\GetRoute`         - checks if a passed route is the current one
-  * `Zff\Base\View\Helper\Escaper\NoEscape` - creates a fake Escape, usefull with some helpers that must have a escape but you dont really want to change anything
+  * `View\Helper\Link`             - creates a tag Anchor using Url Helper params
+  * `View\Helper\PostLink`         - as Link but uses js to POST
+  * `View\Helper\PaginatorLink`    - as PostLink receives a $page to create a tag Anchor
+  * `View\Helper\GetRoute`         - checks if a passed route is the current one
+  * `View\Helper\Escaper\NoEscape` - creates a fake Escape, usefull with some helpers that must have a escape but you dont really want to change anything
 * Form Elements
-  * `Zff\Base\Form\Element\Bs*`             - Includes Bootstrap 4 classes
+  * `Form\Element\Bs*`             - Includes Bootstrap 4 classes
 * Form Helper classes
-  * `Zff\Base\Form\View\Helper\BsFormRow`                    - Creates a single element (as FormRow Helper) but using Bootstrap struture and css classes
-  * `Zff\Base\Form\View\Helper\BsForm`                       - Creates the entire form (as Form Helper) but using Bootstrap struture and css classes
-  * `Zff\Base\Form\View\Helper\FormActionButton`             - 
-  * `Zff\Base\Form\View\Helper\FormInputClasses`             -    
-  * `Zff\Base\Form\View\Helper\FormMultiCheckboxSplit`       -    
-  * `Zff\Base\Form\View\Helper\FormRadioSplit`               -    
+  * `Form\View\Helper\BsFormRow`                    - Creates a single element (as FormRow Helper) but using Bootstrap struture and css classes
+  * `Form\View\Helper\BsForm`                       - Creates the entire form (as Form Helper) but using Bootstrap struture and css classes
+  * `Form\View\Helper\FormActionButton`             -
+  * `Form\View\Helper\FormInputClasses`             -
+  * `Form\View\Helper\FormMultiCheckboxSplit`       -
+  * `Form\View\Helper\FormRadioSplit`               -
 * Router
-  * `Zff\Base\Mvc\Router\ControllerRouteStack` - Copy a model route to several children controllers
+  * `Mvc\Router\ControllerRouteStack` - Copy a model route to several children controllers

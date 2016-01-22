@@ -7,6 +7,9 @@
 
 namespace Zff\Base\Form;
 
+use DoctrineModule\Persistence\ObjectManagerAwareInterface;
+use Zend\Form\Factory as FormFactory;
+use Zend\InputFilter\InputFilterInterface;
 use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -21,13 +24,16 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 class FormAbstractFactory implements AbstractFactoryInterface
 {
 
+    /**
+     * @inheritdoc
+     */
     public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
 
         if (class_exists($requestedName)) {
             $reflect = new \ReflectionClass($requestedName);
-            if ($reflect->isSubclassOf('Zff\Base\Form\AbstractForm')
-                || $reflect->isSubclassOf('Zff\Base\Form\AbstractFieldset')
+            if ($reflect->isSubclassOf(AbstractForm::class)
+                || $reflect->isSubclassOf(AbstractFieldset::class)
             ) {
                 return true;
             }
@@ -35,6 +41,9 @@ class FormAbstractFactory implements AbstractFactoryInterface
         return false;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         if ($this->canCreateServiceWithName($serviceLocator, $name, $requestedName)) {
@@ -49,18 +58,23 @@ class FormAbstractFactory implements AbstractFactoryInterface
             $entityManager = $serviceLocator->get($form->getEntityManagerName());
             $form->loadHydrator($entityManager);
 
-            if ($form instanceof \DoctrineModule\Persistence\ObjectManagerAwareInterface) {
+            if ($form instanceof ObjectManagerAwareInterface) {
                 $form->setObjectManager($entityManager);
             }
 
             //make sure FormElementManager will create  new registered form elements
-            $form->setFormFactory(new \Zend\Form\Factory($serviceLocator->get('FormElementManager')));
+            $form->setFormFactory(new FormFactory($serviceLocator->get('FormElementManager')));
 
             return $form;
         }
         return null;
     }
 
+    /**
+     * @param ServiceLocatorInterface $serviceLocator
+     * @param $requestedName
+     * @return null|InputFilterInterface
+     */
     protected function getFormFilter(ServiceLocatorInterface $serviceLocator, $requestedName)
     {
         $filterName = $requestedName . 'Filter';

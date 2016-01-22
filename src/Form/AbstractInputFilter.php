@@ -22,11 +22,6 @@ abstract class AbstractInputFilter extends InputFilter
     /**
      * @var string
      */
-    protected $entityName;
-
-    /**
-     * @var string
-     */
     protected $entityManagerName = 'doctrine.entitymanager.orm_default';
 
     public function getEntityManagerName()

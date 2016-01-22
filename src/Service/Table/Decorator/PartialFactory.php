@@ -6,16 +6,28 @@
 
 namespace Zff\Base\Service\Table\Decorator;
 
+use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
+/**
+ * Class PartialFactory
+ * @todo move decorator to ZffTable
+ */
 class PartialFactory implements FactoryInterface
 {
+    /**
+     * @var array
+     */
     protected $options;
 
+    /**
+     * PartialFactory constructor.
+     * @param array|null $options
+     */
     public function __construct($options = null)
     {
-        $this->options = $options ? : [];
+        $this->options = $options ?: [];
     }
 
     /**
@@ -31,7 +43,7 @@ class PartialFactory implements FactoryInterface
 
         $decorator = new Partial($this->options);
         if (!$viewHelperManager || !$viewHelperManager->has('partial')) {
-            throw new \Zend\ServiceManager\Exception\ServiceNotCreatedException('Partial Helper couldn\'t be created!');
+            throw new ServiceNotCreatedException('Partial Helper couldn\'t be created!');
         }
         $decorator->setPartialHelper($viewHelperManager->get('partial'));
         return $decorator;

@@ -7,26 +7,38 @@
 
 namespace Zff\Base\Service\Table\Decorator;
 
+use Zend\View\Helper\BasePath;
+
+/**
+ * Class Link
+ * @todo move decorator to ZffTable
+ */
 class Link extends \ZfTable\Decorator\Cell\Link
 {
     /**
-     * @var \Zend\View\Helper\BasePath
+     * @var BasePath
      */
     protected $basePathHelper;
 
     /**
-     * @return \Zend\View\Helper\BasePath
+     * @return BasePath
      */
     public function getBasePathHelper()
     {
         return $this->basePathHelper;
     }
 
-    public function setBasePathHelper(\Zend\View\Helper\BasePath $basePathHelper)
+    /**
+     * @param BasePath $basePathHelper
+     */
+    public function setBasePathHelper(BasePath $basePathHelper)
     {
         $this->basePathHelper = $basePathHelper;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function render($context)
     {
         $values = [];
