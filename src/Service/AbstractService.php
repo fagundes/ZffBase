@@ -182,7 +182,7 @@ abstract class AbstractService
     }
 
     /**
-     * @return array Array de services utilizadas pelas classes concretas
+     * @return array list of service's names
      */
     public function getServices()
     {
@@ -191,7 +191,7 @@ abstract class AbstractService
 
     /**
      * Proxy Method.
-     * @return \Doctrine\ORM\EntityRepository A classe de repositorio
+     * @return \Doctrine\ORM\EntityRepository repository object
      */
     public function getRepository()
     {
@@ -249,7 +249,7 @@ abstract class AbstractService
     }
 
     /**
-     * Atualiza o array de entidades.
+     * Update all entities given.
      *
      * @param array $entities
      * @return array Entities updated
@@ -266,7 +266,10 @@ abstract class AbstractService
     }
 
     /**
+     * Delete entity with the $id given.
      *
+     * @param $id
+     * @return bool
      */
     public function delete($id)
     {
@@ -284,6 +287,8 @@ abstract class AbstractService
     }
 
     /**
+     * Delete all entities from this entity.
+     *
      * @return boolean|array
      */
     public function deleteAll()
@@ -299,7 +304,9 @@ abstract class AbstractService
     }
 
     /**
-     * Metodo proxy EntityRepository#findBy.
+     * Finds entities by a set of criteria.
+     * Method proxy to EntityRepository::findBy
+     *
      * @param array $criteria
      * @param array $orderBy
      * @return array
@@ -310,7 +317,9 @@ abstract class AbstractService
     }
 
     /**
-     * Metodo proxy EntityRepository#find
+     * Finds an entity by its primary key / identifier.
+     * Method proxy to EntityRepository::find
+     *
      * @param int $id
      * @return \Zff\Base\Entity\AbstractEntity
      */
@@ -320,7 +329,8 @@ abstract class AbstractService
     }
 
     /**
-     * Como findBy mais retorna todos
+     * Finds all entities WIHOUT a set of criteria.
+     *
      * @param array $orderBy
      * @return array
      */
@@ -368,7 +378,7 @@ abstract class AbstractService
     }
 
     /**
-     * @param int $currentPageNumberthe doctrine object query
+     * @param int $currentPageNumber the doctrine object query
      * @param int $itemCountPerPage items per page
      * @return \Zff\Base\Service\AbstractService
      */
@@ -425,7 +435,7 @@ abstract class AbstractService
     }
 
     /**
-     * @param \Zff\Base\Service\Table\AbstractTable $table
+     * @param \ZfTable\AbstractTable $table
      * @param \Doctrine\ORM\QueryBuilder $queryBuilder
      * @return string the html resulting
      */
