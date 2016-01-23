@@ -89,8 +89,8 @@ abstract class AbstractService
      */
     public function __construct(EntityManager $entityManager = null)
     {
-        $this->autocommit  = true;
-        $this->maxResults  = 20;
+        $this->autocommit = true;
+        $this->maxResults = 20;
         $this->firstResult = 1;
         if ($entityManager) {
             $this->setEntityManager($entityManager);
@@ -126,7 +126,7 @@ abstract class AbstractService
      */
     public function getEntityManagerName()
     {
-        return $this->entityManagerName? : 'doctrine.entitymanager.orm_default';
+        return $this->entityManagerName ?: 'doctrine.entitymanager.orm_default';
     }
 
     public function setEntityManagerName($entityManagerName)
@@ -136,7 +136,7 @@ abstract class AbstractService
 
     public function getDbAdapterName()
     {
-        return $this->dbAdapterName ? : 'zfdb_adapter';
+        return $this->dbAdapterName ?: 'zfdb_adapter';
     }
 
     public function setDbAdapterName($dbAdapterName)
@@ -159,8 +159,8 @@ abstract class AbstractService
         if (!$this->tableClassName) {
             $reflectionFinalClass = new \ReflectionClass($this);
             $this->tableClassName = $reflectionFinalClass->getNamespaceName()
-                .'\\Table\\'
-                .$reflectionFinalClass->getShortName();
+                . '\\Table\\'
+                . $reflectionFinalClass->getShortName();
         }
         return $this->tableClassName;
     }
@@ -203,6 +203,7 @@ abstract class AbstractService
      * Proxy Method.
      *
      * @param mixed $id
+     *
      * @return \Zff\Base\Entity\AbstractEntity
      */
     public function getReference($id)
@@ -212,6 +213,7 @@ abstract class AbstractService
 
     /**
      * @param array|\Zff\Base\Entity\AbstractEntity $entity
+     *
      * @return \Zff\Base\Entity\AbstractEntity
      */
     public function insert($entity)
@@ -230,6 +232,7 @@ abstract class AbstractService
 
     /**
      * @param array|\Zff\Base\Entity\AbstractEntity $entity
+     *
      * @return \Zff\Base\Entity\AbstractEntity
      */
     public function update($entity)
@@ -252,6 +255,7 @@ abstract class AbstractService
      * Update all entities given.
      *
      * @param array $entities
+     *
      * @return array Entities updated
      */
     public function updateAll($entities)
@@ -269,6 +273,7 @@ abstract class AbstractService
      * Delete entity with the $id given.
      *
      * @param $id
+     *
      * @return bool
      */
     public function delete($id)
@@ -293,8 +298,8 @@ abstract class AbstractService
      */
     public function deleteAll()
     {
-        $dql    = "DELETE from ".$this->entityName;
-        $qb     = $this->entityManager->createQuery($dql);
+        $dql = "DELETE from " . $this->entityName;
+        $qb = $this->entityManager->createQuery($dql);
         $result = $qb->getResult();
         if ($result) {
             return $result;
@@ -309,11 +314,26 @@ abstract class AbstractService
      *
      * @param array $criteria
      * @param array $orderBy
+     *
      * @return array
      */
     public function findBy(array $criteria, array $orderBy = null)
     {
-        return $this->getRepository()->findBy($criteria, (array) $orderBy);
+        return $this->getRepository()->findBy($criteria, (array)$orderBy);
+    }
+
+    /**
+     * Finds a single entity by a set of criteria.
+     * Method proxy to EntityRepository::findOneBy
+     *
+     * @param array $criteria
+     * @param array $orderBy
+     *
+     * @return object|null
+     */
+    public function findOneBy(array $criteria, array $orderBy = null)
+    {
+        return $this->getRepository()->findOneBy($criteria, (array)$orderBy);
     }
 
     /**
@@ -321,6 +341,7 @@ abstract class AbstractService
      * Method proxy to EntityRepository::find
      *
      * @param int $id
+     *
      * @return \Zff\Base\Entity\AbstractEntity
      */
     public function find($id)
@@ -332,11 +353,12 @@ abstract class AbstractService
      * Finds all entities WIHOUT a set of criteria.
      *
      * @param array $orderBy
+     *
      * @return array
      */
     public function findAll(array $orderBy = null)
     {
-        return $this->getRepository()->findBy([], (array) $orderBy);
+        return $this->getRepository()->findBy([], (array)$orderBy);
     }
 
     /**
@@ -346,6 +368,7 @@ abstract class AbstractService
      *
      * @param array $equal Criterios iguais.
      * @param array $different Criterios diferentes.
+     *
      * @return int total
      */
     public function count(array $equal = [], array $different = [])
@@ -359,7 +382,7 @@ abstract class AbstractService
 
         $i = 0;
         foreach ($equal as $field => $value) {
-            $fieldParam  = $field.$i++;
+            $fieldParam = $field . $i++;
             $whereClause = is_array($value) ? "e.$field in (:$fieldParam)" : "e.$field = :$fieldParam";
 
             $qb->andWhere($whereClause);
@@ -367,7 +390,7 @@ abstract class AbstractService
         }
 
         foreach ($different as $field => $value) {
-            $fieldParam  = $field.$i++;
+            $fieldParam = $field . $i++;
             $whereClause = is_array($value) ? "e.$field not in (:$fieldParam)" : "e.$field <> :$fieldParam";
 
             $qb->andWhere($whereClause);
@@ -380,11 +403,12 @@ abstract class AbstractService
     /**
      * @param int $currentPageNumber the doctrine object query
      * @param int $itemCountPerPage items per page
+     *
      * @return \Zff\Base\Service\AbstractService
      */
     public function setPagination($currentPageNumber = null, $itemCountPerPage = null)
     {
-        $this->maxResults  = $itemCountPerPage !== null ? $itemCountPerPage : $this->maxResults;
+        $this->maxResults = $itemCountPerPage !== null ? $itemCountPerPage : $this->maxResults;
         $this->firstResult = $currentPageNumber !== null ? ($this->maxResults - 1)
             * $this->maxResults : $this->firstResult;
         return $this;
@@ -394,8 +418,9 @@ abstract class AbstractService
      * Create and returns a doctrine pagination.
      *
      * @param Query $query the doctrine object query
-     * @param int $currentPageNumber current page
-     * @param int $itemCountPerPage items per page
+     * @param int   $currentPageNumber current page
+     * @param int   $itemCountPerPage items per page
+     *
      * @return Paginator
      */
     public function getPaginator(
@@ -403,8 +428,9 @@ abstract class AbstractService
         $currentPageNumber = null,
         $itemCountPerPage
         = null
-    ) {
-    
+    )
+    {
+
         $this->setPagination($currentPageNumber, $itemCountPerPage);
         $query->setFirstResult($this->firstResult)
             ->setMaxResults($this->maxResults);
@@ -420,6 +446,7 @@ abstract class AbstractService
 
     /**
      * @param array|mixed $data
+     *
      * @return Table\AbstractTable
      */
     public function createTable($data)
@@ -427,7 +454,7 @@ abstract class AbstractService
         $tableHandler = $this->getTableHandler();
 
         $table = $tableHandler->createTable($this->getTableClassName());
-        $form  = $table->getForm();
+        $form = $table->getForm();
 
         $form->setData($data);
 
@@ -435,8 +462,9 @@ abstract class AbstractService
     }
 
     /**
-     * @param \ZfTable\AbstractTable $table
+     * @param \ZfTable\AbstractTable     $table
      * @param \Doctrine\ORM\QueryBuilder $queryBuilder
+     *
      * @return string the html resulting
      */
     public function renderTable(\ZfTable\AbstractTable $table, \Doctrine\ORM\QueryBuilder $queryBuilder)
@@ -452,7 +480,7 @@ abstract class AbstractService
     {
 
         $table = $this->createTable($data);
-        $form  = $table->getForm();
+        $form = $table->getForm();
 
         if ($form->isValid()) {
             return $this->renderTable($table, $queryBuilder);
