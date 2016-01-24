@@ -43,8 +43,8 @@ If you want to help check the contribuing instructions [here](CONTRIBUTING.md).
  - [ ] setup and include tests cases (Partial)
  - [ ] review abstract factories (Partial)
  - [ ] create documentation with examples
- - [ ] move out rename files from AbstractEntity to a Util trait
  - [ ] move out Table Decorator to ZffTable
+ - [x] move out rename files from AbstractEntity to a Util trait
  - [x] change ZFTable and DoctrineORMModule to optional dependency.
  - [x] add Bootstrap 3/4 as optional dependency.
  - [x] drop `Entity\AbstractEntityRepository`.

@@ -28,6 +28,10 @@ class File
 
     public static function rmdirRecursive($dir)
     {
+        if(!file_exists($dir)) {
+            return;
+        }
+
         static::walkDirRecursive($dir, function ($file) {
             if ('.' === $file->getBasename() || '..' === $file->getBasename()) {
                 return true;
@@ -41,6 +45,8 @@ class File
 
     protected static function walkDirRecursive($dir, $callable, $mode = self::CHILD_FIRST)
     {
+
+
         $it  = new \RecursiveDirectoryIterator($dir);
         $iit = new \RecursiveIteratorIterator($it, self::CHILD_FIRST);
         foreach ($iit as $file) {

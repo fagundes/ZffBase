@@ -8,32 +8,33 @@
 namespace Zff\Base\Util;
 
 /**
- * Configurator
- * Carrega dados de $options no objecto $target utilizando seus getters e setters.
+ * ConfiguratorTrait
+ *
+ * Load $options data into itself using yours getters and setters.
  *
  * @package ZffBase
  * @subpackage ZffBase_Util
  */
-class Configurator
+trait ConfiguratorTrait
 {
 
-    public static function configure($target, $options, $tryCall = false)
+    public function configure($options, $tryCall = false)
     {
-        if (!is_object($target)) {
+        if (!is_object($this)) {
             throw new \Exception('Target should be a object.');
         }
         if (!($options instanceof \Traversable) && !is_array($options)) {
             throw new \Exception('$options should be a Traversable or an array.');
         }
 
-        $tryCall = (bool) $tryCall && method_exists($target, '__call');
+        $tryCall = (bool) $tryCall && method_exists($this, '__call');
         foreach ($options as $name => &$value) {
             $setter = 'set' . str_replace(' ', '', ucwords(str_replace('_', ' ', $name)));
 
-            if ($tryCall || method_exists($target, $setter)) {
-                call_user_func([$target, $setter], $value);
+            if ($tryCall || method_exists($this, $setter)) {
+                call_user_func([$this, $setter], $value);
             }
         }
-        return $target;
+        return $this;
     }
 }
