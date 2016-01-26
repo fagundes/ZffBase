@@ -18,7 +18,7 @@ if (!defined('ROOT')) {
 }
 
 /**
- * Debug
+ * Debugger
  *
  * @package ZffBase
  * @subpackage ZffBase_Util
@@ -52,11 +52,6 @@ class Debugger
      */
     public static function cakeDump($var = false, $showHtml = false, $showFrom = true, $stackIndex = 0)
     {
-
-        if (!defined('ROOT')) {
-            define('ROOT', '');
-        }
-
         if ($showFrom) {
             $stack = debug_backtrace();
             echo '<strong>' . substr(str_replace(ROOT, '', $stack[$stackIndex]['file']), 1) . '</strong>';
@@ -69,16 +64,4 @@ class Debugger
         }
         echo "\n<pre class=\"cake-debug\">\n" . $var . "\n</pre>\n";
     }
-}
-
-//defines Zff\Base\Util\cakeDump as function
-function cakeDump($var = false, $showHtml = false, $showFrom = true)
-{
-    return Debugger::cakeDump($var, $showHtml, $showFrom, 1);
-}
-
-//defines Zff\Base\Util\entityDump as function
-function doctrineDump($var, $maxDepth = 2, $stripTags = true)
-{
-    return Debugger::doctrineDump($var, $maxDepth, $stripTags);
 }
