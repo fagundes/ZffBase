@@ -9,6 +9,7 @@ namespace Zff\Base\Service;
 
 use Zend\ServiceManager\AbstractFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Zff\Base\Table\TableHandler;
 
 /**
  * ServiceAbstractFactory
@@ -39,6 +40,9 @@ class ServiceAbstractFactory implements AbstractFactoryInterface
         $requestedName
     ) {
         if ($this->canCreateServiceWithName($serviceLocator, $name, $requestedName)) {
+            /**
+             * @var AbstractService $service
+             */
             $reflect = new \ReflectionClass($requestedName);
             $service = $reflect->newInstance();
 
@@ -47,11 +51,8 @@ class ServiceAbstractFactory implements AbstractFactoryInterface
             
             $dbAdapter = $serviceLocator->get($service->getDbAdapterName());
             $service->setDbAdapter($dbAdapter);
-            /**
-             * @todo lazy load here, table handler recebe o nome default mais
-             * nao instancia os servicos o mesmo com service
-             */
-            $tableHandler = $serviceLocator->get(Table\TableHandler::class);
+
+            $tableHandler = new TableHandler();
             $tableHandler->setEntityManager($entityManager);
             $tableHandler->setDbAdapter($dbAdapter);
             $service->setTableHandler($tableHandler);
@@ -84,7 +85,7 @@ class ServiceAbstractFactory implements AbstractFactoryInterface
         if (!method_exists($service, $methodSet)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    'Espera-se o metodo %s::%s, para carregar o serviço %s.',
+                    'Expected method %s::%s, to set the service %s.',
                     get_class($service),
                     $methodSet,
                     $serviceNeededName

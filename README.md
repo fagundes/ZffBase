@@ -3,8 +3,8 @@
 [![Coverage Status](https://coveralls.io/repos/fagundes/ZffBase/badge.svg?branch=develop&service=github)](https://coveralls.io/github/fagundes/ZffBase?branch=develop)
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/fagundes/zff-base.svg)](https://packagist.org/packages/fagundes/zff-base)
-[![Build Status](https://travis-ci.org/fagundes/ZffBase.svg?branch=0.1.5)](https://travis-ci.org/fagundes/ZffBase)
-[![Coverage Status](https://coveralls.io/repos/fagundes/ZffBase/badge.svg?branch=0.1.5&service=github)](https://coveralls.io/github/fagundes/ZffBase?branch=0.1.5)
+[![Build Status](https://travis-ci.org/fagundes/ZffBase.svg?branch=0.1.6)](https://travis-ci.org/fagundes/ZffBase)
+[![Coverage Status](https://coveralls.io/repos/fagundes/ZffBase/badge.svg?branch=0.1.6&service=github)](https://coveralls.io/github/fagundes/ZffBase?branch=0.1.6)
 
 [![Total Downloads](https://poser.pugx.org/fagundes/zff-base/downloads)](https://packagist.org/packages/fagundes/zff-base) [![License](https://poser.pugx.org/fagundes/zff-base/license)](https://packagist.org/packages/fagundes/zff-base)
 
