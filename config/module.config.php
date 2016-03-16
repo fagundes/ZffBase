@@ -2,19 +2,19 @@
 
 namespace Zff\Base;
 
-if(!defined('CSS_DIR')) {
+if (!defined('CSS_DIR')) {
     define('CSS_DIR', __DIR__ . '/../view/public/css');
 }
 
-if(!defined('JS_DIR')) {
+if (!defined('JS_DIR')) {
     define('JS_DIR', __DIR__ . '/../view/public/js');
 }
 
 return [
-    'router'             => [
+    'router'          => [
         'router_class' => Mvc\Router\ControllerRouteStack::class,
     ],
-    'view_manager'       => [
+    'view_manager'    => [
         'template_path_stack' => [
             'zff-base' => __DIR__ . '/../view',
         ],
@@ -25,7 +25,7 @@ return [
             'element/paginator'  => __DIR__ . '/../view/base/element/paginator.phtml',
         ],
     ],
-    'asset_manager'      => [
+    'asset_manager'   => [
         'resolver_configs' => [
             'map' => [
                 //css
@@ -36,7 +36,7 @@ return [
             ],
         ],
     ],
-    'form_elements'      => [
+    'form_elements'   => [
         'invokables' => [
             'bstext'          => Form\Element\BsText::class,
             'bstextarea'      => Form\Element\BsTextarea::class,
@@ -49,13 +49,13 @@ return [
             'bsobjectradio'   => Form\Element\BsObjectRadio::class,
         ],
     ],
-    'validators' => [
+    'validators'      => [
         'invokables' => [
-            'cpf' => Validator\Cpf::class,
+            'cpf'  => Validator\Cpf::class,
             'cnpj' => Validator\Cnpj::class,
         ],
     ],
-    'view_helpers'       => [
+    'view_helpers'    => [
         'invokables' => [
             //bs form helpers
             'bsform'                 => Form\View\Helper\BsForm::class,
@@ -79,7 +79,12 @@ return [
         'abstract_factories' => [
             Form\FormAbstractFactory::class,
             Form\InputFilterAbstractFactory::class,
-            Service\ServiceAbstractFactory::class
+            Service\ServiceAbstractFactory::class,
+        ],
+    ],
+    'controllers'     => [
+        'abstract_factories' => [
+            Controller\ControllerAbstractFactory::class,
         ],
     ],
 ];
