@@ -76,9 +76,6 @@ return [
         ],
     ],
     'service_manager'    => [
-        'invokables'         => [
-            Service\Table\TableHandler::class => Service\Table\TableHandler::class,
-        ],
         'abstract_factories' => [
             Form\FormAbstractFactory::class,
             Form\InputFilterAbstractFactory::class,

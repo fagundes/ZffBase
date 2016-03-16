@@ -11,6 +11,7 @@ use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Zend\Db\Adapter\Adapter;
 use Zff\Base\Exception;
+use Zff\Base\Table\TableHandler;
 
 /**
  * AbstractService
@@ -60,7 +61,7 @@ abstract class AbstractService
     protected $services;
 
     /**
-     * @var Table\TableHandler
+     * @var TableHandler
      */
     protected $tableHandler;
 
@@ -144,31 +145,17 @@ abstract class AbstractService
         $this->dbAdapterName = $dbAdapterName;
     }
 
+    /**
+     * @return TableHandler
+     */
     public function getTableHandler()
     {
         return $this->tableHandler;
     }
 
-    public function setTableHandler(Table\TableHandler $tableHandler)
+    public function setTableHandler(TableHandler $tableHandler)
     {
         $this->tableHandler = $tableHandler;
-    }
-
-    public function getTableClassName()
-    {
-        if (!$this->tableClassName) {
-            $reflectionFinalClass = new \ReflectionClass($this);
-            $this->tableClassName = $reflectionFinalClass->getNamespaceName()
-                . '\\Table\\'
-                . $reflectionFinalClass->getShortName();
-        }
-        return $this->tableClassName;
-    }
-
-    public function setTableClassName($tableClassName)
-    {
-        $this->tableClassName = $tableClassName;
-        return $this;
     }
 
     public function getAutocommit()
@@ -445,23 +432,6 @@ abstract class AbstractService
     }
 
     /**
-     * @param array|mixed $data
-     *
-     * @return Table\AbstractTable
-     */
-    public function createTable($data)
-    {
-        $tableHandler = $this->getTableHandler();
-
-        $table = $tableHandler->createTable($this->getTableClassName());
-        $form = $table->getForm();
-
-        $form->setData($data);
-
-        return $table;
-    }
-
-    /**
      * @param \ZfTable\AbstractTable     $table
      * @param \Doctrine\ORM\QueryBuilder $queryBuilder
      *
@@ -476,16 +446,17 @@ abstract class AbstractService
         return $table->render();
     }
 
-    public function executeTable($data, \Doctrine\ORM\QueryBuilder $queryBuilder)
+    /**
+     * Method proxy to \Zff\Base\Table\TableHandler::executeTable
+     *
+     * @param $data
+     * @param \ZfTable\AbstractTable $table
+     * @param \Doctrine\ORM\QueryBuilder $queryBuilder
+     * @return bool|string  if the form is invalid or the html resulting
+     */
+    public function executeTable($data,\ZfTable\AbstractTable $table, \Doctrine\ORM\QueryBuilder $queryBuilder)
     {
-
-        $table = $this->createTable($data);
-        $form = $table->getForm();
-
-        if ($form->isValid()) {
-            return $this->renderTable($table, $queryBuilder);
-        }
-        return false;
+       return $this->getTableHandler()->executeTable($data, $table, $queryBuilder);
     }
 
     protected function checkIfClassExists($class)
