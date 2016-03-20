@@ -8,7 +8,6 @@
 namespace Zff\Base\Entity;
 
 use Zff\Base\Util\ConfiguratorTrait;
-use Zff\Base\Util\FileMoveTrait;
 
 /**
  * Abstract Entity
