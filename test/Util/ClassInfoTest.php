@@ -15,6 +15,8 @@ use Zff\Base\Util\ClassInfo;
  */
 class ClassInfoTest extends PHPUnit_Framework_TestCase
 {
+    protected $anObject;
+
     public function setup()
     {
         $this->anObject = new ClassInfoTest();

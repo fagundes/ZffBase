@@ -62,11 +62,27 @@ abstract class AbstractCgc extends AbstractValidator
      */
     protected $validIfEmpty = true;
 
+    /**
+     * @return boolean
+     */
+    public function isValidIfEmpty()
+    {
+        return $this->validIfEmpty;
+    }
+
+    /**
+     * @param boolean $validIfEmpty
+     */
+    public function setValidIfEmpty($validIfEmpty)
+    {
+        $this->validIfEmpty = $validIfEmpty;
+    }
+
     public function __construct($options = null)
     {
         parent::__construct($options);
-        if (is_array($options) && array_key_exists('valid_if_empty', $options)) {
-            $this->validIfEmpty = $options['valid_if_empty'];
+        if (is_array($options)) {
+            $this->setOptions($options);
         }
     }
 
@@ -77,7 +93,7 @@ abstract class AbstractCgc extends AbstractValidator
      */
     protected function check($value)
     {
-        // Captura dos Modificadores
+        // catch modifiers
         foreach ($this->modifiers as $modifier) {
             $result = 0;
             $size = count($modifier);
