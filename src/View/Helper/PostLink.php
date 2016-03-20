@@ -9,7 +9,7 @@ namespace Zff\Base\View\Helper;
 
 /**
  * PostLink
- * Similiar a helper Link, porém utiliza Javascript para postar na url passada.
+ * Based on Link helper, but use Javascript to post data to access url via POST.
  *
  * @package ZffBase
  * @subpackage ZffBase_Helper
@@ -18,17 +18,18 @@ class PostLink extends Link
 {
 
     /**
-     * Cria um link similar o respectivo metodo em Link, porém utiliza Javascript
-     * para postar dados, se 'formname' for informado em $options.
+     * Create a link based on method Link::link, but use Javascript to post data,
+     * if 'formname' was informed in $options.
      *
-     * Como itens do $options opcionais é possivel passar qualquer atributo da tag 'A',
-     * exceto 'onclick' e 'href' que serão sobrescritos. Como item do $options
-     * obrigatório temos o 'formname', se formname = false, for passado então
-     * o metodo retorna um link normal.
+     * It's also possible pass in $options any html attribute for tag 'a' (anchor),
+     * except 'onclick' and 'href' which will be created by this method.
+     * Required $options item: 'formname', if formnam = false, it will be a default
+     * Link.
      *
-     * @param string $title
-     * @param string $url
-     * @param array $options
+     * @param $title
+     * @param $url
+     * @param $options
+     * @return string
      */
     protected function link($title, $url, $options)
     {

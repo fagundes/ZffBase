@@ -32,7 +32,7 @@ class File
             return;
         }
 
-        static::walkDirRecursive($dir, function ($file) {
+        static::walkDirRecursive($dir, function (\SplFileInfo $file) {
             if ('.' === $file->getBasename() || '..' === $file->getBasename()) {
                 return true;
             }
@@ -45,8 +45,6 @@ class File
 
     protected static function walkDirRecursive($dir, $callable, $mode = self::CHILD_FIRST)
     {
-
-
         $it  = new \RecursiveDirectoryIterator($dir);
         $iit = new \RecursiveIteratorIterator($it, self::CHILD_FIRST);
         foreach ($iit as $file) {
@@ -59,7 +57,7 @@ class File
     {
         $path = $path . DIRECTORY_SEPARATOR . $filename;
         if (!file_exists($path)) {
-            throw new Exception\RuntimeException(sprintf('Arquivo "%s" não encontrado', $path));
+            throw new Exception\RuntimeException(sprintf('File "%s" not found', $path));
         }
         ob_clean();
         flush();
@@ -73,7 +71,7 @@ class File
         $path            = $path . DIRECTORY_SEPARATOR . $filename;
         $displayFilename = $displayFilename ? : $filename;
         if (!file_exists($path)) {
-            throw new Exception\RuntimeException(sprintf('Arquivo "%s" não encontrado', $path));
+            throw new Exception\RuntimeException(sprintf('File "%s" not found', $path));
         }
 
         $finfo = new \finfo();

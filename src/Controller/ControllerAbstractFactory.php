@@ -39,9 +39,8 @@ class ControllerAbstractFactory implements AbstractFactoryInterface
         ServiceLocatorInterface $serviceLocator,
         $name,
         $requestedName
-    )
-    {
-
+    ) {
+    
         if ($this->canCreateServiceWithName($serviceLocator, $name, $requestedName)) {
             /**
              * @var AbstractController $controller
@@ -76,8 +75,8 @@ class ControllerAbstractFactory implements AbstractFactoryInterface
         $objectNeededName,
         $customObjectName,
         $sufixName
-    )
-    {
+    ) {
+    
         $mainServiceLocator = $serviceLocator->getServiceLocator();
 
         if (is_int($customObjectName)) {
@@ -99,6 +98,7 @@ class ControllerAbstractFactory implements AbstractFactoryInterface
                 )
             );
         }
+
 
         $objectNeeded = $mainServiceLocator->get($objectNeededName);
         call_user_func([$controller, $methodSet], $objectNeeded);

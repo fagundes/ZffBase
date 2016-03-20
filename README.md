@@ -39,9 +39,9 @@ If you want to help check the contribuing instructions [here](CONTRIBUTING.md).
 
 ## TODO
 
- - [ ] translate files to english (Partial+++)
- - [ ] setup and include tests cases (Partial)
- - [ ] review abstract factories (Partial)
+ - [ ] translate files to english (Partial++++)
+ - [ ] setup and include tests cases (Partial+)
+ - [ ] review abstract factories (Partial+)
  - [ ] create documentation with examples
 
 ## Main classes available

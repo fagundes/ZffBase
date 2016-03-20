@@ -454,9 +454,9 @@ abstract class AbstractService
      * @param \Doctrine\ORM\QueryBuilder $queryBuilder
      * @return bool|string  if the form is invalid or the html resulting
      */
-    public function executeTable($data,\ZfTable\AbstractTable $table, \Doctrine\ORM\QueryBuilder $queryBuilder)
+    public function executeTable($data, \ZfTable\AbstractTable $table, \Doctrine\ORM\QueryBuilder $queryBuilder)
     {
-       return $this->getTableHandler()->executeTable($data, $table, $queryBuilder);
+        return $this->getTableHandler()->executeTable($data, $table, $queryBuilder);
     }
 
     protected function checkIfClassExists($class)
